@@ -4,21 +4,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using CusMaSy.Project.Views;
 
 namespace CusMaSy.Project
 {
     static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
-
+            Console.Write("Running the GUI...\nPress Enter To Abort");
+            
+            if(true)
+                new System.Threading.Thread(() => { System.Windows.Forms.Application.Run(new Form2()); }).Start();
+            
+            Console.ReadLine();
+            
             string myConnectionString = "SERVER=localhost;" +
                             "DATABASE=as_projekt;" +
                             "UID=root;" +
@@ -26,7 +26,8 @@ namespace CusMaSy.Project
             SelectAll(myConnectionString);
             InsertRow(myConnectionString);
             SelectAll(myConnectionString);
-            
+
+            System.Windows.Forms.Application.Exit();
         }
 
         public static void SelectAll(string myConnectionString)
@@ -57,5 +58,16 @@ namespace CusMaSy.Project
             myCommand.ExecuteNonQuery();
             myCommand.Connection.Close();
         }
+
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        //[STAThread]
+        //static void Main()
+        //{
+        //    Application.EnableVisualStyles();
+        //    Application.SetCompatibleTextRenderingDefault(false);
+        //    Application.Run(new Form1());
+        //}
     }
 }
