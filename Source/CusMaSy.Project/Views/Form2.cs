@@ -10,11 +10,26 @@ using System.Windows.Forms;
 
 namespace CusMaSy.Project.Views
 {
-    public partial class Form2 : Form
+    public partial class frmKunde : Form
     {
-        public Form2()
+        public frmKunde()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbxNameKunde_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
