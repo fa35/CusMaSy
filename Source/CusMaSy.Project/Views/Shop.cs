@@ -16,5 +16,45 @@ namespace CusMaSy.Project.Views
         {
             InitializeComponent();
         }
+
+        private void lblPLZKunde_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblOrtKunde_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbxLandKunde_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbxPLZKunde_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbxOrtKunde_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSpeichernKunde_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

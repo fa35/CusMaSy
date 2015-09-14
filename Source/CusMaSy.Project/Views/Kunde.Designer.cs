@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnEditKunde = new System.Windows.Forms.Button();
             this.btnSpeichernKunde = new System.Windows.Forms.Button();
             this.tbxNameKunde = new System.Windows.Forms.TextBox();
             this.lblNameKunde = new System.Windows.Forms.Label();
@@ -44,18 +43,9 @@
             this.tbxLandKunde = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // btnEditKunde
-            // 
-            this.btnEditKunde.Location = new System.Drawing.Point(13, 13);
-            this.btnEditKunde.Name = "btnEditKunde";
-            this.btnEditKunde.Size = new System.Drawing.Size(75, 23);
-            this.btnEditKunde.TabIndex = 0;
-            this.btnEditKunde.Text = "Edit";
-            this.btnEditKunde.UseVisualStyleBackColor = true;
-            // 
             // btnSpeichernKunde
             // 
-            this.btnSpeichernKunde.Location = new System.Drawing.Point(121, 12);
+            this.btnSpeichernKunde.Location = new System.Drawing.Point(287, 168);
             this.btnSpeichernKunde.Name = "btnSpeichernKunde";
             this.btnSpeichernKunde.Size = new System.Drawing.Size(75, 23);
             this.btnSpeichernKunde.TabIndex = 1;
@@ -66,7 +56,7 @@
             // tbxNameKunde
             // 
             this.tbxNameKunde.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.tbxNameKunde.Location = new System.Drawing.Point(12, 71);
+            this.tbxNameKunde.Location = new System.Drawing.Point(15, 25);
             this.tbxNameKunde.Name = "tbxNameKunde";
             this.tbxNameKunde.Size = new System.Drawing.Size(100, 20);
             this.tbxNameKunde.TabIndex = 2;
@@ -75,7 +65,7 @@
             // lblNameKunde
             // 
             this.lblNameKunde.AutoSize = true;
-            this.lblNameKunde.Location = new System.Drawing.Point(12, 55);
+            this.lblNameKunde.Location = new System.Drawing.Point(15, 9);
             this.lblNameKunde.Name = "lblNameKunde";
             this.lblNameKunde.Size = new System.Drawing.Size(35, 13);
             this.lblNameKunde.TabIndex = 3;
@@ -83,28 +73,28 @@
             // 
             // tbxHausnummerKunde
             // 
-            this.tbxHausnummerKunde.Location = new System.Drawing.Point(121, 116);
+            this.tbxHausnummerKunde.Location = new System.Drawing.Point(121, 73);
             this.tbxHausnummerKunde.Name = "tbxHausnummerKunde";
             this.tbxHausnummerKunde.Size = new System.Drawing.Size(100, 20);
             this.tbxHausnummerKunde.TabIndex = 4;
             // 
             // tbxOrtKunde
             // 
-            this.tbxOrtKunde.Location = new System.Drawing.Point(121, 169);
+            this.tbxOrtKunde.Location = new System.Drawing.Point(121, 127);
             this.tbxOrtKunde.Name = "tbxOrtKunde";
             this.tbxOrtKunde.Size = new System.Drawing.Size(100, 20);
             this.tbxOrtKunde.TabIndex = 5;
             // 
             // tbxPLZKunde
             // 
-            this.tbxPLZKunde.Location = new System.Drawing.Point(12, 169);
+            this.tbxPLZKunde.Location = new System.Drawing.Point(15, 126);
             this.tbxPLZKunde.Name = "tbxPLZKunde";
             this.tbxPLZKunde.Size = new System.Drawing.Size(100, 20);
             this.tbxPLZKunde.TabIndex = 6;
             // 
             // tbxStraßeKunde
             // 
-            this.tbxStraßeKunde.Location = new System.Drawing.Point(12, 116);
+            this.tbxStraßeKunde.Location = new System.Drawing.Point(15, 73);
             this.tbxStraßeKunde.Name = "tbxStraßeKunde";
             this.tbxStraßeKunde.Size = new System.Drawing.Size(100, 20);
             this.tbxStraßeKunde.TabIndex = 7;
@@ -112,7 +102,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(241, 168);
+            this.comboBox1.Location = new System.Drawing.Point(241, 126);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 8;
@@ -120,7 +110,7 @@
             // lblHausnummerKunde
             // 
             this.lblHausnummerKunde.AutoSize = true;
-            this.lblHausnummerKunde.Location = new System.Drawing.Point(118, 100);
+            this.lblHausnummerKunde.Location = new System.Drawing.Point(121, 57);
             this.lblHausnummerKunde.Name = "lblHausnummerKunde";
             this.lblHausnummerKunde.Size = new System.Drawing.Size(69, 13);
             this.lblHausnummerKunde.TabIndex = 9;
@@ -129,7 +119,7 @@
             // lblStraßeKunde
             // 
             this.lblStraßeKunde.AutoSize = true;
-            this.lblStraßeKunde.Location = new System.Drawing.Point(12, 100);
+            this.lblStraßeKunde.Location = new System.Drawing.Point(12, 57);
             this.lblStraßeKunde.Name = "lblStraßeKunde";
             this.lblStraßeKunde.Size = new System.Drawing.Size(38, 13);
             this.lblStraßeKunde.TabIndex = 10;
@@ -139,7 +129,7 @@
             // lblPLZKunde
             // 
             this.lblPLZKunde.AutoSize = true;
-            this.lblPLZKunde.Location = new System.Drawing.Point(9, 153);
+            this.lblPLZKunde.Location = new System.Drawing.Point(15, 110);
             this.lblPLZKunde.Name = "lblPLZKunde";
             this.lblPLZKunde.Size = new System.Drawing.Size(27, 13);
             this.lblPLZKunde.TabIndex = 11;
@@ -148,7 +138,7 @@
             // lblOrtKunde
             // 
             this.lblOrtKunde.AutoSize = true;
-            this.lblOrtKunde.Location = new System.Drawing.Point(118, 152);
+            this.lblOrtKunde.Location = new System.Drawing.Point(118, 110);
             this.lblOrtKunde.Name = "lblOrtKunde";
             this.lblOrtKunde.Size = new System.Drawing.Size(21, 13);
             this.lblOrtKunde.TabIndex = 12;
@@ -157,7 +147,7 @@
             // tbxLandKunde
             // 
             this.tbxLandKunde.AutoSize = true;
-            this.tbxLandKunde.Location = new System.Drawing.Point(238, 152);
+            this.tbxLandKunde.Location = new System.Drawing.Point(238, 110);
             this.tbxLandKunde.Name = "tbxLandKunde";
             this.tbxLandKunde.Size = new System.Drawing.Size(31, 13);
             this.tbxLandKunde.TabIndex = 13;
@@ -181,10 +171,9 @@
             this.Controls.Add(this.lblNameKunde);
             this.Controls.Add(this.tbxNameKunde);
             this.Controls.Add(this.btnSpeichernKunde);
-            this.Controls.Add(this.btnEditKunde);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "frmKunde";
-            this.Text = "Form2";
+            this.Text = "Kunde";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,7 +181,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnEditKunde;
         private System.Windows.Forms.Button btnSpeichernKunde;
         private System.Windows.Forms.TextBox tbxNameKunde;
         private System.Windows.Forms.Label lblNameKunde;
