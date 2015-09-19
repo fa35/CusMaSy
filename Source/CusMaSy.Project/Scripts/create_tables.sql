@@ -1,5 +1,5 @@
 
-USE `as_projekt`;
+USE `cusmasy_Db`;
 
 
 -- Exportiere Struktur von Tabelle as_projekt.test

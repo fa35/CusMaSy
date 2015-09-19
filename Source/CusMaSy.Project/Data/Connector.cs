@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using MySql.Data.MySqlClient;
+using System.Configuration;
+using System.Data;
 
 
 namespace CusMaSy.Project.Data
@@ -8,32 +12,35 @@ namespace CusMaSy.Project.Data
     {
         public void BuildConnection()
         {
+            // gets the connection string from App.Config: it's the value of the key "ConnectionString"
+            string connString = ConfigurationManager.AppSettings["ConnectionString"];
 
-            string myConnectionString = "SERVER=localhost;" +
-                            "DATABASE=as_projekt;" +
-                            "UID=root;" +
-                            "PASSWORD=;";
-            SelectAll(myConnectionString);
-            InsertRow(myConnectionString);
-            SelectAll(myConnectionString);
+            SelectAll(connString);
+            InsertRow(connString);
+            SelectAll(connString);
         }
 
         public static void SelectAll(string myConnectionString)
         {
-            MySqlConnection connection = new MySqlConnection(myConnectionString);
+            var connection = new MySqlConnection(myConnectionString);
+
             MySqlCommand command = connection.CreateCommand();
+
             command.CommandText = "SELECT * FROM test";
+
             MySqlDataReader Reader;
-            connection.Open();
-            Reader = command.ExecuteReader();
-            while (Reader.Read())
+
+            using (connection)
             {
-                string row = "";
-                for (int i = 0; i < Reader.FieldCount; i++)
-                    row += Reader.GetValue(i).ToString() + ", ";
-                Console.WriteLine(row);
+                Reader = command.ExecuteReader();
+                while (Reader.Read())
+                {
+                    string row = "";
+                    for (int i = 0; i < Reader.FieldCount; i++)
+                        row += Reader.GetValue(i).ToString() + ", ";
+                    Console.WriteLine(row);
+                }
             }
-            connection.Close();
         }
 
         public static void InsertRow(string myConnectionString)
