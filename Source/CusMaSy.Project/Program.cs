@@ -10,7 +10,7 @@ namespace CusMaSy.Project
             Console.Write("Running the GUI...\nPress Enter To Abort");
 
             if (true)
-                new System.Threading.Thread(() => { System.Windows.Forms.Application.Run(new frmKunde()); }).Start();
+                new System.Threading.Thread(() => { System.Windows.Forms.Application.Run(new Anlage()); }).Start();
 
             Console.ReadLine();
 
