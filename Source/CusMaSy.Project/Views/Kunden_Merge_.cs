@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace CusMaSy.Project.Views
 {
-    public partial class Form2 : Form
+    public partial class KundenMerge : Form
     {
-        public Form2()
+        public KundenMerge()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
