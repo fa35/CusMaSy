@@ -11,7 +11,7 @@ namespace CusMaSy.Project.Infrastructure
     public class FachkonzeptEinfach : IFachkonzept
     {
         Connector _connector;
-        FachkonzeptEinfach()
+        public FachkonzeptEinfach()
         {
             _connector = new Connector();
         }
@@ -31,12 +31,24 @@ namespace CusMaSy.Project.Infrastructure
 
         }
 
+        public Ort[] LadeOrte(int plz)
+        {
+            _connector.LoadOrte(plz);
+
+            return null;
+        }
+
         public void ErstelleOrt(int plz, string ort)
         {
             throw new NotImplementedException();
         }
 
         public Anbieter LadeAnbieter(long anbieterNr)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Anbieter[] LadeAnbieter(string firma = null)
         {
             throw new NotImplementedException();
         }

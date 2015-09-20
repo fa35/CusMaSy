@@ -10,6 +10,9 @@ namespace CusMaSy.Project.Models.Interfaces
 
         Anbieter LadeAnbieter(long anbieterNr);
 
+        Anbieter[] LadeAnbieter(string firma = null);
+
+        Ort[] LadeOrte(int plz);
 
     }
 }

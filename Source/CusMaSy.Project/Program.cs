@@ -1,5 +1,7 @@
 ﻿using System;
 using CusMaSy.Project.Views;
+using CusMaSy.Project.Infrastructure;
+
 
 namespace CusMaSy.Project
 {
@@ -9,8 +11,10 @@ namespace CusMaSy.Project
         {
             Console.Write("Running the GUI...\nPress Enter To Abort");
 
+            var fa = new FachkonzeptEinfach();
+
             if (true)
-                new System.Threading.Thread(() => { System.Windows.Forms.Application.Run(new Anlage()); }).Start();
+                new System.Threading.Thread(() => { System.Windows.Forms.Application.Run(new Anlage(fa)); }).Start();
 
             Console.ReadLine();
 

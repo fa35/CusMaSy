@@ -35,8 +35,8 @@
             this.lblHausnummerKunde = new System.Windows.Forms.Label();
             this.cmbLand = new System.Windows.Forms.ComboBox();
             this.txbStrasse = new System.Windows.Forms.TextBox();
-            this.tbxOrt = new System.Windows.Forms.TextBox();
-            this.tbxHausnr = new System.Windows.Forms.TextBox();
+            this.txbOrt = new System.Windows.Forms.TextBox();
+            this.txbHausnr = new System.Windows.Forms.TextBox();
             this.lblNameKunde = new System.Windows.Forms.Label();
             this.txbFirma = new System.Windows.Forms.TextBox();
             this.nudPlz = new System.Windows.Forms.NumericUpDown();
@@ -55,6 +55,8 @@
             this.btnAbbrechen = new System.Windows.Forms.Button();
             this.gpbAdresse = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txbSteuernr = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudPlz)).BeginInit();
             this.gpbAnbieterTyp.SuspendLayout();
             this.gpbAdresse.SuspendLayout();
@@ -122,21 +124,21 @@
             this.txbStrasse.Size = new System.Drawing.Size(175, 20);
             this.txbStrasse.TabIndex = 20;
             // 
-            // tbxOrt
+            // txbOrt
             // 
-            this.tbxOrt.Location = new System.Drawing.Point(9, 76);
-            this.tbxOrt.MaxLength = 200;
-            this.tbxOrt.Name = "tbxOrt";
-            this.tbxOrt.Size = new System.Drawing.Size(175, 20);
-            this.tbxOrt.TabIndex = 18;
+            this.txbOrt.Location = new System.Drawing.Point(9, 76);
+            this.txbOrt.MaxLength = 200;
+            this.txbOrt.Name = "txbOrt";
+            this.txbOrt.Size = new System.Drawing.Size(175, 20);
+            this.txbOrt.TabIndex = 18;
             // 
-            // tbxHausnr
+            // txbHausnr
             // 
-            this.tbxHausnr.Location = new System.Drawing.Point(193, 36);
-            this.tbxHausnr.MaxLength = 100;
-            this.tbxHausnr.Name = "tbxHausnr";
-            this.tbxHausnr.Size = new System.Drawing.Size(100, 20);
-            this.tbxHausnr.TabIndex = 17;
+            this.txbHausnr.Location = new System.Drawing.Point(193, 36);
+            this.txbHausnr.MaxLength = 100;
+            this.txbHausnr.Name = "txbHausnr";
+            this.txbHausnr.Size = new System.Drawing.Size(100, 20);
+            this.txbHausnr.TabIndex = 17;
             // 
             // lblNameKunde
             // 
@@ -301,8 +303,8 @@
             // gpbAdresse
             // 
             this.gpbAdresse.Controls.Add(this.lblStraßeKunde);
-            this.gpbAdresse.Controls.Add(this.tbxHausnr);
-            this.gpbAdresse.Controls.Add(this.tbxOrt);
+            this.gpbAdresse.Controls.Add(this.txbHausnr);
+            this.gpbAdresse.Controls.Add(this.txbOrt);
             this.gpbAdresse.Controls.Add(this.txbStrasse);
             this.gpbAdresse.Controls.Add(this.cmbLand);
             this.gpbAdresse.Controls.Add(this.lblHausnummerKunde);
@@ -319,6 +321,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txbSteuernr);
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.lblNameKunde);
             this.groupBox1.Controls.Add(this.txbFirma);
             this.groupBox1.Controls.Add(this.txbTelefonnr);
@@ -335,6 +339,23 @@
             this.groupBox1.TabIndex = 40;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Stammdaten";
+            // 
+            // txbSteuernr
+            // 
+            this.txbSteuernr.Location = new System.Drawing.Point(190, 114);
+            this.txbSteuernr.MaxLength = 200;
+            this.txbSteuernr.Name = "txbSteuernr";
+            this.txbSteuernr.Size = new System.Drawing.Size(175, 20);
+            this.txbSteuernr.TabIndex = 36;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(187, 98);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(75, 13);
+            this.label5.TabIndex = 37;
+            this.label5.Text = "Steuernummer";
             // 
             // Anlage
             // 
@@ -368,8 +389,8 @@
         private System.Windows.Forms.Label lblHausnummerKunde;
         private System.Windows.Forms.ComboBox cmbLand;
         private System.Windows.Forms.TextBox txbStrasse;
-        private System.Windows.Forms.TextBox tbxOrt;
-        private System.Windows.Forms.TextBox tbxHausnr;
+        private System.Windows.Forms.TextBox txbOrt;
+        private System.Windows.Forms.TextBox txbHausnr;
         private System.Windows.Forms.Label lblNameKunde;
         private System.Windows.Forms.TextBox txbFirma;
         private System.Windows.Forms.NumericUpDown nudPlz;
@@ -388,5 +409,7 @@
         private System.Windows.Forms.Button btnAbbrechen;
         private System.Windows.Forms.GroupBox gpbAdresse;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox txbSteuernr;
+        private System.Windows.Forms.Label label5;
     }
 }

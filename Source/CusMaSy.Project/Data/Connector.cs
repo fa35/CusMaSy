@@ -79,5 +79,26 @@ namespace CusMaSy.Project.Data
             }
         }
 
+        public Ort[] LoadOrte(int plz)
+        {
+            string connString = ConfigurationManager.AppSettings["ConnectionString"];
+
+            using (var connection = new MySqlConnection(connString))
+            {
+                var query = "SELECT * FROM Ort WHERE plz = " + plz + ";";
+                var cmd = new MySqlCommand(query, connection);
+                cmd.CommandText = query;
+
+                var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Console.WriteLine(String.Format("{0}", reader[0]));
+                }
+            }
+
+
+            return null;
+        }
+
     }
 }
