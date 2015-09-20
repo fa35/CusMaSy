@@ -46,6 +46,7 @@
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,7 +59,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Connector.cs" />
-    <Compile Include="Models\IFachkonzept.cs" />
+    <Compile Include="Infrastructure\DbConnector.cs" />
+    <Compile Include="Infrastructure\FachkonzeptEinfach.cs" />
+    <Compile Include="Models\Anbieter.cs" />
+    <Compile Include="Models\AnbieterTyp.cs" />
+    <Compile Include="Models\Interfaces\IFachkonzept.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\Anlage.cs">
@@ -130,9 +135,7 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Infrastructure\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Scripts\create_tables.sql" />
     <Content Include="Scripts\create_database.sql" />
