@@ -4,8 +4,12 @@ namespace CusMaSy.Project.Models.Interfaces
 {
     public interface IFachkonzept
     {
-        bool ErstelleAnbieter(Anbieter anbieter);
+        void ErstelleAnbieter(Anbieter anbieter);
+
+        void ErstelleOrt(int plz, string ort);
 
         Anbieter LadeAnbieter(long anbieterNr);
+
+
     }
 }

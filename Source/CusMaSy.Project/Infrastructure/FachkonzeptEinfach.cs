@@ -16,7 +16,22 @@ namespace CusMaSy.Project.Infrastructure
             _connector = new Connector();
         }
 
-        public bool ErstelleAnbieter(Anbieter anbieter)
+        public void ErstelleAnbieter(Anbieter anbieter)
+        {
+            try
+            {
+                // todo: prüfe anbieter
+
+                _connector.InsertAnbieter(anbieter);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            };
+
+        }
+
+        public void ErstelleOrt(int plz, string ort)
         {
             throw new NotImplementedException();
         }

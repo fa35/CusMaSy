@@ -49,8 +49,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txbBranche = new System.Windows.Forms.TextBox();
             this.gpbAnbieterTyp = new System.Windows.Forms.GroupBox();
-            this.rdbOnlineShop = new System.Windows.Forms.RadioButton();
             this.rdbKaufmann = new System.Windows.Forms.RadioButton();
+            this.rdbOnlineShop = new System.Windows.Forms.RadioButton();
             this.btnSpeichern = new System.Windows.Forms.Button();
             this.btnAbbrechen = new System.Windows.Forms.Button();
             this.gpbAdresse = new System.Windows.Forms.GroupBox();
@@ -257,17 +257,6 @@
             this.gpbAnbieterTyp.TabStop = false;
             this.gpbAnbieterTyp.Text = "Anbieter-Typ";
             // 
-            // rdbOnlineShop
-            // 
-            this.rdbOnlineShop.AutoSize = true;
-            this.rdbOnlineShop.Location = new System.Drawing.Point(6, 20);
-            this.rdbOnlineShop.Name = "rdbOnlineShop";
-            this.rdbOnlineShop.Size = new System.Drawing.Size(83, 17);
-            this.rdbOnlineShop.TabIndex = 0;
-            this.rdbOnlineShop.TabStop = true;
-            this.rdbOnlineShop.Text = "Online-Shop";
-            this.rdbOnlineShop.UseVisualStyleBackColor = true;
-            // 
             // rdbKaufmann
             // 
             this.rdbKaufmann.AutoSize = true;
@@ -279,6 +268,17 @@
             this.rdbKaufmann.Text = "Kaufmann";
             this.rdbKaufmann.UseVisualStyleBackColor = true;
             // 
+            // rdbOnlineShop
+            // 
+            this.rdbOnlineShop.AutoSize = true;
+            this.rdbOnlineShop.Location = new System.Drawing.Point(6, 20);
+            this.rdbOnlineShop.Name = "rdbOnlineShop";
+            this.rdbOnlineShop.Size = new System.Drawing.Size(83, 17);
+            this.rdbOnlineShop.TabIndex = 0;
+            this.rdbOnlineShop.TabStop = true;
+            this.rdbOnlineShop.Text = "Online-Shop";
+            this.rdbOnlineShop.UseVisualStyleBackColor = true;
+            // 
             // btnSpeichern
             // 
             this.btnSpeichern.Location = new System.Drawing.Point(14, 246);
@@ -287,6 +287,7 @@
             this.btnSpeichern.TabIndex = 37;
             this.btnSpeichern.Text = "Speichern";
             this.btnSpeichern.UseVisualStyleBackColor = true;
+            this.btnSpeichern.Click += new System.EventHandler(this.btnSpeichern_Click);
             // 
             // btnAbbrechen
             // 

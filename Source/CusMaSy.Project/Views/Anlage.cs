@@ -16,5 +16,11 @@ namespace CusMaSy.Project.Views
         {
             InitializeComponent();
         }
+
+        private void btnSpeichern_Click(object sender, EventArgs e)
+        {
+            var c = new CusMaSy.Project.Data.Connector();
+            c.InsertOrt(77933, "Lahr/Schwarzwald");
+        }
     }
 }
