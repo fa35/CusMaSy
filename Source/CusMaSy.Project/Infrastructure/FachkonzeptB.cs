@@ -20,12 +20,27 @@ namespace CusMaSy.Project.Infrastructure
             throw new NotImplementedException();
         }
 
+        public int GetAnbieterTypNrByBool(bool isKaufmann)
+        {
+            throw new NotImplementedException();
+        }
+
         public Anbieter[] LadeAnbieter(long? anbieterNr = default(long?), string firma = null)
         {
             throw new NotImplementedException();
         }
 
         public Ort[] LadeOrte(long? plzNr = default(long?), int? plz = default(int?))
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveAnbieter(Anbieter anbieter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public long GetOrtNr(Ort ort)
         {
             throw new NotImplementedException();
         }

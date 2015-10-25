@@ -49,8 +49,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txbBranche = new System.Windows.Forms.TextBox();
             this.gpbAnbieterTyp = new System.Windows.Forms.GroupBox();
+            this.rdbPrivatperson = new System.Windows.Forms.RadioButton();
             this.rdbKaufmann = new System.Windows.Forms.RadioButton();
-            this.rdbOnlineShop = new System.Windows.Forms.RadioButton();
             this.btnSpeichern = new System.Windows.Forms.Button();
             this.btnAbbrechen = new System.Windows.Forms.Button();
             this.gpbAdresse = new System.Windows.Forms.GroupBox();
@@ -250,8 +250,8 @@
             // 
             // gpbAnbieterTyp
             // 
+            this.gpbAnbieterTyp.Controls.Add(this.rdbPrivatperson);
             this.gpbAnbieterTyp.Controls.Add(this.rdbKaufmann);
-            this.gpbAnbieterTyp.Controls.Add(this.rdbOnlineShop);
             this.gpbAnbieterTyp.Location = new System.Drawing.Point(12, 12);
             this.gpbAnbieterTyp.Name = "gpbAnbieterTyp";
             this.gpbAnbieterTyp.Size = new System.Drawing.Size(102, 68);
@@ -259,27 +259,27 @@
             this.gpbAnbieterTyp.TabStop = false;
             this.gpbAnbieterTyp.Text = "Anbieter-Typ";
             // 
+            // rdbPrivatperson
+            // 
+            this.rdbPrivatperson.AutoSize = true;
+            this.rdbPrivatperson.Location = new System.Drawing.Point(6, 43);
+            this.rdbPrivatperson.Name = "rdbPrivatperson";
+            this.rdbPrivatperson.Size = new System.Drawing.Size(84, 17);
+            this.rdbPrivatperson.TabIndex = 37;
+            this.rdbPrivatperson.TabStop = true;
+            this.rdbPrivatperson.Text = "Privatperson";
+            this.rdbPrivatperson.UseVisualStyleBackColor = true;
+            // 
             // rdbKaufmann
             // 
             this.rdbKaufmann.AutoSize = true;
-            this.rdbKaufmann.Location = new System.Drawing.Point(6, 43);
+            this.rdbKaufmann.Location = new System.Drawing.Point(6, 20);
             this.rdbKaufmann.Name = "rdbKaufmann";
             this.rdbKaufmann.Size = new System.Drawing.Size(73, 17);
-            this.rdbKaufmann.TabIndex = 37;
+            this.rdbKaufmann.TabIndex = 0;
             this.rdbKaufmann.TabStop = true;
             this.rdbKaufmann.Text = "Kaufmann";
             this.rdbKaufmann.UseVisualStyleBackColor = true;
-            // 
-            // rdbOnlineShop
-            // 
-            this.rdbOnlineShop.AutoSize = true;
-            this.rdbOnlineShop.Location = new System.Drawing.Point(6, 20);
-            this.rdbOnlineShop.Name = "rdbOnlineShop";
-            this.rdbOnlineShop.Size = new System.Drawing.Size(83, 17);
-            this.rdbOnlineShop.TabIndex = 0;
-            this.rdbOnlineShop.TabStop = true;
-            this.rdbOnlineShop.Text = "Online-Shop";
-            this.rdbOnlineShop.UseVisualStyleBackColor = true;
             // 
             // btnSpeichern
             // 
@@ -403,8 +403,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txbBranche;
         private System.Windows.Forms.GroupBox gpbAnbieterTyp;
+        private System.Windows.Forms.RadioButton rdbPrivatperson;
         private System.Windows.Forms.RadioButton rdbKaufmann;
-        private System.Windows.Forms.RadioButton rdbOnlineShop;
         private System.Windows.Forms.Button btnSpeichern;
         private System.Windows.Forms.Button btnAbbrechen;
         private System.Windows.Forms.GroupBox gpbAdresse;

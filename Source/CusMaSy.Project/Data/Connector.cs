@@ -10,95 +10,104 @@ namespace CusMaSy.Project.Data
 {
     public class Connector
     {
+        string _conStr;
         public void BuildConnection()
         {
             // gets the connection string from App.Config: it's the value of the key "ConnectionString"
-            string connString = ConfigurationManager.AppSettings["ConnectionString"];
+            _conStr = ConfigurationManager.AppSettings["ConnectionString"];
 
-            SelectAll(connString);
-            InsertRow(connString);
-            SelectAll(connString);
         }
 
-        internal void InsertAnbieter(Anbieter anbieter, long ortNr)
+        internal void InsertAnbieter(Anbieter anbieter)
         {
-            throw new NotImplementedException();
-        }
-
-        public static void SelectAll(string myConnectionString)
-        {
-            var connection = new MySqlConnection(myConnectionString);
-
-            MySqlCommand command = connection.CreateCommand();
-
-            command.CommandText = "SELECT * FROM test";
-
-            MySqlDataReader Reader;
-
-            using (connection)
+            using (var connection = new MySqlConnection(_conStr))
             {
-                Reader = command.ExecuteReader();
-                while (Reader.Read())
-                {
-                    string row = "";
-                    for (int i = 0; i < Reader.FieldCount; i++)
-                        row += Reader.GetValue(i).ToString() + ", ";
-                    Console.WriteLine(row);
-                }
-            }
-        }
-
-        public static void InsertRow(string myConnectionString)
-        {
-            MySqlConnection myConnection = new MySqlConnection(myConnectionString);
-            string myInsertQuery = "INSERT INTO test (name, id) Values('cool',3)";
-            MySqlCommand myCommand = new MySqlCommand(myInsertQuery);
-
-
-            myCommand.Connection = myConnection;
-            myConnection.Open();
-            myCommand.ExecuteNonQuery();
-            myCommand.Connection.Close();
-        }
-
-
-
-
-        public void InsertOrt(int plz, string ort)
-        {
-            string connString = ConfigurationManager.AppSettings["ConnectionString"];
-
-            using (var connection = new MySqlConnection(connString))
-            {
-                var str = "CALL sp_Insert_Ort(" + plz + ", '" + ort + "');";
+                var str = "CALL sp_Insert_Anbieter('" + anbieter.Firma + "', '" + anbieter.MailAdresse + "' , '" + anbieter.Homepage + "');"; // plus den rest
                 var cmd = new MySqlCommand(str, connection);
 
                 var dt = new DataTable();
                 var adapter = new MySqlDataAdapter(cmd);
                 adapter.FillAsync(dt);
+
+                //// return anbieter nr
+                //var existingOrte = LoadAnbieter(ort.Plz, ort.OrtName, ort.Land);
+
+                //if (existingOrte.Length == 1)
+                //    return existingOrte[0].OrtNr;
+                //else
+                //    throw new Exception();
             }
         }
 
-        public Ort[] LoadOrte(int plz)
-        {
-            string connString = ConfigurationManager.AppSettings["ConnectionString"];
 
-            using (var connection = new MySqlConnection(connString))
+        long InsertOrt(Ort ort)
+        {
+            using (var connection = new MySqlConnection(_conStr))
+            {
+                var str = "CALL sp_Insert_Ort(" + ort.Plz + ", '" + ort.OrtName + "' , '" + ort.Land + "');";
+                var cmd = new MySqlCommand(str, connection);
+
+                var dt = new DataTable();
+                var adapter = new MySqlDataAdapter(cmd);
+                adapter.FillAsync(dt);
+
+                // return ort nr
+                var existingOrte = LoadOrte(ort.Plz, ort.OrtName, ort.Land);
+
+                if (existingOrte.Length == 1)
+                    return existingOrte[0].OrtNr;
+                else
+                    throw new Exception();
+            }
+        }
+
+        internal Ort[] LoadOrte(int plz, string name, string land)
+        {
+            using (var connection = new MySqlConnection(_conStr))
             {
                 var query = "SELECT * FROM Ort WHERE plz = " + plz + ";";
                 var cmd = new MySqlCommand(query, connection);
-                cmd.CommandText = query;
 
-                var reader = cmd.ExecuteReader();
+                var reader = cmd.ExecuteReader(); // FEHLERMELDUNG
                 while (reader.Read())
                 {
                     Console.WriteLine(String.Format("{0}", reader[0]));
                 }
+
+                return null; // ort[]
             }
-
-
-            return null;
         }
 
+        internal long InsertOrUpdateOrt(Ort ort)
+        {
+            var existingOrte = LoadOrte(ort.Plz, ort.OrtName, ort.Land);
+
+            if (existingOrte.Length == 1)
+                return existingOrte[0].OrtNr;
+
+            if (existingOrte.Length == 0)
+                return InsertOrt(ort);
+
+            throw new Exception("Mehr als ein Ort hat die gleiche PLZ, Namen, Land");
+        }
+
+        internal int GetAnbieterTypNr(bool isKaufmann)
+        {
+            string typ = isKaufmann ? "Kaufmann" : "Privatperson";
+
+            using (var connection = new MySqlConnection(_conStr))
+            {
+                var query = "SELECT p_AnbieterTyp_Nr FROM AnbieterTyp WHERE Bezeichnung = '" + typ + "';";
+                var cmd = new MySqlCommand(query, connection);
+
+                var reader = cmd.ExecuteReader(); // FEHLERMELDUNG
+                while (reader.Read())
+                {
+                    Console.WriteLine(String.Format("{0}", reader[0]));
+                }
+
+                return 0;
+            }
+        }
     }
 }

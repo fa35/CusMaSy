@@ -61,6 +61,7 @@
     <Compile Include="Data\Connector.cs" />
     <Compile Include="Infrastructure\FachkonzeptA.cs" />
     <Compile Include="Infrastructure\FachkonzeptB.cs" />
+    <Compile Include="Infrastructure\Helper.cs" />
     <Compile Include="Models\Anbieter.cs" />
     <Compile Include="Models\AnbieterTyp.cs" />
     <Compile Include="Models\Interfaces\IFachkonzept.cs" />

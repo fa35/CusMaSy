@@ -5,20 +5,15 @@ namespace CusMaSy.Project.Models.Interfaces
     {
 
         /// <summary>
-        /// Erzeugt neuen Anbieter
-        /// </summary>
-        Anbieter ErstelleAnbieter(string steuernr, string firma, string strasse, string hausnr, int plz, string ort, string land, string telefonnr, string mailadresse, string homepage, string branche);
-
-        /// <summary>
-        /// Erzeugt neuen Ort
-        /// </summary>
-        Ort ErstelleOrt(int plz, string ort);
-
-
-        /// <summary>
         /// Lade Anbieter mit Parametern, oder bei keinen Parametern -> lade alle Anbieter
         /// </summary>
         Anbieter[] LadeAnbieter(long? anbieterNr = null, string firma = null);
+
+
+        /// <summary>
+        /// Speichert einen neuen Anbieter und setzt den Anbietertypen
+        /// </summary>
+        void SaveAnbieter(Anbieter anbieter);
 
 
         /// <summary>
@@ -26,5 +21,8 @@ namespace CusMaSy.Project.Models.Interfaces
         /// </summary>
         Ort[] LadeOrte(long? plzNr = null, int? plz = null);
 
+        long GetOrtNr(Ort ort);
+
+        int GetAnbieterTypNrByBool(bool isKaufmann);
     }
 }

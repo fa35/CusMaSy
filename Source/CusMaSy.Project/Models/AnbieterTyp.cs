@@ -3,7 +3,7 @@ namespace CusMaSy.Project.Models
 {
     public enum AnbieterTyp
     {
-        Privatmann = 0,
-        Shop = 1
+        Kaufmann = 0,
+        Privatperson = 1
     }
 }
