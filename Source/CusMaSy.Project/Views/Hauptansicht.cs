@@ -34,17 +34,49 @@ namespace CusMaSy.Project.Views
 
         void RefreshAnbieterList()
         {
-            _anbieterList = _fachkonzept.GetAllAnbieter();
+            //_anbieterList = _fachkonzept.GetAllAnbieter();
 
-            dgvAnbieterDetails = new DataGridView();
+            //lstvAnbieterDetails.Items = _anbieterList;
 
+            // wenn prozeduren / connection mit db passt
         }
 
         private void btnDeleteAnbieter_Click(object sender, EventArgs e)
         {
-            var col = dgvAnbieterDetails.SelectedColumns;
+            // wenn prozeduren / connection mit db passt
+        }
 
-            var c = col.Count;
+        private void btnDeleteRelation_Click(object sender, EventArgs e)
+        {
+            var anbieters = lstvAnbieter.SelectedItems; // kann nur einer sein
+            var relations = lstvRelations.SelectedItems; // können mehrere sein
+
+
+            var relNrs = new List<long>();
+
+            foreach (var item in relations)
+            {
+                var parts = item.ToString().Split('|');
+                relNrs.Add(long.Parse(parts[0].Replace(" ", string.Empty)));
+            }
+
+            long anbieterNr = 0;
+
+            foreach (var item in anbieters)
+            {
+                var parts = item.ToString().Split('|');
+                anbieterNr = (long.Parse(parts[0].Replace(" ", string.Empty)));
+            }
+
+            _fachkonzept.DeleteRelations(anbieterNr, relNrs);
+
+
+
+        }
+
+        private void btnAddRelation_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

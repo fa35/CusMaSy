@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 using CusMaSy.Project.Data;
 using CusMaSy.Project.Models;
 using CusMaSy.Project.Models.Interfaces;
@@ -54,6 +55,11 @@ namespace CusMaSy.Project.Infrastructure
         public List<Anbieter> GetAllAnbieter()
         {
             return _connector.GetAllAnbieter();
+        }
+
+        public void DeleteRelations(long anbieterNr, List<long> relNrs)
+        {
+            _connector.RemoveRelationsByAnbieterNrs(anbieterNr, relNrs);
         }
     }
 }

@@ -49,5 +49,10 @@ namespace CusMaSy.Project.Infrastructure
         {
             throw new NotImplementedException();
         }
+
+        public void DeleteRelations(long anbieters, List<long> relations)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

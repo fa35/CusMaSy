@@ -30,14 +30,8 @@
         {
             this.lblShopUeberblick = new System.Windows.Forms.Label();
             this.lblKundenUeberblick = new System.Windows.Forms.Label();
-            this.ltvKundenlisteUeberblick = new System.Windows.Forms.ListView();
-            this.ltvShoplisteUeberblick = new System.Windows.Forms.ListView();
-            this.dgvAnbieterDetails = new System.Windows.Forms.DataGridView();
-            this.KundenID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Firma = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StraßeHausnummer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PLZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ort = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lstvRelations = new System.Windows.Forms.ListView();
+            this.lstvAnbieter = new System.Windows.Forms.ListView();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.btnAddRelation = new System.Windows.Forms.Button();
@@ -45,6 +39,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnDeleteAnbieter = new System.Windows.Forms.Button();
             this.btnAddAnbieter = new System.Windows.Forms.Button();
+            this.dgvAnbieterDetails = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAnbieterDetails)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,60 +61,25 @@
             this.lblKundenUeberblick.TabIndex = 3;
             this.lblKundenUeberblick.Text = "Zuordnung";
             // 
-            // ltvKundenlisteUeberblick
+            // lstvRelations
             // 
-            this.ltvKundenlisteUeberblick.Location = new System.Drawing.Point(355, 39);
-            this.ltvKundenlisteUeberblick.Name = "ltvKundenlisteUeberblick";
-            this.ltvKundenlisteUeberblick.Size = new System.Drawing.Size(215, 153);
-            this.ltvKundenlisteUeberblick.TabIndex = 4;
-            this.ltvKundenlisteUeberblick.UseCompatibleStateImageBehavior = false;
+            this.lstvRelations.Location = new System.Drawing.Point(355, 39);
+            this.lstvRelations.Name = "lstvRelations";
+            this.lstvRelations.Size = new System.Drawing.Size(215, 153);
+            this.lstvRelations.TabIndex = 4;
+            this.lstvRelations.UseCompatibleStateImageBehavior = false;
             // 
-            // ltvShoplisteUeberblick
+            // lstvAnbieter
             // 
-            this.ltvShoplisteUeberblick.Location = new System.Drawing.Point(28, 39);
-            this.ltvShoplisteUeberblick.Name = "ltvShoplisteUeberblick";
-            this.ltvShoplisteUeberblick.Size = new System.Drawing.Size(215, 153);
-            this.ltvShoplisteUeberblick.TabIndex = 5;
-            this.ltvShoplisteUeberblick.UseCompatibleStateImageBehavior = false;
-            // 
-            // dgvAnbieterDetails
-            // 
-            this.dgvAnbieterDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAnbieterDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.KundenID,
-            this.Firma,
-            this.StraßeHausnummer,
-            this.PLZ,
-            this.Ort});
-            this.dgvAnbieterDetails.Location = new System.Drawing.Point(28, 241);
-            this.dgvAnbieterDetails.Name = "dgvAnbieterDetails";
-            this.dgvAnbieterDetails.Size = new System.Drawing.Size(542, 216);
-            this.dgvAnbieterDetails.TabIndex = 6;
-            // 
-            // KundenID
-            // 
-            this.KundenID.HeaderText = "KundenID";
-            this.KundenID.Name = "KundenID";
-            // 
-            // Firma
-            // 
-            this.Firma.HeaderText = "Firma";
-            this.Firma.Name = "Firma";
-            // 
-            // StraßeHausnummer
-            // 
-            this.StraßeHausnummer.HeaderText = "StraßeHausnummer";
-            this.StraßeHausnummer.Name = "StraßeHausnummer";
-            // 
-            // PLZ
-            // 
-            this.PLZ.HeaderText = "PLZ";
-            this.PLZ.Name = "PLZ";
-            // 
-            // Ort
-            // 
-            this.Ort.HeaderText = "Ort";
-            this.Ort.Name = "Ort";
+            this.lstvAnbieter.Location = new System.Drawing.Point(28, 39);
+            this.lstvAnbieter.MultiSelect = false;
+            this.lstvAnbieter.Name = "lstvAnbieter";
+            this.lstvAnbieter.Size = new System.Drawing.Size(215, 153);
+            this.lstvAnbieter.TabIndex = 5;
+            this.lstvAnbieter.UseCompatibleStateImageBehavior = false;
+            this.lstvAnbieter.View = System.Windows.Forms.View.SmallIcon;
+            this.lstvAnbieter.VirtualListSize = 50;
+            this.lstvAnbieter.VirtualMode = true;
             // 
             // shapeContainer1
             // 
@@ -148,6 +108,7 @@
             this.btnAddRelation.TabIndex = 8;
             this.btnAddRelation.Text = "hinzufügen";
             this.btnAddRelation.UseVisualStyleBackColor = true;
+            this.btnAddRelation.Click += new System.EventHandler(this.btnAddRelation_Click);
             // 
             // btnDeleteRelation
             // 
@@ -157,6 +118,7 @@
             this.btnDeleteRelation.TabIndex = 9;
             this.btnDeleteRelation.Text = "entfernen";
             this.btnDeleteRelation.UseVisualStyleBackColor = true;
+            this.btnDeleteRelation.Click += new System.EventHandler(this.btnDeleteRelation_Click);
             // 
             // label1
             // 
@@ -187,19 +149,27 @@
             this.btnAddAnbieter.UseVisualStyleBackColor = true;
             this.btnAddAnbieter.Click += new System.EventHandler(this.btnAddAnbieter_Click);
             // 
+            // dgvAnbieterDetails
+            // 
+            this.dgvAnbieterDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAnbieterDetails.Location = new System.Drawing.Point(28, 229);
+            this.dgvAnbieterDetails.Name = "dgvAnbieterDetails";
+            this.dgvAnbieterDetails.Size = new System.Drawing.Size(542, 233);
+            this.dgvAnbieterDetails.TabIndex = 13;
+            // 
             // Hauptansicht
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(598, 505);
+            this.Controls.Add(this.dgvAnbieterDetails);
             this.Controls.Add(this.btnAddAnbieter);
             this.Controls.Add(this.btnDeleteAnbieter);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnDeleteRelation);
             this.Controls.Add(this.btnAddRelation);
-            this.Controls.Add(this.dgvAnbieterDetails);
-            this.Controls.Add(this.ltvShoplisteUeberblick);
-            this.Controls.Add(this.ltvKundenlisteUeberblick);
+            this.Controls.Add(this.lstvAnbieter);
+            this.Controls.Add(this.lstvRelations);
             this.Controls.Add(this.lblKundenUeberblick);
             this.Controls.Add(this.lblShopUeberblick);
             this.Controls.Add(this.shapeContainer1);
@@ -215,20 +185,15 @@
 
         private System.Windows.Forms.Label lblShopUeberblick;
         private System.Windows.Forms.Label lblKundenUeberblick;
-        private System.Windows.Forms.ListView ltvKundenlisteUeberblick;
-        private System.Windows.Forms.ListView ltvShoplisteUeberblick;
-        private System.Windows.Forms.DataGridView dgvAnbieterDetails;
+        private System.Windows.Forms.ListView lstvRelations;
+        private System.Windows.Forms.ListView lstvAnbieter;
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
         private System.Windows.Forms.Button btnAddRelation;
         private System.Windows.Forms.Button btnDeleteRelation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn KundenID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Firma;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StraßeHausnummer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PLZ;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ort;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnDeleteAnbieter;
         private System.Windows.Forms.Button btnAddAnbieter;
+        private System.Windows.Forms.DataGridView dgvAnbieterDetails;
     }
 }

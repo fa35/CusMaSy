@@ -14,7 +14,7 @@ namespace CusMaSy.Project
             var fa = new FachkonzeptA();
 
             if (true)
-                new System.Threading.Thread(() => { System.Windows.Forms.Application.Run(new Anlage(fa)); }).Start();
+                new System.Threading.Thread(() => { System.Windows.Forms.Application.Run(new Hauptansicht(fa)); }).Start();
 
             Console.ReadLine();
 

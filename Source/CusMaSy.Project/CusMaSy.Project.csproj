@@ -74,17 +74,11 @@
     <Compile Include="Views\Anlage.Designer.cs">
       <DependentUpon>Anlage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Kunden_Merge_.cs">
+    <Compile Include="Views\Hauptansicht.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Kunden_Merge_.Designer.cs">
-      <DependentUpon>Kunden_Merge_.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Ueberblick .cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Ueberblick .Designer.cs">
-      <DependentUpon>Ueberblick .cs</DependentUpon>
+    <Compile Include="Views\Hauptansicht.Designer.cs">
+      <DependentUpon>Hauptansicht.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -98,11 +92,8 @@
     <EmbeddedResource Include="Views\Anlage.resx">
       <DependentUpon>Anlage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Kunden_Merge_.resx">
-      <DependentUpon>Kunden_Merge_.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Ueberblick .resx">
-      <DependentUpon>Ueberblick .cs</DependentUpon>
+    <EmbeddedResource Include="Views\Hauptansicht.resx">
+      <DependentUpon>Hauptansicht.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -121,8 +112,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Scripts\create_procedures.sql" />
+    <Content Include="Scripts\create_complete_db.sql" />
     <Content Include="Scripts\create_db_tabs.sql" />
+    <Content Include="Scripts\create_procedures.sql" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

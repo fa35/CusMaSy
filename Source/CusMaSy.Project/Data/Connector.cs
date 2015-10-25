@@ -56,6 +56,24 @@ namespace CusMaSy.Project.Data
             }
         }
 
+        internal void RemoveRelationsByAnbieterNrs(long anbieterNr, List<long> relNrs)
+        {
+            using (var connection = new MySqlConnection(_conStr))
+            {
+
+                foreach (var relationNr in relNrs)
+                {
+                    var str = "CALL sp_Delete_Anbieter_Zuordnung(" + anbieterNr + ", " + relationNr + ");";
+                    var cmd = new MySqlCommand(str, connection);
+
+                    var dt = new DataTable();
+                    var adapter = new MySqlDataAdapter(cmd);
+                    adapter.FillAsync(dt);
+                }
+            }
+        }
+
+
         long InsertOrt(Ort ort)
         {
             using (var connection = new MySqlConnection(_conStr))

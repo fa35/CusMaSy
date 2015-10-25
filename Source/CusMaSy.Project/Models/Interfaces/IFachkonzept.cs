@@ -1,5 +1,6 @@
 ﻿
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace CusMaSy.Project.Models.Interfaces
 {
@@ -27,5 +28,6 @@ namespace CusMaSy.Project.Models.Interfaces
         long GetOrtNr(Ort ort);
 
         int GetAnbieterTypNrByBool(bool isKaufmann);
+        void DeleteRelations(long anbieters, List<long> relations);
     }
 }
