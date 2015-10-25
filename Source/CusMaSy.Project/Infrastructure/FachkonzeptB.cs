@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using CusMaSy.Project.Models;
+using CusMaSy.Project.Models.Interfaces;
+
+namespace CusMaSy.Project.Infrastructure
+{
+    public class FachkonzeptB : IFachkonzept
+    {
+        public Anbieter ErstelleAnbieter(string steuernr, string firma, string strasse, string hausnr, int plz, string ort, string land, string telefonnr, string mailadresse, string homepage, string branche)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Ort ErstelleOrt(int plz, string ort)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Anbieter[] LadeAnbieter(long? anbieterNr = default(long?), string firma = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Ort[] LadeOrte(long? plzNr = default(long?), int? plz = default(int?))
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

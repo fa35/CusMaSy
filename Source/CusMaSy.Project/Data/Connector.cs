@@ -20,7 +20,7 @@ namespace CusMaSy.Project.Data
             SelectAll(connString);
         }
 
-        internal void InsertAnbieter(Anbieter anbieter)
+        internal void InsertAnbieter(Anbieter anbieter, long ortNr)
         {
             throw new NotImplementedException();
         }

@@ -18,22 +18,22 @@ namespace CusMaSy.Project.Views
 
         private void btnSpeichern_Click(object sender, EventArgs e)
         {
-            var anbieter = new Anbieter
-            {
-                Firma = txbFirma.Text,
-                Branche = txbBranche.Text,
-                Homepage = txbHomepage.Text,
-                Plz = int.Parse(nudPlz.Value.ToString()),
-                TelefonNr = txbTelefonnr.Text,
-                Land = cmbLand.SelectedText,
-                Ort = txbOrt.Text,
-                Strasse = txbStrasse.Text,
-                HausNr = txbHausnr.Text,
-                MailAdresse = txbMailadresse.Text,
-                SteuerNr = txbSteuernr.Text
-            };
+            // todo: Carlo, validate the values of the input field
+            // if some values are null or wrong, the methode can't save the provider
 
-            _fachkonzept.ErstelleAnbieter(anbieter);
+            var firma = txbFirma.Text;
+            var branche = txbBranche.Text;
+            var homepage = txbHomepage.Text;
+            var plz = int.Parse(nudPlz.Value.ToString());
+            var telefonNr = txbTelefonnr.Text;
+            var land = cmbLand.SelectedText;
+            var ort = txbOrt.Text;
+            var strasse = txbStrasse.Text;
+            var hausNr = txbHausnr.Text;
+            var mailAdresse = txbMailadresse.Text;
+            var steuerNr = txbSteuernr.Text;
+
+            // todo: try save the provider catch exceptions, show an info to the user
         }
     }
 }
