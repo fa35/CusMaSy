@@ -44,5 +44,10 @@ namespace CusMaSy.Project.Infrastructure
         {
             throw new NotImplementedException();
         }
+
+        public List<Anbieter> GetAllAnbieter()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 namespace CusMaSy.Project.Models.Interfaces
 {
     public interface IFachkonzept
@@ -9,6 +11,7 @@ namespace CusMaSy.Project.Models.Interfaces
         /// </summary>
         Anbieter[] LadeAnbieter(long? anbieterNr = null, string firma = null);
 
+        List<Anbieter> GetAllAnbieter();
 
         /// <summary>
         /// Speichert einen neuen Anbieter und setzt den Anbietertypen

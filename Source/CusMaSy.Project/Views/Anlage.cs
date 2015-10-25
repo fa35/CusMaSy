@@ -15,7 +15,7 @@ namespace CusMaSy.Project.Views
             _fachkonzept = fachkonzept;
         }
 
-        private void btnSpeichern_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
@@ -58,12 +58,23 @@ namespace CusMaSy.Project.Views
                 _fachkonzept.SaveAnbieter(anbieter);
 
                 MessageBox.Show("Anbieter angelegt", "Anlage erfolgreich!");
+                CloseForm();
             }
             catch (Exception ex)
             {
                 // logger einbauen und loggen
                 MessageBox.Show("Anbieter konnte nicht angelegt werden" + Environment.NewLine + ex.Message, "Anlage fehlerhaft");
             }
+        }
+
+        private void btnAbort_Click(object sender, EventArgs e)
+        {
+            CloseForm();
+        }
+
+        void CloseForm()
+        {
+            this.Close();
         }
     }
 }

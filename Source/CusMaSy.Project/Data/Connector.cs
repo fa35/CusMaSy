@@ -39,6 +39,22 @@ namespace CusMaSy.Project.Data
             }
         }
 
+        internal List<Anbieter> GetAllAnbieter()
+        {
+            using (var connection = new MySqlConnection(_conStr))
+            {
+                var query = "SELECT * FROM Anbieter;";
+                var cmd = new MySqlCommand(query, connection);
+
+                var reader = cmd.ExecuteReader(); // FEHLERMELDUNG
+                while (reader.Read())
+                {
+                    Console.WriteLine(String.Format("{0}", reader[0]));
+                }
+
+                return null; // anbieters
+            }
+        }
 
         long InsertOrt(Ort ort)
         {

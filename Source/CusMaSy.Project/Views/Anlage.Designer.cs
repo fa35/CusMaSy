@@ -51,8 +51,8 @@
             this.gpbAnbieterTyp = new System.Windows.Forms.GroupBox();
             this.rdbPrivatperson = new System.Windows.Forms.RadioButton();
             this.rdbKaufmann = new System.Windows.Forms.RadioButton();
-            this.btnSpeichern = new System.Windows.Forms.Button();
-            this.btnAbbrechen = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnAbort = new System.Windows.Forms.Button();
             this.gpbAdresse = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txbSteuernr = new System.Windows.Forms.TextBox();
@@ -281,24 +281,25 @@
             this.rdbKaufmann.Text = "Kaufmann";
             this.rdbKaufmann.UseVisualStyleBackColor = true;
             // 
-            // btnSpeichern
+            // btnSave
             // 
-            this.btnSpeichern.Location = new System.Drawing.Point(14, 246);
-            this.btnSpeichern.Name = "btnSpeichern";
-            this.btnSpeichern.Size = new System.Drawing.Size(100, 25);
-            this.btnSpeichern.TabIndex = 37;
-            this.btnSpeichern.Text = "Speichern";
-            this.btnSpeichern.UseVisualStyleBackColor = true;
-            this.btnSpeichern.Click += new System.EventHandler(this.btnSpeichern_Click);
+            this.btnSave.Location = new System.Drawing.Point(14, 246);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(100, 25);
+            this.btnSave.TabIndex = 37;
+            this.btnSave.Text = "speichern";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // btnAbbrechen
+            // btnAbort
             // 
-            this.btnAbbrechen.Location = new System.Drawing.Point(12, 209);
-            this.btnAbbrechen.Name = "btnAbbrechen";
-            this.btnAbbrechen.Size = new System.Drawing.Size(100, 25);
-            this.btnAbbrechen.TabIndex = 38;
-            this.btnAbbrechen.Text = "Abbrechen";
-            this.btnAbbrechen.UseVisualStyleBackColor = true;
+            this.btnAbort.Location = new System.Drawing.Point(12, 209);
+            this.btnAbort.Name = "btnAbort";
+            this.btnAbort.Size = new System.Drawing.Size(100, 25);
+            this.btnAbort.TabIndex = 38;
+            this.btnAbort.Text = "abbrechen";
+            this.btnAbort.UseVisualStyleBackColor = true;
+            this.btnAbort.Click += new System.EventHandler(this.btnAbort_Click);
             // 
             // gpbAdresse
             // 
@@ -364,8 +365,8 @@
             this.ClientSize = new System.Drawing.Size(541, 302);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gpbAdresse);
-            this.Controls.Add(this.btnAbbrechen);
-            this.Controls.Add(this.btnSpeichern);
+            this.Controls.Add(this.btnAbort);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.gpbAnbieterTyp);
             this.Name = "Anlage";
             this.Text = "Anlage";
@@ -405,8 +406,8 @@
         private System.Windows.Forms.GroupBox gpbAnbieterTyp;
         private System.Windows.Forms.RadioButton rdbPrivatperson;
         private System.Windows.Forms.RadioButton rdbKaufmann;
-        private System.Windows.Forms.Button btnSpeichern;
-        private System.Windows.Forms.Button btnAbbrechen;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnAbort;
         private System.Windows.Forms.GroupBox gpbAdresse;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txbSteuernr;

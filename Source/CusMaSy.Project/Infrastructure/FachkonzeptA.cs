@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using CusMaSy.Project.Data;
 using CusMaSy.Project.Models;
@@ -48,6 +49,11 @@ namespace CusMaSy.Project.Infrastructure
         public int GetAnbieterTypNrByBool(bool isKaufmann)
         {
             throw new NotImplementedException();
+        }
+
+        public List<Anbieter> GetAllAnbieter()
+        {
+            return _connector.GetAllAnbieter();
         }
     }
 }
