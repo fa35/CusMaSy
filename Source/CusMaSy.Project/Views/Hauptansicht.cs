@@ -70,8 +70,6 @@ namespace CusMaSy.Project.Views
 
             _fachkonzept.DeleteRelations(anbieterNr, relNrs);
 
-
-
         }
 
         private void btnAddRelation_Click(object sender, EventArgs e)

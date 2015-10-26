@@ -57,6 +57,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txbSteuernr = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnAddState = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudPlz)).BeginInit();
             this.gpbAnbieterTyp.SuspendLayout();
             this.gpbAdresse.SuspendLayout();
@@ -211,7 +212,7 @@
             this.txbMailadresse.Location = new System.Drawing.Point(190, 75);
             this.txbMailadresse.MaxLength = 200;
             this.txbMailadresse.Name = "txbMailadresse";
-            this.txbMailadresse.Size = new System.Drawing.Size(175, 20);
+            this.txbMailadresse.Size = new System.Drawing.Size(178, 20);
             this.txbMailadresse.TabIndex = 30;
             // 
             // label3
@@ -245,14 +246,14 @@
             this.txbBranche.Location = new System.Drawing.Point(190, 36);
             this.txbBranche.MaxLength = 200;
             this.txbBranche.Name = "txbBranche";
-            this.txbBranche.Size = new System.Drawing.Size(175, 20);
+            this.txbBranche.Size = new System.Drawing.Size(178, 20);
             this.txbBranche.TabIndex = 34;
             // 
             // gpbAnbieterTyp
             // 
             this.gpbAnbieterTyp.Controls.Add(this.rdbPrivatperson);
             this.gpbAnbieterTyp.Controls.Add(this.rdbKaufmann);
-            this.gpbAnbieterTyp.Location = new System.Drawing.Point(12, 12);
+            this.gpbAnbieterTyp.Location = new System.Drawing.Point(413, 12);
             this.gpbAnbieterTyp.Name = "gpbAnbieterTyp";
             this.gpbAnbieterTyp.Size = new System.Drawing.Size(102, 68);
             this.gpbAnbieterTyp.TabIndex = 36;
@@ -283,7 +284,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(14, 246);
+            this.btnSave.Location = new System.Drawing.Point(415, 238);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(100, 25);
             this.btnSave.TabIndex = 37;
@@ -293,7 +294,7 @@
             // 
             // btnAbort
             // 
-            this.btnAbort.Location = new System.Drawing.Point(12, 209);
+            this.btnAbort.Location = new System.Drawing.Point(415, 269);
             this.btnAbort.Name = "btnAbort";
             this.btnAbort.Size = new System.Drawing.Size(100, 25);
             this.btnAbort.TabIndex = 38;
@@ -303,6 +304,7 @@
             // 
             // gpbAdresse
             // 
+            this.gpbAdresse.Controls.Add(this.btnAddState);
             this.gpbAdresse.Controls.Add(this.lblStraßeKunde);
             this.gpbAdresse.Controls.Add(this.txbHausnr);
             this.gpbAdresse.Controls.Add(this.txbOrt);
@@ -313,9 +315,9 @@
             this.gpbAdresse.Controls.Add(this.lblOrtKunde);
             this.gpbAdresse.Controls.Add(this.tbxLandKunde);
             this.gpbAdresse.Controls.Add(this.nudPlz);
-            this.gpbAdresse.Location = new System.Drawing.Point(132, 173);
+            this.gpbAdresse.Location = new System.Drawing.Point(12, 167);
             this.gpbAdresse.Name = "gpbAdresse";
-            this.gpbAdresse.Size = new System.Drawing.Size(375, 118);
+            this.gpbAdresse.Size = new System.Drawing.Size(382, 138);
             this.gpbAdresse.TabIndex = 39;
             this.gpbAdresse.TabStop = false;
             this.gpbAdresse.Text = "Adresse";
@@ -334,9 +336,9 @@
             this.groupBox1.Controls.Add(this.txbBranche);
             this.groupBox1.Controls.Add(this.txbHomepage);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(133, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(374, 145);
+            this.groupBox1.Size = new System.Drawing.Size(382, 145);
             this.groupBox1.TabIndex = 40;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Stammdaten";
@@ -346,7 +348,7 @@
             this.txbSteuernr.Location = new System.Drawing.Point(190, 114);
             this.txbSteuernr.MaxLength = 200;
             this.txbSteuernr.Name = "txbSteuernr";
-            this.txbSteuernr.Size = new System.Drawing.Size(175, 20);
+            this.txbSteuernr.Size = new System.Drawing.Size(178, 20);
             this.txbSteuernr.TabIndex = 36;
             // 
             // label5
@@ -358,17 +360,28 @@
             this.label5.TabIndex = 37;
             this.label5.Text = "Steuernummer";
             // 
+            // btnAddState
+            // 
+            this.btnAddState.Location = new System.Drawing.Point(268, 102);
+            this.btnAddState.Name = "btnAddState";
+            this.btnAddState.Size = new System.Drawing.Size(100, 25);
+            this.btnAddState.TabIndex = 28;
+            this.btnAddState.Text = "Land hinzufügen";
+            this.btnAddState.UseVisualStyleBackColor = true;
+            this.btnAddState.Click += new System.EventHandler(this.btnAddState_Click);
+            // 
             // Anlage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(541, 302);
+            this.ClientSize = new System.Drawing.Size(526, 317);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gpbAdresse);
             this.Controls.Add(this.btnAbort);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.gpbAnbieterTyp);
             this.Name = "Anlage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Anlage";
             ((System.ComponentModel.ISupportInitialize)(this.nudPlz)).EndInit();
             this.gpbAnbieterTyp.ResumeLayout(false);
@@ -412,5 +425,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txbSteuernr;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnAddState;
     }
 }

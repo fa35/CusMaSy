@@ -61,5 +61,11 @@ namespace CusMaSy.Project.Infrastructure
         {
             _connector.RemoveRelationsByAnbieterNrs(anbieterNr, relNrs);
         }
+
+
+        public List<string> GetAllStates()
+        {
+            return _connector.LoadStates();
+        }
     }
 }

@@ -68,6 +68,12 @@
     <Compile Include="Models\Ort.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\AddState.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AddState.Designer.cs">
+      <DependentUpon>AddState.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Anlage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\AddState.resx">
+      <DependentUpon>AddState.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Anlage.resx">
       <DependentUpon>Anlage.cs</DependentUpon>
     </EmbeddedResource>

@@ -2,17 +2,21 @@
 using System.Windows.Forms;
 using CusMaSy.Project.Models.Interfaces;
 using CusMaSy.Project.Models;
+using System.Collections.Generic;
+using CusMaSy.Project.Infrastructure;
 
 namespace CusMaSy.Project.Views
 {
     public partial class Anlage : Form
     {
         IFachkonzept _fachkonzept;
+        List<string> _states;
 
         public Anlage(IFachkonzept fachkonzept)
         {
             InitializeComponent();
             _fachkonzept = fachkonzept;
+            LoadStates();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -75,6 +79,19 @@ namespace CusMaSy.Project.Views
         void CloseForm()
         {
             this.Close();
+        }
+
+        void LoadStates()
+        {
+            _states.Clear();
+            // variante für fachkonzeptB impl. dann jeweils casten
+            _states = (_fachkonzept as FachkonzeptA).GetAllStates();
+        }
+
+        private void btnAddState_Click(object sender, EventArgs e)
+        {
+            new AddState().ShowDialog();
+            LoadStates();
         }
     }
 }

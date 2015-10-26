@@ -56,6 +56,42 @@ namespace CusMaSy.Project.Data
             }
         }
 
+        internal List<string> LoadStates()
+        {
+            var resultList = new List<string>();
+
+            try
+            {
+                using (var con = new MySqlConnection(_conStr))
+                {
+                    // connection muss nochmal expliziet geöffnet werden
+                    con.Open();
+
+                    if (con.State == ConnectionState.Closed || con.State == ConnectionState.Broken)
+                        throw new Exception("Datenbankverbindung gestört.");
+
+                    string stm = "select distinct(land) from ort";
+
+                    MySqlCommand command = new MySqlCommand(stm, con);
+
+                    var reader = command.ExecuteReader();
+                    var states = new DataTable();
+                    states.Load(reader);
+
+                    foreach (DataRow row in states.Rows)
+                        resultList.Add(row["Land"].ToString());
+                }
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: " + ex.StackTrace);
+                // logger
+            }
+
+            return resultList;
+        }
+
         internal void RemoveRelationsByAnbieterNrs(long anbieterNr, List<long> relNrs)
         {
             using (var connection = new MySqlConnection(_conStr))
