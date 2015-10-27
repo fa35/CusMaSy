@@ -1,10 +1,6 @@
 ﻿using System;
 using CusMaSy.Project.Views;
 using CusMaSy.Project.Infrastructure;
-using MySql.Data.MySqlClient;
-using System.Configuration;
-using System.Collections.Generic;
-using System.Data;
 
 namespace CusMaSy.Project
 {

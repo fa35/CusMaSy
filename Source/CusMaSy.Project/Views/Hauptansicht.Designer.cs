@@ -79,7 +79,6 @@
             this.lstvAnbieter.UseCompatibleStateImageBehavior = false;
             this.lstvAnbieter.View = System.Windows.Forms.View.SmallIcon;
             this.lstvAnbieter.VirtualListSize = 50;
-            this.lstvAnbieter.VirtualMode = true;
             // 
             // shapeContainer1
             // 

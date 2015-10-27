@@ -4,6 +4,7 @@ using CusMaSy.Project.Models.Interfaces;
 using CusMaSy.Project.Models;
 using System.Collections.Generic;
 using CusMaSy.Project.Infrastructure;
+using CusMaSy.Project.Data;
 
 namespace CusMaSy.Project.Views
 {
@@ -31,17 +32,17 @@ namespace CusMaSy.Project.Views
                     Firma = txbFirma.Text,
                     Branche = txbBranche.Text,
                     Homepage = txbHomepage.Text,
-                    TelefonNr = txbTelefonnr.Text,
+                    Telefonnummer = txbTelefonnr.Text,
                     Strasse = txbStrasse.Text,
-                    HausNr = txbHausnr.Text,
-                    MailAdresse = txbMailadresse.Text,
-                    SteuerNr = txbSteuernr.Text
+                    Hausnummer = txbHausnr.Text,
+                    Mailadresse = txbMailadresse.Text,
+                    Steuernummer = txbSteuernr.Text
                 };
 
                 var ort = new Ort
                 {
-                    Plz = int.Parse(nudPlz.Value.ToString()),
-                    OrtName = txbOrt.Text,
+                    PLZ = int.Parse(nudPlz.Value.ToString()),
+                    Ort1 = txbOrt.Text,
                     Land = cmbLand.SelectedText
                 };
 
@@ -52,11 +53,11 @@ namespace CusMaSy.Project.Views
 
                 // ort anlegen und ortnr anbieter zuweisen
                 var ortNr = _fachkonzept.GetOrtNr(ort);
-                anbieter.OrtNr = ortNr;
+                anbieter.f_Ort_Nr = ortNr;
 
                 // anbietertyp anlege bzw. nr erhalten
                 var typNr = _fachkonzept.GetAnbieterTypNrByBool(isKaufmann);
-                anbieter.AnbieterTypNr = typNr;
+                anbieter.f_AnbieterTyp_Nr = typNr;
 
                 // anbieter speichern
                 _fachkonzept.SaveAnbieter(anbieter);
@@ -83,9 +84,13 @@ namespace CusMaSy.Project.Views
 
         void LoadStates()
         {
-            _states.Clear();
             // variante für fachkonzeptB impl. dann jeweils casten
             _states = (_fachkonzept as FachkonzeptA).GetAllStates();
+
+            foreach (var land in _states)
+            {
+                cmbLand.Items.Add(land);
+            }
         }
 
         private void btnAddState_Click(object sender, EventArgs e)

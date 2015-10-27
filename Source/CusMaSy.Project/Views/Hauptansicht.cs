@@ -1,13 +1,7 @@
-﻿using CusMaSy.Project.Models;
+﻿using CusMaSy.Project.Data;
 using CusMaSy.Project.Models.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CusMaSy.Project.Views
@@ -34,7 +28,13 @@ namespace CusMaSy.Project.Views
 
         void RefreshAnbieterList()
         {
-            //_anbieterList = _fachkonzept.GetAllAnbieter();
+            _anbieterList = _fachkonzept.GetAllAnbieter();
+
+
+            foreach (var a in _anbieterList)
+            {
+                lstvAnbieter.Items.Add(a.p_Anbieter_Nr + " | " + a.Firma);
+            }
 
             //lstvAnbieterDetails.Items = _anbieterList;
 

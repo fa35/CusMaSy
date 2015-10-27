@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CusMaSy.Project.Models;
 using CusMaSy.Project.Models.Interfaces;
+using CusMaSy.Project.Data;
 
 namespace CusMaSy.Project.Infrastructure
 {
