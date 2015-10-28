@@ -9,7 +9,7 @@ namespace CusMaSy.Project.Data
     public class Connector
     {
         string _conStr;
-        public void BuildConnection()
+        public Connector()
         {
             // gets the connection string from App.Config: it's the value of the key "ConnectionString"
             _conStr = ConfigurationManager.AppSettings["ConnectionString"];
@@ -18,7 +18,7 @@ namespace CusMaSy.Project.Data
 
         internal void InsertAnbieter(Anbieter anbieter)
         {
-            using (var dc = new DatabaseDataContext(_conStr))
+            using (var dc = new CusMaSyDataContext(_conStr))
             {
                 dc.Anbieters.InsertOnSubmit(anbieter);
                 dc.SubmitChanges();
@@ -27,7 +27,7 @@ namespace CusMaSy.Project.Data
 
         internal List<Anbieter> GetAllAnbieter()
         {
-            using (var dc = new DatabaseDataContext(_conStr))
+            using (var dc = new CusMaSyDataContext(_conStr))
             {
                 return dc.Anbieters.ToList();
             }
@@ -35,7 +35,7 @@ namespace CusMaSy.Project.Data
 
         internal List<string> LoadStates()
         {
-            using (var dc = new DatabaseDataContext(_conStr))
+            using (var dc = new CusMaSyDataContext(_conStr))
             {
                 return dc.Orts.Select(o => o.Land).ToList();
             }
@@ -43,7 +43,7 @@ namespace CusMaSy.Project.Data
 
         internal void RemoveRelationsByAnbieterNrs(long anbieterNr, List<long> relNrs)
         {
-            using (var dc = new DatabaseDataContext(_conStr))
+            using (var dc = new CusMaSyDataContext(_conStr))
             {
                 var zuordnungen = dc.Anbieter_Zuordnungs.Where(z => z.pf_HostAnbieter_Nr == anbieterNr).ToList();
 
@@ -57,7 +57,7 @@ namespace CusMaSy.Project.Data
 
         long InsertOrt(Ort ort)
         {
-            using (var dc = new DatabaseDataContext(_conStr))
+            using (var dc = new CusMaSyDataContext(_conStr))
             {
                 dc.Orts.InsertOnSubmit(ort);
                 dc.SubmitChanges();
@@ -66,32 +66,24 @@ namespace CusMaSy.Project.Data
             }
         }
 
-        internal Ort[] LoadOrte(int plz, string name, string land)
+        internal List<Ort> LoadOrte(Ort ort)
         {
-            //using (var connection = new MySqlConnection(_conStr))
+            using (var dc = new CusMaSyDataContext(_conStr))
             {
-                //var query = "SELECT * FROM Ort WHERE plz = " + plz + ";";
-                //var cmd = new MySqlCommand(query, connection);
-
-                //var reader = cmd.ExecuteReader(); // FEHLERMELDUNG
-                //while (reader.Read())
-                //{
-                //    Console.WriteLine(String.Format("{0}", reader[0]));
-                //}
-
-                return null; // ort[]
+                return dc.Orts.Where(o => o.PLZ == o.PLZ && o.Ort1 == ort.Ort1 && o.Land == ort.Land).ToList();
             }
+
         }
 
         internal long InsertOrUpdateOrt(Ort ort)
         {
-            //var existingOrte = LoadOrte(ort.Plz, ort.OrtName, ort.Land);
+            var existingOrte = LoadOrte(ort);
 
-            //if (existingOrte.Length == 1)
-            //    return existingOrte[0].OrtNr;
+            if (existingOrte.Count == 1)
+                return existingOrte[0].p_Ort_Nr;
 
-            //if (existingOrte.Length == 0)
-            //    return InsertOrt(ort);
+            if (existingOrte.Count == 0)
+                return InsertOrt(ort);
 
             throw new Exception("Mehr als ein Ort hat die gleiche PLZ, Namen, Land");
         }
@@ -100,19 +92,16 @@ namespace CusMaSy.Project.Data
         {
             string typ = isKaufmann ? "Kaufmann" : "Privatperson";
 
-            //using (var connection = new MySqlConnection(_conStr))
+            using (var dc = new CusMaSyDataContext(_conStr))
             {
-                //var query = "SELECT p_AnbieterTyp_Nr FROM AnbieterTyp WHERE Bezeichnung = '" + typ + "';";
-                //var cmd = new MySqlCommand(query, connection);
+                var d = dc.AnbieterTyps.Where(t => t.Bezeichnung.Equals(typ)).ToList();
 
-                //var reader = cmd.ExecuteReader(); // FEHLERMELDUNG
-                //while (reader.Read())
-                //{
-                //    Console.WriteLine(String.Format("{0}", reader[0]));
-                //}
-
-                return 0;
+                if (d.Count == 1)
+                    return d.First().p_AnbieterTyp_Nr;
+                else
+                    return 999;
             }
+            
         }
     }
 }

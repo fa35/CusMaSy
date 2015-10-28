@@ -23,7 +23,7 @@ namespace CusMaSy.Project.Data
 	
 	
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="CusMaSyDb")]
-	public partial class DatabaseDataContext : System.Data.Linq.DataContext
+	public partial class CusMaSyDataContext : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
@@ -44,25 +44,25 @@ namespace CusMaSy.Project.Data
     partial void DeleteAnbieterTyp(AnbieterTyp instance);
     #endregion
 		
-		public DatabaseDataContext(string connection) : 
+		public CusMaSyDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DatabaseDataContext(System.Data.IDbConnection connection) : 
+		public CusMaSyDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DatabaseDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public CusMaSyDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DatabaseDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public CusMaSyDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();

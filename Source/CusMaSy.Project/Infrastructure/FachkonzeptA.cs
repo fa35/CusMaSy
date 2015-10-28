@@ -49,7 +49,7 @@ namespace CusMaSy.Project.Infrastructure
 
         public int GetAnbieterTypNrByBool(bool isKaufmann)
         {
-            throw new NotImplementedException();
+            return _connector.GetAnbieterTypNr(isKaufmann);
         }
 
         public List<Anbieter> GetAllAnbieter()

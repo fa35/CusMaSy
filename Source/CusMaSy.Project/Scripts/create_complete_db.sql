@@ -44,3 +44,12 @@ CREATE TABLE Anbieter_Zuordnung(
 );
 
 go
+
+
+USE [CusMaSyDb]
+GO
+INSERT INTO [dbo].[AnbieterTyp]([Bezeichnung])
+     VALUES
+           ('Kaufmann'),
+		   ('Privatperson')
+GO

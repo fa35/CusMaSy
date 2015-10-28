@@ -55,10 +55,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Connector.cs" />
-    <Compile Include="Data\Database.designer.cs">
+    <Compile Include="Data\CusMaSy.cs">
+      <DependentUpon>CusMaSy.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CusMaSy.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Database.dbml</DependentUpon>
+      <DependentUpon>CusMaSy.dbml</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\FachkonzeptA.cs" />
     <Compile Include="Infrastructure\FachkonzeptB.cs" />
@@ -84,8 +87,8 @@
     <Compile Include="Views\Hauptansicht.Designer.cs">
       <DependentUpon>Hauptansicht.cs</DependentUpon>
     </Compile>
-    <None Include="Data\Database.dbml.layout">
-      <DependentUpon>Database.dbml</DependentUpon>
+    <None Include="Data\CusMaSy.dbml.layout">
+      <DependentUpon>CusMaSy.dbml</DependentUpon>
     </None>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -105,9 +108,9 @@
     <EmbeddedResource Include="Views\Hauptansicht.resx">
       <DependentUpon>Hauptansicht.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Data\Database.dbml">
+    <None Include="Data\CusMaSy.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>Database.designer.cs</LastGenOutput>
+      <LastGenOutput>CusMaSy.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">
