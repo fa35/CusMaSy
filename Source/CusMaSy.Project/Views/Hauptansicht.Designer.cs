@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Hauptansicht));
             this.lblShopUeberblick = new System.Windows.Forms.Label();
             this.lblKundenUeberblick = new System.Windows.Forms.Label();
             this.lstvRelations = new System.Windows.Forms.ListView();
@@ -173,6 +174,7 @@
             this.Controls.Add(this.lblKundenUeberblick);
             this.Controls.Add(this.lblShopUeberblick);
             this.Controls.Add(this.shapeContainer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Hauptansicht";
             this.Text = "Hauptansicht";
             ((System.ComponentModel.ISupportInitialize)(this.dgvAnbieterDetails)).EndInit();
