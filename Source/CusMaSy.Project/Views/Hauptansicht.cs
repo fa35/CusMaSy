@@ -19,18 +19,23 @@ namespace CusMaSy.Project.Views
             InitializeComponent();
             _fachkonzept = fachkonzept;
 
-            if (_anbieterList == null || _anbieterList.Count < 1)
-                RefreshAnbieterList();
+            RefreshLists();
+        }
+
+        void RefreshLists()
+        {
+            LoadAnbieters();
+            LoadOrte();
         }
 
         private void btnAddAnbieter_Click(object sender, EventArgs e)
         {
             new Anlage(_fachkonzept).ShowDialog();
-            RefreshAnbieterList();
+            RefreshLists();
         }
 
 
-        void RefreshAnbieterList()
+        void LoadAnbieters()
         {
             lstvAnbieter.Items.Clear();
             _anbieterList = _fachkonzept.GetAllAnbieter();
@@ -52,6 +57,7 @@ namespace CusMaSy.Project.Views
             try
             {
                 _fachkonzept.RemoveAnbieter(anbieterNr);
+                LoadAnbieters();
             }
             catch (Exception ex)
             {
@@ -111,7 +117,7 @@ namespace CusMaSy.Project.Views
             // zeige in details anbieter details
             SetColumnHeaders(anbieter);
 
-            GetOrte();
+            LoadOrte();
 
             var ort = _orte.FirstOrDefault(o => o.p_Ort_Nr == anbieter.f_Ort_Nr);
 
@@ -158,11 +164,8 @@ namespace CusMaSy.Project.Views
             dgvAnbieterDetails.Columns.Add(anbieter.Homepage, "Homepage");
         }
 
-        void GetOrte()
+        void LoadOrte()
         {
-            if (_orte != null && _orte.Any())
-                return;
-
             _orte = _fachkonzept.GetOrte(_anbieterList.Select(a => a.f_Ort_Nr).ToList());
         }
     }

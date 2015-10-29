@@ -28,19 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddState));
+            this.btnAddState = new System.Windows.Forms.Button();
             this.txbState = new System.Windows.Forms.TextBox();
             this.lblWarning = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // btnAddState
             // 
-            this.button1.Location = new System.Drawing.Point(172, 37);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 25);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "hinzufügen";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAddState.Location = new System.Drawing.Point(172, 37);
+            this.btnAddState.Name = "btnAddState";
+            this.btnAddState.Size = new System.Drawing.Size(100, 25);
+            this.btnAddState.TabIndex = 0;
+            this.btnAddState.Text = "hinzufügen";
+            this.btnAddState.UseVisualStyleBackColor = true;
+            this.btnAddState.Click += new System.EventHandler(this.btnAddState_Click);
             // 
             // txbState
             // 
@@ -57,6 +59,7 @@
             this.lblWarning.Size = new System.Drawing.Size(132, 13);
             this.lblWarning.TabIndex = 2;
             this.lblWarning.Text = "Land bereits in Datenbank";
+            this.lblWarning.Visible = false;
             // 
             // AddState
             // 
@@ -65,7 +68,8 @@
             this.ClientSize = new System.Drawing.Size(284, 70);
             this.Controls.Add(this.lblWarning);
             this.Controls.Add(this.txbState);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAddState);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddState";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddState";
@@ -76,7 +80,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAddState;
         private System.Windows.Forms.TextBox txbState;
         private System.Windows.Forms.Label lblWarning;
     }

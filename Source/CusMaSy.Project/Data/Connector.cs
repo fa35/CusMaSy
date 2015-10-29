@@ -99,7 +99,21 @@ namespace CusMaSy.Project.Data
             var existingOrte = LoadOrte(ort);
 
             if (existingOrte.Count == 1)
+            {
+                if (string.IsNullOrWhiteSpace(existingOrte.First().Ort1))
+                {
+                    using (var dc = new CusMaSyDataContext(_conStr))
+                    {
+                        var exOrt = dc.Orts.FirstOrDefault(o => o.p_Ort_Nr == existingOrte[0].p_Ort_Nr);
+                        exOrt.PLZ = ort.PLZ;
+                        exOrt.Land = ort.Land;
+                        exOrt.Ort1 = ort.Ort1;
+                        dc.SubmitChanges();
+                    }
+                }
+
                 return existingOrte[0].p_Ort_Nr;
+            }
 
             if (existingOrte.Count == 0)
                 return InsertOrt(ort);

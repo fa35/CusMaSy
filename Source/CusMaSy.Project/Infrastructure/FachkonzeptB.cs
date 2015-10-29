@@ -65,5 +65,10 @@ namespace CusMaSy.Project.Infrastructure
         {
             throw new NotImplementedException();
         }
+
+        public void SaveState(string input)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

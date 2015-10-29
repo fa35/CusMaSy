@@ -43,7 +43,7 @@ namespace CusMaSy.Project.Views
                 {
                     PLZ = int.Parse(nudPlz.Value.ToString()),
                     Ort1 = txbOrt.Text,
-                    Land = cmbLand.SelectedText
+                    Land = cmbLand.SelectedItem.ToString()
                 };
 
 
@@ -87,13 +87,15 @@ namespace CusMaSy.Project.Views
             // variante für fachkonzeptB impl. dann jeweils casten
             _states = (_fachkonzept as FachkonzeptA).GetAllStates();
 
+            cmbLand.Items.Clear();
+
             foreach (var land in _states)
                 cmbLand.Items.Add(land);
         }
 
         private void btnAddState_Click(object sender, EventArgs e)
         {
-            new AddState().ShowDialog();
+            new AddState(_fachkonzept).ShowDialog();
             LoadStates();
         }
     }

@@ -25,5 +25,6 @@ namespace CusMaSy.Project.Models.Interfaces
         void DeleteRelations(long anbieters, List<long> relations);
         List<Ort> GetOrte(List<long> list);
         void RemoveAnbieter(string anbieterNr);
+        void SaveState(string input);
     }
 }

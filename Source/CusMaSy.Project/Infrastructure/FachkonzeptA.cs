@@ -77,5 +77,10 @@ namespace CusMaSy.Project.Infrastructure
         {
             _connector.DeleteAnbieterByAnbieterNr(long.Parse(anbieterNr));
         }
+
+        public void SaveState(string input)
+        {
+            _connector.InsertOrUpdateOrt(new Ort { Land = input, PLZ = 0, Ort1 = string.Empty });
+        }
     }
 }
