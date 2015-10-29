@@ -70,5 +70,10 @@ namespace CusMaSy.Project.Infrastructure
         {
             throw new NotImplementedException();
         }
+
+        public List<Anbieter_Zuordnung> GetAllZuordnungenByAnbieterNr(List<long> list)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

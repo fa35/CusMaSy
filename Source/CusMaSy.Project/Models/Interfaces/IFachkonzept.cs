@@ -26,5 +26,6 @@ namespace CusMaSy.Project.Models.Interfaces
         List<Ort> GetOrte(List<long> list);
         void RemoveAnbieter(string anbieterNr);
         void SaveState(string input);
+        List<Anbieter_Zuordnung> GetAllZuordnungenByAnbieterNr(List<long> list);
     }
 }

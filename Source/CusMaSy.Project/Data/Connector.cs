@@ -77,6 +77,14 @@ namespace CusMaSy.Project.Data
             }
         }
 
+        internal List<Anbieter_Zuordnung> LoadZuordnungen(List<long> anbieterNrs)
+        {
+            using (var dc = new CusMaSyDataContext(_conStr))
+            {
+                return dc.Anbieter_Zuordnungs.Where(z => anbieterNrs.Contains(z.pf_HostAnbieter_Nr)).ToList();
+            }
+        }
+
         internal List<Ort> LoadOrte(Ort ort)
         {
             using (var dc = new CusMaSyDataContext(_conStr))

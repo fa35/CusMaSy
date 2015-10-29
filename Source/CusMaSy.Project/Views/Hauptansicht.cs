@@ -12,6 +12,7 @@ namespace CusMaSy.Project.Views
     {
         List<Anbieter> _anbieterList;
         List<Ort> _orte;
+        List<Anbieter_Zuordnung> _zuordnungen;
 
         IFachkonzept _fachkonzept;
         public Hauptansicht(IFachkonzept fachkonzept)
@@ -26,6 +27,12 @@ namespace CusMaSy.Project.Views
         {
             LoadAnbieters();
             LoadOrte();
+            LoadZuordnungen();
+        }
+
+        private void LoadZuordnungen()
+        {
+            _zuordnungen = _fachkonzept.GetAllZuordnungenByAnbieterNr(_anbieterList.Select(a => a.p_Anbieter_Nr).ToList());
         }
 
         private void btnAddAnbieter_Click(object sender, EventArgs e)
@@ -58,6 +65,7 @@ namespace CusMaSy.Project.Views
             {
                 _fachkonzept.RemoveAnbieter(anbieterNr);
                 LoadAnbieters();
+                dgvAnbieterDetails.Rows.Clear();
             }
             catch (Exception ex)
             {
@@ -128,7 +136,23 @@ namespace CusMaSy.Project.Views
                  anbieter.Firma, anbieter.Steuernummer, AnbieterTypConverter.ToAnbieterTyp(anbieter.f_AnbieterTyp_Nr),
                  anbieter.Branche, anbieter.Strasse, anbieter.Hausnummer, ort.PLZ.ToString(), ort.Ort1,
                  ort.Land, anbieter.Mailadresse, anbieter.Telefonnummer, anbieter.Homepage);
+
             // zeige zuordnungen in zuordnungen box
+
+            lstvRelations.Items.Clear();
+
+            var relationsNrs = _zuordnungen.Where(z => z.pf_HostAnbieter_Nr == anbieter.p_Anbieter_Nr).Select(q => q.pf_ClientAnbieter_Nr).ToList();
+
+            foreach (var relNr in relationsNrs)
+            {
+                var rel = _anbieterList.FirstOrDefault(a => a.p_Anbieter_Nr == relNr);
+
+                if (rel == null)
+                    continue;
+
+                lstvRelations.Items.Add(rel.p_Anbieter_Nr + " | " + rel.Firma);
+            }
+
         }
 
         string GetSelectedAnbieterNr(ListView.SelectedListViewItemCollection items)

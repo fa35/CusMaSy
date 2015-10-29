@@ -82,5 +82,10 @@ namespace CusMaSy.Project.Infrastructure
         {
             _connector.InsertOrUpdateOrt(new Ort { Land = input, PLZ = 0, Ort1 = string.Empty });
         }
+
+        public List<Anbieter_Zuordnung> GetAllZuordnungenByAnbieterNr(List<long> anbieterNrs)
+        {
+            return _connector.LoadZuordnungen(anbieterNrs);
+        }
     }
 }
