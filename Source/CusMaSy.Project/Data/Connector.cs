@@ -45,11 +45,9 @@ namespace CusMaSy.Project.Data
         {
             using (var dc = new CusMaSyDataContext(_conStr))
             {
-                var zuordnungen = dc.Anbieter_Zuordnungs.Where(z => z.pf_HostAnbieter_Nr == anbieterNr).ToList();
-
-                foreach (var nr in relNrs)
-                    zuordnungen.Remove(new Anbieter_Zuordnung { pf_HostAnbieter_Nr = anbieterNr, pf_ClientAnbieter_Nr = nr });
-
+                var zuordnungen = dc.Anbieter_Zuordnungs
+                    .Where(z => z.pf_HostAnbieter_Nr == anbieterNr && relNrs.Contains(z.pf_ClientAnbieter_Nr)).ToList();
+                dc.Anbieter_Zuordnungs.DeleteAllOnSubmit(zuordnungen);
                 dc.SubmitChanges();
             }
         }

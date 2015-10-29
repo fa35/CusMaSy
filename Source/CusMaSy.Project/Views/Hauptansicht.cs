@@ -56,10 +56,7 @@ namespace CusMaSy.Project.Views
             if (lstvAnbieter.SelectedItems.Count != 1)
                 return;
 
-            var anbieterNr = GetSelectedAnbieterNr(lstvAnbieter.SelectedItems);
-
-            if (string.IsNullOrWhiteSpace(anbieterNr))
-                return;
+            var anbieterNr = GetAnbieterNrFromListViewItem(lstvAnbieter.SelectedItems[0]);
 
             try
             {
@@ -78,27 +75,28 @@ namespace CusMaSy.Project.Views
 
         private void btnDeleteRelation_Click(object sender, EventArgs e)
         {
-            var anbieters = lstvAnbieter.SelectedItems; // kann nur einer sein
-            var relations = lstvRelations.SelectedItems; // können mehrere sein
+            var anbieterNr = GetAnbieterNrFromListViewItem(lstvAnbieter.SelectedItems[0]);
+            var relationsNrs = new List<long>();
 
+            foreach (ListViewItem rel in lstvRelations.CheckedItems)
+                relationsNrs.Add(GetAnbieterNrFromListViewItem(rel));
 
+            _fachkonzept.DeleteRelations(anbieterNr, relationsNrs);
 
+            LoadZuordnungen();
+            ShowRelations(anbieterNr);
         }
 
         private void btnAddRelation_Click(object sender, EventArgs e)
         {
-            var anbieterNr = GetSelectedAnbieterNr(lstvAnbieter.SelectedItems);
-            if (string.IsNullOrWhiteSpace(anbieterNr))
-                return;
+            var anbieterNr = GetAnbieterNrFromListViewItem(lstvAnbieter.SelectedItems[0]);
 
-            var relations = _anbieterList.Where(a => a.p_Anbieter_Nr != long.Parse(anbieterNr)).ToList();
+            var relations = _anbieterList.Where(a => a.p_Anbieter_Nr != anbieterNr).ToList();
 
-            new RelationChoose(_fachkonzept, long.Parse(anbieterNr), relations).ShowDialog();
+            new RelationChoose(_fachkonzept, anbieterNr, relations).ShowDialog();
 
             LoadZuordnungen();
-
-            ShowRelations(long.Parse(anbieterNr));
-
+            ShowRelations(anbieterNr);
         }
 
         private void lstvAnbieter_SelectedIndexChanged(object sender, EventArgs e)
@@ -108,10 +106,10 @@ namespace CusMaSy.Project.Views
                 return;
 
             // hole selected stirng
-            string anbieterNr = GetSelectedAnbieterNr(items);
+            var anbieterNr = GetAnbieterNrFromListViewItem(items[0]);
 
             // hole anbieter infos
-            var anbieter = _anbieterList.FirstOrDefault(a => a.p_Anbieter_Nr == int.Parse(anbieterNr));
+            var anbieter = _anbieterList.FirstOrDefault(a => a.p_Anbieter_Nr == anbieterNr);
 
             if (anbieter == null)
                 return;
@@ -150,18 +148,17 @@ namespace CusMaSy.Project.Views
                 if (rel == null)
                     continue;
 
+                lstvRelations.CheckBoxes = true;
                 lstvRelations.Items.Add(rel.p_Anbieter_Nr + " | " + rel.Firma);
             }
         }
 
-        string GetSelectedAnbieterNr(ListView.SelectedListViewItemCollection items)
+        long GetAnbieterNrFromListViewItem(ListViewItem item)
         {
-            var selectedString = items[0].Text;
-
-            var parts = selectedString.Split('|');
+            var parts = item.Text.Split('|');
             // splitte string nach anbieternr und namen auf, nehme anbieternr
             var anbieterNr = parts.First().Replace(" ", string.Empty);
-            return anbieterNr;
+            return long.Parse(anbieterNr);
         }
 
 

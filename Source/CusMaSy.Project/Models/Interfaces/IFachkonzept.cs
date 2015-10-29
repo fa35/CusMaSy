@@ -24,7 +24,7 @@ namespace CusMaSy.Project.Models.Interfaces
         int GetAnbieterTypNrByBool(bool isKaufmann);
         void DeleteRelations(long anbieters, List<long> relations);
         List<Ort> GetOrte(List<long> list);
-        void RemoveAnbieter(string anbieterNr);
+        void RemoveAnbieter(long anbieterNr);
         void SaveState(string input);
         List<Anbieter_Zuordnung> GetAllZuordnungenByAnbieterNr(List<long> list);
         void SaveZuordnungen(long _hostNr, List<long> anbieterNrs);

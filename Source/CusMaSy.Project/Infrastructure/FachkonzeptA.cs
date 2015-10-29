@@ -73,9 +73,9 @@ namespace CusMaSy.Project.Infrastructure
             return _connector.LoadOrte(orteNrs);
         }
 
-        public void RemoveAnbieter(string anbieterNr)
+        public void RemoveAnbieter(long anbieterNr)
         {
-            _connector.DeleteAnbieterByAnbieterNr(long.Parse(anbieterNr));
+            _connector.DeleteAnbieterByAnbieterNr(anbieterNr);
         }
 
         public void SaveState(string input)
