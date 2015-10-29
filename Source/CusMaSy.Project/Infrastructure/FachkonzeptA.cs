@@ -87,5 +87,10 @@ namespace CusMaSy.Project.Infrastructure
         {
             return _connector.LoadZuordnungen(anbieterNrs);
         }
+
+        public void SaveZuordnungen(long hostNr, List<long> clientsNrs)
+        {
+            _connector.InsertZuordnungen(hostNr, clientsNrs);
+        }
     }
 }

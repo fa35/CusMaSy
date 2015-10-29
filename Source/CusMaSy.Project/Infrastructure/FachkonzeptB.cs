@@ -75,5 +75,10 @@ namespace CusMaSy.Project.Infrastructure
         {
             throw new NotImplementedException();
         }
+
+        public void SaveZuordnungen(long _hostNr, List<long> anbieterNrs)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

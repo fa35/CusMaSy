@@ -82,28 +82,22 @@ namespace CusMaSy.Project.Views
             var relations = lstvRelations.SelectedItems; // können mehrere sein
 
 
-            var relNrs = new List<long>();
-
-            foreach (var item in relations)
-            {
-                var parts = item.ToString().Split('|');
-                relNrs.Add(long.Parse(parts[0].Replace(" ", string.Empty)));
-            }
-
-            long anbieterNr = 0;
-
-            foreach (var item in anbieters)
-            {
-                var parts = item.ToString().Split('|');
-                anbieterNr = (long.Parse(parts[0].Replace(" ", string.Empty)));
-            }
-
-            _fachkonzept.DeleteRelations(anbieterNr, relNrs);
 
         }
 
         private void btnAddRelation_Click(object sender, EventArgs e)
         {
+            var anbieterNr = GetSelectedAnbieterNr(lstvAnbieter.SelectedItems);
+            if (string.IsNullOrWhiteSpace(anbieterNr))
+                return;
+
+            var relations = _anbieterList.Where(a => a.p_Anbieter_Nr != long.Parse(anbieterNr)).ToList();
+
+            new RelationChoose(_fachkonzept, long.Parse(anbieterNr), relations).ShowDialog();
+
+            LoadZuordnungen();
+
+            ShowRelations(long.Parse(anbieterNr));
 
         }
 
@@ -139,9 +133,15 @@ namespace CusMaSy.Project.Views
 
             // zeige zuordnungen in zuordnungen box
 
+            ShowRelations(anbieter.p_Anbieter_Nr);
+
+        }
+
+        private void ShowRelations(long anbieterNr)
+        {
             lstvRelations.Items.Clear();
 
-            var relationsNrs = _zuordnungen.Where(z => z.pf_HostAnbieter_Nr == anbieter.p_Anbieter_Nr).Select(q => q.pf_ClientAnbieter_Nr).ToList();
+            var relationsNrs = _zuordnungen.Where(z => z.pf_HostAnbieter_Nr == anbieterNr).Select(q => q.pf_ClientAnbieter_Nr).ToList();
 
             foreach (var relNr in relationsNrs)
             {
@@ -152,7 +152,6 @@ namespace CusMaSy.Project.Views
 
                 lstvRelations.Items.Add(rel.p_Anbieter_Nr + " | " + rel.Firma);
             }
-
         }
 
         string GetSelectedAnbieterNr(ListView.SelectedListViewItemCollection items)

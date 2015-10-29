@@ -77,6 +77,25 @@ namespace CusMaSy.Project.Data
             }
         }
 
+        internal void InsertZuordnungen(long hostNr, List<long> clientsNrs)
+        {
+            using (var dc = new CusMaSyDataContext(_conStr))
+            {
+                foreach (var clientNr in clientsNrs)
+                {
+                    var a = new Anbieter_Zuordnung
+                    {
+                        pf_HostAnbieter_Nr = hostNr,
+                        pf_ClientAnbieter_Nr = clientNr
+                    };
+
+                    dc.Anbieter_Zuordnungs.InsertOnSubmit(a);
+                }
+
+                dc.SubmitChanges();
+            }
+        }
+
         internal List<Anbieter_Zuordnung> LoadZuordnungen(List<long> anbieterNrs)
         {
             using (var dc = new CusMaSyDataContext(_conStr))

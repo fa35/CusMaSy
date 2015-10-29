@@ -88,6 +88,15 @@
     <Compile Include="Views\Hauptansicht.Designer.cs">
       <DependentUpon>Hauptansicht.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\RelationChoose.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\RelationChoose.Designer.cs">
+      <DependentUpon>RelationChoose.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Views\RelationChoose.resx">
+      <DependentUpon>RelationChoose.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Data\CusMaSy.dbml.layout">
       <DependentUpon>CusMaSy.dbml</DependentUpon>
     </None>
