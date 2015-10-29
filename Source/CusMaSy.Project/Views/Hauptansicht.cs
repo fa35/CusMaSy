@@ -90,9 +90,10 @@ namespace CusMaSy.Project.Views
         private void btnAddRelation_Click(object sender, EventArgs e)
         {
             var anbieterNr = GetAnbieterNrFromListViewItem(lstvAnbieter.SelectedItems[0]);
+            var currRelNrs = _zuordnungen.Where(q => q.pf_HostAnbieter_Nr == anbieterNr).Select(q => q.pf_ClientAnbieter_Nr).ToList();
 
-            var relations = _anbieterList.Where(a => a.p_Anbieter_Nr != anbieterNr).ToList();
-
+            // selbst + bestehende zuordnungen rausnehmen;
+            var relations = _anbieterList.Where(a => a.p_Anbieter_Nr != anbieterNr && !currRelNrs.Contains(a.p_Anbieter_Nr)).ToList();
             new RelationChoose(_fachkonzept, anbieterNr, relations).ShowDialog();
 
             LoadZuordnungen();
