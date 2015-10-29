@@ -37,11 +37,11 @@ namespace CusMaSy.Project.Data
         {
             using (var dc = new CusMaSyDataContext(_conStr))
             {
-                return dc.Orts.Select(o => o.Land).ToList();
+                return dc.Orts.Select(o => o.Land).Distinct().ToList();
             }
         }
 
-        internal void RemoveRelationsByAnbieterNrs(long anbieterNr, List<long> relNrs)
+        internal void DeleteRelationsByAnbieterNrs(long anbieterNr, List<long> relNrs)
         {
             using (var dc = new CusMaSyDataContext(_conStr))
             {
@@ -66,11 +66,30 @@ namespace CusMaSy.Project.Data
             }
         }
 
+        internal void DeleteAnbieterByAnbieterNr(long anbieterNr)
+        {
+            using (var dc = new CusMaSyDataContext(_conStr))
+            {
+                var anbieter = dc.Anbieters.FirstOrDefault(a => a.p_Anbieter_Nr == anbieterNr);
+                if (anbieter != null)
+                    dc.Anbieters.DeleteOnSubmit(anbieter);
+                dc.SubmitChanges();
+            }
+        }
+
         internal List<Ort> LoadOrte(Ort ort)
         {
             using (var dc = new CusMaSyDataContext(_conStr))
             {
                 return dc.Orts.Where(o => o.PLZ == o.PLZ && o.Ort1 == ort.Ort1 && o.Land == ort.Land).ToList();
+            }
+        }
+
+        internal List<Ort> LoadOrte(List<long> orteNrs)
+        {
+            using (var dc = new CusMaSyDataContext(_conStr))
+            {
+                return dc.Orts.Where(o => orteNrs.Contains(o.p_Ort_Nr)).ToList();
             }
 
         }
@@ -101,7 +120,7 @@ namespace CusMaSy.Project.Data
                 else
                     return 999;
             }
-            
+
         }
     }
 }

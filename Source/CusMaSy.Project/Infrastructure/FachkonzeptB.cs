@@ -55,5 +55,15 @@ namespace CusMaSy.Project.Infrastructure
         {
             throw new NotImplementedException();
         }
+
+        public List<Ort> GetOrte(List<long> list)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveAnbieter(string anbieterNr)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -88,9 +88,7 @@ namespace CusMaSy.Project.Views
             _states = (_fachkonzept as FachkonzeptA).GetAllStates();
 
             foreach (var land in _states)
-            {
                 cmbLand.Items.Add(land);
-            }
         }
 
         private void btnAddState_Click(object sender, EventArgs e)

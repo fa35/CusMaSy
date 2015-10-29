@@ -19,15 +19,11 @@ namespace CusMaSy.Project.Models.Interfaces
         /// </summary>
         void SaveAnbieter(Anbieter anbieter);
 
-
-        /// <summary>
-        /// Ladet Orte mit Parametern, falle alle Orte, falls keine Parameter reingeführt wurden
-        /// </summary>
-        Ort[] LadeOrte(long? plzNr = null, int? plz = null);
-
         long GetOrtNr(Ort ort);
 
         int GetAnbieterTypNrByBool(bool isKaufmann);
         void DeleteRelations(long anbieters, List<long> relations);
+        List<Ort> GetOrte(List<long> list);
+        void RemoveAnbieter(string anbieterNr);
     }
 }

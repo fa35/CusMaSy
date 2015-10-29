@@ -63,6 +63,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CusMaSy.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\AnbieterTypConverter.cs" />
     <Compile Include="Infrastructure\FachkonzeptA.cs" />
     <Compile Include="Infrastructure\FachkonzeptB.cs" />
     <Compile Include="Infrastructure\Helper.cs" />

@@ -59,13 +59,23 @@ namespace CusMaSy.Project.Infrastructure
 
         public void DeleteRelations(long anbieterNr, List<long> relNrs)
         {
-            _connector.RemoveRelationsByAnbieterNrs(anbieterNr, relNrs);
+            _connector.DeleteRelationsByAnbieterNrs(anbieterNr, relNrs);
         }
 
 
         public List<string> GetAllStates()
         {
             return _connector.LoadStates();
+        }
+
+        public List<Ort> GetOrte(List<long> orteNrs)
+        {
+            return _connector.LoadOrte(orteNrs);
+        }
+
+        public void RemoveAnbieter(string anbieterNr)
+        {
+            _connector.DeleteAnbieterByAnbieterNr(long.Parse(anbieterNr));
         }
     }
 }
