@@ -28,5 +28,6 @@ namespace CusMaSy.Project.Models.Interfaces
         void SaveState(string input);
         List<Anbieter_Zuordnung> GetAllZuordnungenByAnbieterNr(List<long> list);
         void SaveZuordnungen(long _hostNr, List<long> anbieterNrs);
+        void UpdateAnbieter(Anbieter anbieter);
     }
 }

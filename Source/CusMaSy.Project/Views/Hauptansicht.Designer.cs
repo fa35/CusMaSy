@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Hauptansicht));
             this.lblShopUeberblick = new System.Windows.Forms.Label();
-            this.lblKundenUeberblick = new System.Windows.Forms.Label();
+            this.lblRelationsText = new System.Windows.Forms.Label();
             this.lstvRelations = new System.Windows.Forms.ListView();
             this.lstvAnbieter = new System.Windows.Forms.ListView();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
@@ -41,42 +41,44 @@
             this.btnDeleteAnbieter = new System.Windows.Forms.Button();
             this.btnAddAnbieter = new System.Windows.Forms.Button();
             this.dgvAnbieterDetails = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txbSearchAnbieter = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAnbieterDetails)).BeginInit();
             this.SuspendLayout();
             // 
             // lblShopUeberblick
             // 
             this.lblShopUeberblick.AutoSize = true;
-            this.lblShopUeberblick.Location = new System.Drawing.Point(212, 19);
+            this.lblShopUeberblick.Location = new System.Drawing.Point(25, 169);
             this.lblShopUeberblick.Name = "lblShopUeberblick";
-            this.lblShopUeberblick.Size = new System.Drawing.Size(46, 13);
+            this.lblShopUeberblick.Size = new System.Drawing.Size(66, 13);
             this.lblShopUeberblick.TabIndex = 1;
-            this.lblShopUeberblick.Text = "Anbieter";
+            this.lblShopUeberblick.Text = "Alle Anbieter";
             // 
-            // lblKundenUeberblick
+            // lblRelationsText
             // 
-            this.lblKundenUeberblick.AutoSize = true;
-            this.lblKundenUeberblick.Location = new System.Drawing.Point(539, 19);
-            this.lblKundenUeberblick.Name = "lblKundenUeberblick";
-            this.lblKundenUeberblick.Size = new System.Drawing.Size(59, 13);
-            this.lblKundenUeberblick.TabIndex = 3;
-            this.lblKundenUeberblick.Text = "Zuordnung";
+            this.lblRelationsText.AutoSize = true;
+            this.lblRelationsText.Location = new System.Drawing.Point(336, 169);
+            this.lblRelationsText.Name = "lblRelationsText";
+            this.lblRelationsText.Size = new System.Drawing.Size(59, 13);
+            this.lblRelationsText.TabIndex = 3;
+            this.lblRelationsText.Text = "Zuordnung";
             // 
             // lstvRelations
             // 
-            this.lstvRelations.Location = new System.Drawing.Point(542, 35);
+            this.lstvRelations.Location = new System.Drawing.Point(339, 185);
             this.lstvRelations.Name = "lstvRelations";
-            this.lstvRelations.Size = new System.Drawing.Size(215, 179);
+            this.lstvRelations.Size = new System.Drawing.Size(263, 134);
             this.lstvRelations.TabIndex = 4;
             this.lstvRelations.UseCompatibleStateImageBehavior = false;
             this.lstvRelations.View = System.Windows.Forms.View.List;
             // 
             // lstvAnbieter
             // 
-            this.lstvAnbieter.Location = new System.Drawing.Point(215, 35);
+            this.lstvAnbieter.Location = new System.Drawing.Point(28, 185);
             this.lstvAnbieter.MultiSelect = false;
             this.lstvAnbieter.Name = "lstvAnbieter";
-            this.lstvAnbieter.Size = new System.Drawing.Size(215, 179);
+            this.lstvAnbieter.Size = new System.Drawing.Size(263, 134);
             this.lstvAnbieter.TabIndex = 5;
             this.lstvAnbieter.UseCompatibleStateImageBehavior = false;
             this.lstvAnbieter.View = System.Windows.Forms.View.List;
@@ -90,7 +92,7 @@
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(784, 427);
+            this.shapeContainer1.Size = new System.Drawing.Size(628, 405);
             this.shapeContainer1.TabIndex = 7;
             this.shapeContainer1.TabStop = false;
             // 
@@ -104,28 +106,28 @@
             // 
             // btnAddRelation
             // 
-            this.btnAddRelation.Location = new System.Drawing.Point(436, 84);
+            this.btnAddRelation.Location = new System.Drawing.Point(339, 325);
             this.btnAddRelation.Name = "btnAddRelation";
-            this.btnAddRelation.Size = new System.Drawing.Size(100, 25);
+            this.btnAddRelation.Size = new System.Drawing.Size(263, 25);
             this.btnAddRelation.TabIndex = 8;
-            this.btnAddRelation.Text = "hinzufügen";
+            this.btnAddRelation.Text = "Zuordnung /-en hinzufügen";
             this.btnAddRelation.UseVisualStyleBackColor = true;
             this.btnAddRelation.Click += new System.EventHandler(this.btnAddRelation_Click);
             // 
             // btnDeleteRelation
             // 
-            this.btnDeleteRelation.Location = new System.Drawing.Point(436, 115);
+            this.btnDeleteRelation.Location = new System.Drawing.Point(339, 356);
             this.btnDeleteRelation.Name = "btnDeleteRelation";
-            this.btnDeleteRelation.Size = new System.Drawing.Size(100, 25);
+            this.btnDeleteRelation.Size = new System.Drawing.Size(263, 25);
             this.btnDeleteRelation.TabIndex = 9;
-            this.btnDeleteRelation.Text = "entfernen";
+            this.btnDeleteRelation.Text = "Zuordnung /-en entfernen";
             this.btnDeleteRelation.UseVisualStyleBackColor = true;
             this.btnDeleteRelation.Click += new System.EventHandler(this.btnDeleteRelation_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 289);
+            this.label1.Location = new System.Drawing.Point(25, 52);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 13);
             this.label1.TabIndex = 10;
@@ -133,9 +135,9 @@
             // 
             // btnDeleteAnbieter
             // 
-            this.btnDeleteAnbieter.Location = new System.Drawing.Point(215, 220);
+            this.btnDeleteAnbieter.Location = new System.Drawing.Point(28, 356);
             this.btnDeleteAnbieter.Name = "btnDeleteAnbieter";
-            this.btnDeleteAnbieter.Size = new System.Drawing.Size(215, 25);
+            this.btnDeleteAnbieter.Size = new System.Drawing.Size(263, 25);
             this.btnDeleteAnbieter.TabIndex = 11;
             this.btnDeleteAnbieter.Text = "Anbieter entfernen";
             this.btnDeleteAnbieter.UseVisualStyleBackColor = true;
@@ -143,9 +145,9 @@
             // 
             // btnAddAnbieter
             // 
-            this.btnAddAnbieter.Location = new System.Drawing.Point(542, 396);
+            this.btnAddAnbieter.Location = new System.Drawing.Point(28, 325);
             this.btnAddAnbieter.Name = "btnAddAnbieter";
-            this.btnAddAnbieter.Size = new System.Drawing.Size(215, 25);
+            this.btnAddAnbieter.Size = new System.Drawing.Size(263, 25);
             this.btnAddAnbieter.TabIndex = 12;
             this.btnAddAnbieter.Text = "Anbieter hinzufügen";
             this.btnAddAnbieter.UseVisualStyleBackColor = true;
@@ -154,16 +156,36 @@
             // dgvAnbieterDetails
             // 
             this.dgvAnbieterDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAnbieterDetails.Location = new System.Drawing.Point(28, 305);
+            this.dgvAnbieterDetails.Location = new System.Drawing.Point(28, 68);
             this.dgvAnbieterDetails.Name = "dgvAnbieterDetails";
-            this.dgvAnbieterDetails.Size = new System.Drawing.Size(729, 85);
+            this.dgvAnbieterDetails.Size = new System.Drawing.Size(574, 85);
             this.dgvAnbieterDetails.TabIndex = 13;
+            this.dgvAnbieterDetails.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAnbieterDetails_CellEndEdit);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(25, 19);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(266, 13);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Nach Anbieter suchen - Name oder Nummer eingeben:";
+            // 
+            // txbSearchAnbieter
+            // 
+            this.txbSearchAnbieter.Location = new System.Drawing.Point(339, 16);
+            this.txbSearchAnbieter.Name = "txbSearchAnbieter";
+            this.txbSearchAnbieter.Size = new System.Drawing.Size(263, 20);
+            this.txbSearchAnbieter.TabIndex = 16;
+            this.txbSearchAnbieter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txbSearchAnbieter_KeyDown);
             // 
             // Hauptansicht
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 427);
+            this.ClientSize = new System.Drawing.Size(628, 405);
+            this.Controls.Add(this.txbSearchAnbieter);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvAnbieterDetails);
             this.Controls.Add(this.btnAddAnbieter);
             this.Controls.Add(this.btnDeleteAnbieter);
@@ -172,7 +194,7 @@
             this.Controls.Add(this.btnAddRelation);
             this.Controls.Add(this.lstvAnbieter);
             this.Controls.Add(this.lstvRelations);
-            this.Controls.Add(this.lblKundenUeberblick);
+            this.Controls.Add(this.lblRelationsText);
             this.Controls.Add(this.lblShopUeberblick);
             this.Controls.Add(this.shapeContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -187,7 +209,7 @@
         #endregion
 
         private System.Windows.Forms.Label lblShopUeberblick;
-        private System.Windows.Forms.Label lblKundenUeberblick;
+        private System.Windows.Forms.Label lblRelationsText;
         private System.Windows.Forms.ListView lstvRelations;
         private System.Windows.Forms.ListView lstvAnbieter;
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
@@ -198,5 +220,9 @@
         private System.Windows.Forms.Button btnDeleteAnbieter;
         private System.Windows.Forms.Button btnAddAnbieter;
         private System.Windows.Forms.DataGridView dgvAnbieterDetails;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txbSearchAnbieter;
+
+
     }
 }

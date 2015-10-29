@@ -116,6 +116,20 @@ namespace CusMaSy.Project.Views
                 return;
 
             // zeige in details anbieter details
+            ShowAnbieterDetails(anbieter);
+
+            // zeige zuordnungen in zuordnungen box
+
+            ShowRelations(anbieter.p_Anbieter_Nr);
+
+            lblRelationsText.Text = "Zuordnungen von: " + anbieter.Firma;
+
+        }
+
+        private void ShowAnbieterDetails(Anbieter anbieter)
+        {
+            dgvAnbieterDetails.Rows.Clear();
+
             SetColumnHeaders(anbieter);
 
             LoadOrte();
@@ -129,11 +143,6 @@ namespace CusMaSy.Project.Views
                  anbieter.Firma, anbieter.Steuernummer, AnbieterTypConverter.ToAnbieterTyp(anbieter.f_AnbieterTyp_Nr),
                  anbieter.Branche, anbieter.Strasse, anbieter.Hausnummer, ort.PLZ.ToString(), ort.Ort1,
                  ort.Land, anbieter.Mailadresse, anbieter.Telefonnummer, anbieter.Homepage);
-
-            // zeige zuordnungen in zuordnungen box
-
-            ShowRelations(anbieter.p_Anbieter_Nr);
-
         }
 
         private void ShowRelations(long anbieterNr)
@@ -164,7 +173,6 @@ namespace CusMaSy.Project.Views
 
 
 
-
         void SetColumnHeaders(Anbieter anbieter)
         {
             if (dgvAnbieterDetails.Columns.Count > 1)
@@ -188,6 +196,80 @@ namespace CusMaSy.Project.Views
         void LoadOrte()
         {
             _orte = _fachkonzept.GetOrte(_anbieterList.Select(a => a.f_Ort_Nr).ToList());
+        }
+
+
+        private void txbSearchAnbieter_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData != Keys.Enter)
+                return;
+
+            long anbieterNr;
+
+            long.TryParse(txbSearchAnbieter.Text, out anbieterNr);
+
+            Anbieter searchedAnbieter;
+
+            if (anbieterNr > 0)
+                searchedAnbieter = _anbieterList.FirstOrDefault(a => a.p_Anbieter_Nr == anbieterNr);
+            else
+                searchedAnbieter = _anbieterList.FirstOrDefault(a => a.Firma.Equals(txbSearchAnbieter.Text));
+
+            if (searchedAnbieter == null)
+                return;
+
+            txbSearchAnbieter.Text = string.Empty;
+            dgvAnbieterDetails.Focus();
+
+            ShowAnbieterDetails(searchedAnbieter);
+        }
+
+        private void dgvAnbieterDetails_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+
+            var s = sender as DataGridView;
+
+            var rows = s.Rows;
+
+            foreach (DataGridViewRow row in rows)
+            {
+                try
+                {
+
+                    var ort = new Ort
+                    {
+                        PLZ = int.Parse(row.Cells[7].Value.ToString()),
+                        Ort1 = row.Cells[8].Value.ToString(),
+                        Land = row.Cells[9].Value.ToString()
+                    };
+
+                    // nach ort suchen
+                    var ortNr = _fachkonzept.GetOrtNr(ort);
+
+                    var anbieter = new Anbieter
+                    {
+                        p_Anbieter_Nr = long.Parse(row.Cells[0].Value.ToString()),
+                        Firma = row.Cells[1].Value.ToString(),
+                        Steuernummer = row.Cells[2].Value.ToString(),
+                        f_AnbieterTyp_Nr = AnbieterTypConverter.ToAnbieterTypNr(row.Cells[3].Value.ToString()),
+                        Branche = row.Cells[4].Value.ToString(),
+                        Strasse = row.Cells[5].Value.ToString(),
+                        f_Ort_Nr = ortNr,
+                        Hausnummer = row.Cells[6].Value.ToString(),
+                        Mailadresse = row.Cells[10].Value.ToString(),
+                        Telefonnummer = row.Cells[11].Value.ToString(),
+                        Homepage = row.Cells[12].Value.ToString()
+                    };
+
+                    _fachkonzept.UpdateAnbieter(anbieter);
+
+                    RefreshLists();
+                }
+                catch(Exception ex)
+                {
+
+                }
+            }
         }
     }
 }

@@ -92,5 +92,10 @@ namespace CusMaSy.Project.Infrastructure
         {
             _connector.InsertZuordnungen(hostNr, clientsNrs);
         }
+
+        public void UpdateAnbieter(Anbieter anbieter)
+        {
+            _connector.UpdateExistingAnbieter(anbieter);
+        }
     }
 }

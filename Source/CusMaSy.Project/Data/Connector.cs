@@ -94,6 +94,30 @@ namespace CusMaSy.Project.Data
             }
         }
 
+        internal void UpdateExistingAnbieter(Anbieter changedAnbieter)
+        {
+            using (var dc = new CusMaSyDataContext(_conStr))
+            {
+                var existingAnbieter = dc.Anbieters.FirstOrDefault(a => a.p_Anbieter_Nr == changedAnbieter.p_Anbieter_Nr);
+
+                if (existingAnbieter == null)
+                    return;
+
+                existingAnbieter.Firma = changedAnbieter.Firma;
+                existingAnbieter.Branche = changedAnbieter.Branche;
+                existingAnbieter.f_AnbieterTyp_Nr = changedAnbieter.f_AnbieterTyp_Nr;
+                existingAnbieter.f_Ort_Nr = changedAnbieter.f_Ort_Nr;
+                existingAnbieter.Hausnummer = changedAnbieter.Hausnummer;
+                existingAnbieter.Homepage = changedAnbieter.Homepage;
+                existingAnbieter.Mailadresse = changedAnbieter.Mailadresse;
+                existingAnbieter.Steuernummer = changedAnbieter.Steuernummer;
+                existingAnbieter.Strasse = changedAnbieter.Strasse;
+                existingAnbieter.Telefonnummer = changedAnbieter.Telefonnummer;
+
+                dc.SubmitChanges();
+            }
+        }
+
         internal List<Anbieter_Zuordnung> LoadZuordnungen(List<long> anbieterNrs)
         {
             using (var dc = new CusMaSyDataContext(_conStr))

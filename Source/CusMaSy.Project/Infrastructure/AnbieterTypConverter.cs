@@ -14,5 +14,15 @@
                     return "Unbekannt";
             }
         }
+
+        internal static int ToAnbieterTypNr(string anbieterTyp)
+        {
+            if (anbieterTyp.Equals("Kaufmann"))
+                return 1;
+            if (anbieterTyp.Equals("Privatperson"))
+                return 2;
+
+            return 0;
+        }
     }
 }
