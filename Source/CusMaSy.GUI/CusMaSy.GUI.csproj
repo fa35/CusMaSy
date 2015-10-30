@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2B06124C-5B4A-4469-9182-7529AD51DD27}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{5663F474-C266-42A5-9D3B-E92432154F7A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CusMaSy.Project</RootNamespace>
-    <AssemblyName>CusMaSy.Project</AssemblyName>
+    <RootNamespace>CusMaSy.GUI</RootNamespace>
+    <AssemblyName>CusMaSy.GUI</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,17 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Linq" />
-    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,8 +46,50 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddState.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddState.Designer.cs">
+      <DependentUpon>AddState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Anlage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Anlage.Designer.cs">
+      <DependentUpon>Anlage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Hauptansicht.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Hauptansicht.Designer.cs">
+      <DependentUpon>Hauptansicht.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RelationChoose.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RelationChoose.Designer.cs">
+      <DependentUpon>RelationChoose.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\AddState.resx">
+      <DependentUpon>AddState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Anlage.resx">
+      <DependentUpon>Anlage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Hauptansicht.resx">
+      <DependentUpon>Hauptansicht.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RelationChoose.resx">
+      <DependentUpon>RelationChoose.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -76,26 +110,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CusMaSy.GUI\CusMaSy.GUI.csproj">
-      <Project>{5663f474-c266-42a5-9d3b-e92432154f7a}</Project>
-      <Name>CusMaSy.GUI</Name>
-    </ProjectReference>
+    <Content Include="Resources\1446130662_icon-23-star.ico" />
+    <Content Include="Resources\1446130662_icon-23-star.png" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\CusMaSy.Shared\CusMaSy.Shared.csproj">
       <Project>{d3702900-387a-4d0e-8d67-29ba181a4636}</Project>
       <Name>CusMaSy.Shared</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CusMaSy.TUI\CusMaSy.TUI.csproj">
-      <Project>{c54ae11f-6ada-4694-a068-d69a1f521fb9}</Project>
-      <Name>CusMaSy.TUI</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

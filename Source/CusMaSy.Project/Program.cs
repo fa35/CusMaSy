@@ -1,6 +1,6 @@
 ﻿using System;
-using CusMaSy.Project.Views;
-using CusMaSy.Project.Infrastructure;
+using CusMaSy.GUI.Forms;
+using CusMaSy.Shared.Infrastructure;
 
 namespace CusMaSy.Project
 {
