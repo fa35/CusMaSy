@@ -13,6 +13,7 @@ namespace CusMaSy.TUI.Infrastructure
             ConsoleWriter.WirteMenuPoint("Anbieter anlegen", "anle");
             ConsoleWriter.WirteMenuPoint("Anbieter löschen", "anlo");
             ConsoleWriter.WirteMenuPoint("Anbieter zuordnen", "anzu");
+            ConsoleWriter.WirteMenuPoint("Zuordnen löschen", "zulo");
             ConsoleWriter.WirteMenuPoint("Hilfe anzeigen", "hilfe");
         }
 

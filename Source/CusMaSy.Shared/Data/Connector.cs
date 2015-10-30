@@ -81,6 +81,22 @@ namespace CusMaSy.Shared.Data
             }
         }
 
+        internal Anbieter GetAnbieterByNr(long anbieterNr)
+        {
+            using (var dc = new CusMaSyDataContext(_conStr))
+            {
+                return dc.Anbieters.FirstOrDefault(a => a.p_Anbieter_Nr == anbieterNr);
+            }
+        }
+
+        internal Anbieter GetAnbieterByName(string anbieterName)
+        {
+            using (var dc = new CusMaSyDataContext(_conStr))
+            {
+                return dc.Anbieters.FirstOrDefault(a => a.Firma.ToLower().Equals(anbieterName.ToLower()));
+            }
+        }
+
         internal bool CheckExistingZuordnung(long hostNr, long clientNr)
         {
             using (var dc = new CusMaSyDataContext(_conStr))

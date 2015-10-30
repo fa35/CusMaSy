@@ -5,11 +5,11 @@ using System;
 
 namespace CusMaSy.TUI.Infrastructure
 {
-    internal class AnlageWorker
+    internal class AddWorker
     {
         IFachkonzept _fachkonzept;
 
-        internal AnlageWorker(IFachkonzept fachkonzept)
+        internal AddWorker(IFachkonzept fachkonzept)
         {
             _fachkonzept = fachkonzept;
         }
@@ -108,13 +108,13 @@ namespace CusMaSy.TUI.Infrastructure
 
             var anbieterNrString = ConsoleWriter.WriteInputStatement("Anbieternummer");
             while (string.IsNullOrWhiteSpace(anbieterNrString) && Validator.CheckStringIsLong(anbieterNrString) == false)
-                anbieterNrString = ConsoleWriter.WriteInputStatement("Anbieter-Nummer");
+                anbieterNrString = ConsoleWriter.WriteInputStatement("Anbieternummer");
 
             var anbieterNr = long.Parse(anbieterNrString);
 
             var clientNrString = ConsoleWriter.WriteInputStatement("zuzuordnende Anbieternummer");
             while (string.IsNullOrWhiteSpace(clientNrString) && Validator.CheckStringIsLong(clientNrString) == false)
-                clientNrString = ConsoleWriter.WriteInputStatement("Anbieter-Nummer");
+                clientNrString = ConsoleWriter.WriteInputStatement("zuzuordnende Anbieternummer");
 
             var clientNr = long.Parse(clientNrString);
 

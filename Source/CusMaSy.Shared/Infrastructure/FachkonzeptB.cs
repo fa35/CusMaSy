@@ -35,9 +35,9 @@ namespace CusMaSy.Shared.Infrastructure
             throw new NotImplementedException();
         }
 
-        public List<Ort> GetOrte(List<long> list)
+        public List<Ort> GetOrte(List<long> orteNrs)
         {
-            throw new NotImplementedException();
+            return _connector.LoadOrte(orteNrs);
         }
 
         public long GetOrtNr(Ort ort)
@@ -52,7 +52,7 @@ namespace CusMaSy.Shared.Infrastructure
 
         public void RemoveAnbieter(long anbieterNr)
         {
-            throw new NotImplementedException();
+            _connector.DeleteAnbieterByAnbieterNr(anbieterNr);
         }
 
         public void SaveAnbieter(Anbieter anbieter)
@@ -68,7 +68,7 @@ namespace CusMaSy.Shared.Infrastructure
 
         public void UpdateAnbieter(Anbieter anbieter)
         {
-            throw new NotImplementedException();
+            _connector.UpdateExistingAnbieter(anbieter);
         }
 
         public void SaveZuordnung(long hostNr, long clientNr)
@@ -79,6 +79,16 @@ namespace CusMaSy.Shared.Infrastructure
         public bool ExistsHostClientZuordnung(long anbieterNr, long clientNr)
         {
             return _connector.CheckExistingZuordnung(anbieterNr, clientNr);
+        }
+
+        public Anbieter FindAnbieterByNr(long anbieterNr)
+        {
+            return _connector.GetAnbieterByNr(anbieterNr);
+        }
+
+        public Anbieter FindAnbieterByName(string anbieterName)
+        {
+            return _connector.GetAnbieterByName(anbieterName);
         }
     }
 }

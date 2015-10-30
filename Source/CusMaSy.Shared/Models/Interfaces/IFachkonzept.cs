@@ -28,5 +28,7 @@ namespace CusMaSy.Shared.Models.Interfaces
         void SaveZuordnung(long hostNr, long clientNr);
         void RemoveZuordnung(long hostNr, long clientNr);
         bool ExistsHostClientZuordnung(long anbieterNr, long clientNr);
+        Anbieter FindAnbieterByNr(long anbieterNr);
+        Anbieter FindAnbieterByName(string anbieterName);
     }
 }

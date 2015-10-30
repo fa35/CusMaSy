@@ -28,12 +28,6 @@ namespace CusMaSy.Shared.Infrastructure
         }
 
 
-        public Ort[] LadeOrte(long? plzNr = default(long?), int? plz = default(int?))
-        {
-            throw new NotImplementedException();
-        }
-
-
         public void SaveAnbieter(Anbieter anbieter)
         {
             _connector.InsertAnbieter(anbieter);
@@ -106,6 +100,21 @@ namespace CusMaSy.Shared.Infrastructure
         public void RemoveZuordnung(long hostNr, long clientNr)
         {
             _connector.DeleteZuordnung(hostNr, clientNr);
+        }
+
+        public bool ExistsHostClientZuordnung(long hostNr, long clientNr)
+        {
+            return _connector.CheckExistingZuordnung(hostNr, clientNr);
+        }
+
+        public Anbieter FindAnbieterByNr(long anbieterNr)
+        {
+            return _connector.GetAnbieterByNr(anbieterNr);
+        }
+
+        public Anbieter FindAnbieterByName(string anbieterName)
+        {
+            return _connector.GetAnbieterByName(anbieterName);
         }
     }
 }
