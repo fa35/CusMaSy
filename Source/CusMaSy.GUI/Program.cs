@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using CusMaSy.GUI.Forms;
+using CusMaSy.Shared.Infrastructure;
+using System;
 using System.Windows.Forms;
 
 namespace CusMaSy.GUI
@@ -16,7 +15,7 @@ namespace CusMaSy.GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Hauptansicht(new FachkonzeptA()));
         }
     }
 }
