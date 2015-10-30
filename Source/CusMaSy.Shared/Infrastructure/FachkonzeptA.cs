@@ -82,9 +82,14 @@ namespace CusMaSy.Shared.Infrastructure
             return _connector.LoadZuordnungen(anbieterNrs);
         }
 
-        public void SaveZuordnungen(long hostNr, List<long> clientsNrs)
+        public void SaveZuordnung(long hostNr, long clientNr)
         {
-            _connector.InsertZuordnungen(hostNr, clientsNrs);
+            _connector.InsertZuordnung(hostNr, clientNr);
+        }
+
+        public void SaveZuordnungen(long hostNr, List<long> clientNrs)
+        {
+            _connector.InsertZuordnungen(hostNr, clientNrs);
         }
 
         public void UpdateAnbieter(Anbieter anbieter)

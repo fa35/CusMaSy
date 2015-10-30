@@ -33,5 +33,16 @@
 
             return false;
         }
+
+        public static bool CheckStringIsLong(string content)
+        {
+            long number = 0;
+            long.TryParse(content, out number);
+
+            if (number > 0)
+                return true;
+
+            return false;
+        }
     }
 }

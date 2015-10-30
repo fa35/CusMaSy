@@ -18,12 +18,15 @@ namespace CusMaSy.Shared.Models.Interfaces
         void SaveAnbieter(Anbieter anbieter);
         long GetOrtNr(Ort ort);
         int GetAnbieterTypNrByBool(bool isKaufmann);
-        void RemoveZuordnung(long hostNr, long clientNr);
         List<Ort> GetOrte(List<long> list);
         void RemoveAnbieter(long anbieterNr);
         void SaveState(string input);
         List<Anbieter_Zuordnung> GetAllZuordnungenByAnbietersNrs(List<long> anbietersNrs);
-        void SaveZuordnungen(long _hostNr, List<long> anbieterNrs);
+
         void UpdateAnbieter(Anbieter anbieter);
+
+        void SaveZuordnung(long hostNr, long clientNr);
+        void RemoveZuordnung(long hostNr, long clientNr);
+        bool ExistsHostClientZuordnung(long anbieterNr, long clientNr);
     }
 }

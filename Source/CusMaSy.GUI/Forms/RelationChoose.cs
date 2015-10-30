@@ -49,15 +49,22 @@ namespace CusMaSy.GUI.Forms
             if (checkedItems == null || checkedItems.Count < 1)
                 return;
 
-            var anbieterNrs = new List<long>();
+            var clientNrs = new List<long>();
 
             foreach (ListViewItem ci in checkedItems)
             {
                 var parts = ci.Text.ToString().Split('|');
-                anbieterNrs.Add(long.Parse(parts[0].Replace(" ", string.Empty)));
+                clientNrs.Add(long.Parse(parts[0].Replace(" ", string.Empty)));
             }
 
-            _fachkonzept.SaveZuordnungen(_hostNr, anbieterNrs);
+            if ((clientNrs.Count > 1) && _fachkonzept is FachkonzeptA)
+                (_fachkonzept as FachkonzeptA).SaveZuordnungen(_hostNr, clientNrs);
+            else
+            {
+                foreach (var clientNr in clientNrs)
+                    _fachkonzept.SaveZuordnung(_hostNr, clientNr);
+            }
+
             this.Close();
         }
     }

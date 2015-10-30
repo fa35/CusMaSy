@@ -29,6 +29,7 @@ namespace CusMaSy.TUI.Infrastructure
                 case "anlo":
                     break;
                 case "anzu":
+                    _anlageWorker.ZuordnungAnlegen();
                     break;
                 case "hilfe":
                     break;

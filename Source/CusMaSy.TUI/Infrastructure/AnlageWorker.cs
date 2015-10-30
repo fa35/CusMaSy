@@ -26,15 +26,18 @@ namespace CusMaSy.TUI.Infrastructure
                 firma = ConsoleWriter.WriteInputStatement("Firma");
             a.Firma = firma;
 
+
             var steuerNr = ConsoleWriter.WriteInputStatement("Steuernummer");
             while (string.IsNullOrWhiteSpace(steuerNr))
                 steuerNr = ConsoleWriter.WriteInputStatement("Steuernummer");
             a.Steuernummer = steuerNr;
 
+
             var branche = ConsoleWriter.WriteInputStatement("Branche");
             while (string.IsNullOrWhiteSpace(branche))
                 branche = ConsoleWriter.WriteInputStatement("Branche");
             a.Branche = branche;
+
 
             var homepage = ConsoleWriter.WriteInputStatement("Homepage");
             while (string.IsNullOrWhiteSpace(homepage) || Validator.CheckHomepage(homepage) == false)
@@ -69,7 +72,7 @@ namespace CusMaSy.TUI.Infrastructure
             var plz = ConsoleWriter.WriteInputStatement("PLZ");
             while (string.IsNullOrWhiteSpace(plz) || Validator.CheckPLZ(plz) == false)
                 plz = ConsoleWriter.WriteInputStatement("PLZ");
-            ort.PLZ = StringConverter.ToInt(plz);
+            ort.PLZ = int.Parse(plz);
 
 
             var ortBez = ConsoleWriter.WriteInputStatement("Ort");
@@ -96,6 +99,37 @@ namespace CusMaSy.TUI.Infrastructure
 
             Console.Clear();
             Console.WriteLine("Anbieter erfolgreich angelegt");
+        }
+
+
+        internal void ZuordnungAnlegen()
+        {
+            ConsoleWriter.WriteHeadline("Zuordnung anlegen");
+
+            var anbieterNrString = ConsoleWriter.WriteInputStatement("Anbieternummer");
+            while (string.IsNullOrWhiteSpace(anbieterNrString) && Validator.CheckStringIsLong(anbieterNrString) == false)
+                anbieterNrString = ConsoleWriter.WriteInputStatement("Anbieter-Nummer");
+
+            var anbieterNr = long.Parse(anbieterNrString);
+
+            var clientNrString = ConsoleWriter.WriteInputStatement("zuzuordnende Anbieternummer");
+            while (string.IsNullOrWhiteSpace(clientNrString) && Validator.CheckStringIsLong(clientNrString) == false)
+                clientNrString = ConsoleWriter.WriteInputStatement("Anbieter-Nummer");
+
+            var clientNr = long.Parse(clientNrString);
+
+            Console.Clear();
+
+            // check if zuordnung exists
+            if (!_fachkonzept.ExistsHostClientZuordnung(anbieterNr, clientNr))
+            {
+                _fachkonzept.SaveZuordnung(anbieterNr, clientNr);
+                Console.WriteLine("Zuordnung erfolgreich angelegt");
+            }
+            else
+            {
+                Console.WriteLine("Zuordnung bestand bereits");
+            }
         }
     }
 }

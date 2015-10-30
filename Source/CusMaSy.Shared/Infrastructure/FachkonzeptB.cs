@@ -65,14 +65,20 @@ namespace CusMaSy.Shared.Infrastructure
             throw new NotImplementedException();
         }
 
-        public void SaveZuordnungen(long _hostNr, List<long> anbieterNrs)
-        {
-            throw new NotImplementedException();
-        }
 
         public void UpdateAnbieter(Anbieter anbieter)
         {
             throw new NotImplementedException();
+        }
+
+        public void SaveZuordnung(long hostNr, long clientNr)
+        {
+            _connector.DeleteZuordnung(hostNr, clientNr);
+        }
+
+        public bool ExistsHostClientZuordnung(long anbieterNr, long clientNr)
+        {
+            return _connector.CheckExistingZuordnung(anbieterNr, clientNr);
         }
     }
 }

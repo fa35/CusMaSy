@@ -67,6 +67,28 @@ namespace CusMaSy.Shared.Data
             }
         }
 
+        internal void InsertZuordnung(long hostNr, long clientNr)
+        {
+            using (var dc = new CusMaSyDataContext(_conStr))
+            {
+                dc.Anbieter_Zuordnungs.InsertOnSubmit(new Anbieter_Zuordnung
+                {
+                    pf_HostAnbieter_Nr = hostNr,
+                    pf_ClientAnbieter_Nr = clientNr
+                });
+
+                dc.SubmitChanges();
+            }
+        }
+
+        internal bool CheckExistingZuordnung(long hostNr, long clientNr)
+        {
+            using (var dc = new CusMaSyDataContext(_conStr))
+            {
+                return dc.Anbieter_Zuordnungs.Any(z => z.pf_HostAnbieter_Nr == hostNr && z.pf_ClientAnbieter_Nr == clientNr);
+            }
+        }
+
         internal void InsertZuordnungen(long hostNr, List<long> clientsNrs)
         {
             using (var dc = new CusMaSyDataContext(_conStr))

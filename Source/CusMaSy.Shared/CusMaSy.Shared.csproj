@@ -53,7 +53,6 @@
     <Compile Include="Infrastructure\FachkonzeptA.cs" />
     <Compile Include="Infrastructure\FachkonzeptB.cs" />
     <Compile Include="Infrastructure\Helper.cs" />
-    <Compile Include="Infrastructure\StringConverter.cs" />
     <Compile Include="Infrastructure\Validator.cs" />
     <Compile Include="Models\Interfaces\IFachkonzept.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

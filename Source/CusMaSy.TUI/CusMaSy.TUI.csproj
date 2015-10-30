@@ -46,7 +46,7 @@
     <Compile Include="Infrastructure\ConsoleWriter.cs" />
     <Compile Include="Infrastructure\InputInterpreter.cs" />
     <Compile Include="Infrastructure\Menu.cs" />
-    <Compile Include="Infrastructure\StatementWorker.cs" />
+    <Compile Include="Infrastructure\AnlageWorker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
