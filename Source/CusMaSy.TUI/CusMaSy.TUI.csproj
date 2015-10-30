@@ -43,12 +43,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\ConsoleWriter.cs" />
+    <Compile Include="Infrastructure\InputInterpreter.cs" />
     <Compile Include="Infrastructure\Menu.cs" />
+    <Compile Include="Infrastructure\StatementWorker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CusMaSy.Shared\CusMaSy.Shared.csproj">
+      <Project>{d3702900-387a-4d0e-8d67-29ba181a4636}</Project>
+      <Name>CusMaSy.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

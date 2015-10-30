@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CusMaSy.TUI.Infrastructure
 {
@@ -10,22 +6,21 @@ namespace CusMaSy.TUI.Infrastructure
     {
         internal static void ShowMenu()
         {
-            Console.WriteLine("\t Anbieter-Menü:");
-            Console.WriteLine("-1 Anbieter anzeigen - Eingabe: ana");
-            Console.WriteLine("-2 Anbieter suchen - Eingabe: ans");
-            Console.WriteLine("-3 Anbieterdetails bearbeiten - Eingabe: anbe");
-            Console.WriteLine("-4 Anbieter anlegen - Eingabe: an1e");
-            Console.WriteLine("-5 Anbieter löschen - Eingabe: anlo");
-            Console.WriteLine("-6 Anbieter andere Anbieter zuordnen - Eingabe: anzu");
+            ConsoleWriter.WriteHeadline("Anbieter-Menü");
+            ConsoleWriter.WirteMenuPoint("Anbieter anzeigen", "anaz");
+            ConsoleWriter.WirteMenuPoint("Anbieter suchen", "ansu");
+            ConsoleWriter.WirteMenuPoint("Anbieterdetails bearbeiten", "anbe");
+            ConsoleWriter.WirteMenuPoint("Anbieter anlegen", "anle");
+            ConsoleWriter.WirteMenuPoint("Anbieter löschen", "anlo");
+            ConsoleWriter.WirteMenuPoint("Anbieter zuordnen", "anzu");
+            ConsoleWriter.WirteMenuPoint("Hilfe anzeigen", "hilfe");
         }
 
         internal static void ShowHelp()
         {
-            Console.WriteLine("\t Hilfe:");
-            Console.WriteLine("-1 Anbieter-Menü anzeigen lassen: - Eingabe: anme");
-            Console.WriteLine("-2 Anwendung beenden: - Eingabe: end");
-
-
+            ConsoleWriter.WriteHeadline("Hilfe");
+            ConsoleWriter.WirteMenuPoint("Anbieter-Menü anzeigen", "anme");
+            ConsoleWriter.WirteMenuPoint("Anwendung beenden", "ende");
         }
     }
 }

@@ -10,9 +10,9 @@ namespace CusMaSy.Shared.Infrastructure
 
         Connector _connector;
 
-        public FachkonzeptB(Connector connector)
+        public FachkonzeptB()
         {
-            _connector = connector;
+            _connector = new Connector();
         }
 
         public void RemoveZuordnung(long hostNr, long clientNr)
