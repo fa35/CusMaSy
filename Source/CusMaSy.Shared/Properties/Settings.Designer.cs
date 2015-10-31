@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CusMaSy.Project.Properties {
+namespace CusMaSy.Shared.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
