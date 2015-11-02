@@ -22,7 +22,7 @@ namespace CusMaSy.Shared.Infrastructure
 
         public List<Anbieter> GetAllAnbieter()
         {
-            throw new NotImplementedException();
+            return _connector.GetAllAnbieter();
         }
 
         public List<Anbieter_Zuordnung> GetAllZuordnungenByAnbietersNrs(List<long> anbietersNrs)
@@ -32,7 +32,7 @@ namespace CusMaSy.Shared.Infrastructure
 
         public int GetAnbieterTypNrByBool(bool isKaufmann)
         {
-            throw new NotImplementedException();
+            return _connector.GetAnbieterTypNr(isKaufmann);
         }
 
         public List<Ort> GetOrte(List<long> orteNrs)
@@ -42,12 +42,7 @@ namespace CusMaSy.Shared.Infrastructure
 
         public long GetOrtNr(Ort ort)
         {
-            throw new NotImplementedException();
-        }
-
-        public Anbieter[] LadeAnbieter(long? anbieterNr = default(long?), string firma = null)
-        {
-            throw new NotImplementedException();
+            return _connector.InsertOrUpdateOrt(ort);
         }
 
         public void RemoveAnbieter(long anbieterNr)
@@ -57,12 +52,12 @@ namespace CusMaSy.Shared.Infrastructure
 
         public void SaveAnbieter(Anbieter anbieter)
         {
-            throw new NotImplementedException();
+            _connector.InsertAnbieter(anbieter);
         }
 
         public void SaveState(string input)
         {
-            throw new NotImplementedException();
+            _connector.InsertOrUpdateOrt(new Ort { Land = input, PLZ = 0, Ort1 = string.Empty });
         }
 
 

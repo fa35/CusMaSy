@@ -132,7 +132,7 @@ namespace CusMaSy.TUI.Infrastructure
 
         internal void ShowAllAnbieters()
         {
-            var anbieters = _fachkonzept.LadeAnbieter();
+            var anbieters = _fachkonzept.GetAllAnbieter();
 
             ConsoleWriter.WriteHeadline("Alle Anbieter");
 
