@@ -33,14 +33,13 @@ namespace CusMaSy.TUI
                     return;
             }
 
+            var title = Helper.GetTitle("CusMaSy-TUI");
+            Console.WriteLine("***\t" + title + "\t***");
+            Menu.ShowMenu();
+
+            var interpreter = new InputInterpreter(fachkonzept);
             while (true)
             {
-                var interpreter = new InputInterpreter(fachkonzept);
-
-                var title = Helper.GetTitle("CusMaSy-TUI");
-                Console.WriteLine("***\t" + title + "\t***" + Environment.NewLine);
-
-                Menu.ShowMenu();
                 interpreter.Read(Console.ReadLine());
             }
         }

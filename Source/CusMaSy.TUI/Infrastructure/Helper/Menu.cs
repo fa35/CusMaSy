@@ -6,6 +6,7 @@ namespace CusMaSy.TUI.Infrastructure.Helper
     {
         internal static void ShowMenu()
         {
+            Console.Write(Environment.NewLine);
             ConsoleWriter.WriteHeadline("Anbieter-Menü");
             ConsoleWriter.WirteMenuPoint("Anbieter anzeigen", "anaz");
             ConsoleWriter.WirteMenuPoint("Anbieter suchen", "ansu");
@@ -13,7 +14,7 @@ namespace CusMaSy.TUI.Infrastructure.Helper
             ConsoleWriter.WirteMenuPoint("Anbieter anlegen", "anle");
             ConsoleWriter.WirteMenuPoint("Anbieter löschen", "anlo");
             ConsoleWriter.WirteMenuPoint("Anbieter zuordnen", "anzu");
-            ConsoleWriter.WirteMenuPoint("Zuordnen löschen", "zulo");
+            ConsoleWriter.WirteMenuPoint("Zuordnung löschen", "zulo");
             ConsoleWriter.WirteMenuPoint("Hilfe anzeigen", "hilfe");
         }
 

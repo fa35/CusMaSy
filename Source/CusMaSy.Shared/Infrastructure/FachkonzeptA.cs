@@ -106,5 +106,10 @@ namespace CusMaSy.Shared.Infrastructure
         {
             return _connector.GetAnbieterByName(anbieterName);
         }
+
+        public string GetAnbieterNameByAnbieterNr(long anbieterNr)
+        {
+            return _connector.GetAnbieterByNr(anbieterNr).Firma;
+        }
     }
 }

@@ -100,6 +100,8 @@ namespace CusMaSy.TUI.Infrastructure.Worker
 
             Console.Clear();
             Console.WriteLine("Anbieter erfolgreich angelegt");
+            Menu.ShowMenu();
+
         }
 
 
@@ -131,6 +133,8 @@ namespace CusMaSy.TUI.Infrastructure.Worker
             {
                 Console.WriteLine("Zuordnung bestand bereits");
             }
+
+            Menu.ShowMenu();
         }
     }
 }

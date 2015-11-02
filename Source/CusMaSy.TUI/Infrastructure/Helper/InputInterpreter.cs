@@ -22,6 +22,8 @@ namespace CusMaSy.TUI.Infrastructure.Helper
 
         internal void Read(string input)
         {
+            Console.Clear();
+
             switch (input)
             {
                 case "anaz":
@@ -57,6 +59,7 @@ namespace CusMaSy.TUI.Infrastructure.Helper
                     break;
                 default:
                     Console.WriteLine(Environment.NewLine + "===> Eingabe konnte nicht geleselen werden !!!" + Environment.NewLine);
+                    Menu.ShowMenu();
                     break;
             }
         }
