@@ -42,6 +42,12 @@ namespace CusMaSy.TUI.Infrastructure.Worker
 
             var anbieterNr = long.Parse(anbieterNrString);
 
+            if (!Validator.CheckAnbieterNrExists(anbieterNr, _fachkonzept))
+            {
+                Console.WriteLine("Die Anbieternummer existiert nicht.");
+                Menu.ShowMenu();
+            }
+
             // mögliche zurodnungen
 
             var zuordnungen = _fachkonzept.GetAllZuordnungenByAnbietersNrs(new List<long> { anbieterNr });
@@ -53,14 +59,8 @@ namespace CusMaSy.TUI.Infrastructure.Worker
                 return;
             }
 
-            Console.WriteLine(Environment.NewLine + "Zuordnungen" + Environment.NewLine);
-
-
-            foreach (var zuordnung in zuordnungen)
-            {
-                var name = _fachkonzept.GetAnbieterNameByAnbieterNr(zuordnung.pf_ClientAnbieter_Nr);
-                Console.WriteLine(zuordnung.pf_ClientAnbieter_Nr + " | " + name);
-            }
+            var anbieterNrsToAnbieterNamenDic = _fachkonzept.GetAnbieterNameByAnbieterNr(zuordnungen.Select(z => z.pf_ClientAnbieter_Nr).ToList());
+            ConsoleWriter.WriteZurorndungen(zuordnungen, anbieterNrsToAnbieterNamenDic);
 
             Console.WriteLine(Environment.NewLine + "Auswahl:");
 

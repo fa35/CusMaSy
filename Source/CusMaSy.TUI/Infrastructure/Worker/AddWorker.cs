@@ -115,6 +115,13 @@ namespace CusMaSy.TUI.Infrastructure.Worker
 
             var anbieterNr = long.Parse(anbieterNrString);
 
+            if (!Validator.CheckAnbieterNrExists(anbieterNr, _fachkonzept))
+            {
+                Console.WriteLine("Die Anbieternummer existiert nicht");
+                Menu.ShowMenu();
+                return;
+            }
+
             var clientNrString = ConsoleWriter.WriteInputStatement("zuzuordnende Anbieternummer");
             while (string.IsNullOrWhiteSpace(clientNrString) && Validator.CheckStringIsLong(clientNrString) == false)
                 clientNrString = ConsoleWriter.WriteInputStatement("zuzuordnende Anbieternummer");

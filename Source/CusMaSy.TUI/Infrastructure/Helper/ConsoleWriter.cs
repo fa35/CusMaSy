@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CusMaSy.Shared.Data;
+using System;
+using System.Collections.Generic;
 
 namespace CusMaSy.TUI.Infrastructure.Helper
 {
@@ -18,6 +20,18 @@ namespace CusMaSy.TUI.Infrastructure.Helper
         {
             Console.Write(String.Format("{0} eingeben: ", content));
             return Console.ReadLine();
+        }
+
+        internal static void WriteZurorndungen(List<Anbieter_Zuordnung> zuordnungen, Dictionary<long, string> anbieterNrAnbieterNameDic)
+        {
+            Console.WriteLine(Environment.NewLine + "Zuordnungen" + Environment.NewLine);
+
+            foreach (var zuordnung in zuordnungen)
+            {
+                var name = string.Empty;
+                anbieterNrAnbieterNameDic.TryGetValue(zuordnung.pf_ClientAnbieter_Nr, out name);
+                Console.WriteLine(zuordnung.pf_ClientAnbieter_Nr + " | " + name);
+            }
         }
     }
 }

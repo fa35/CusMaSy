@@ -204,13 +204,8 @@ namespace CusMaSy.TUI.Infrastructure.Worker
             if (relations == null || !relations.Any())
                 return;
 
-            ConsoleWriter.WriteHeadline(Environment.NewLine + "Anbieterzurodnungen zu Anbieter '" + anbieter.Firma + "'");
-
-            foreach (var rel in relations)
-            {
-                var relName = _fachkonzept.GetAnbieterNameByAnbieterNr(rel.pf_ClientAnbieter_Nr);
-                Console.WriteLine(rel.pf_ClientAnbieter_Nr + " | " + relName);
-            }
+            var anbieterNrsToAnbieterNamenDic = _fachkonzept.GetAnbieterNameByAnbieterNr(relations.Select(z => z.pf_ClientAnbieter_Nr).ToList());
+            ConsoleWriter.WriteZurorndungen(relations, anbieterNrsToAnbieterNamenDic);
         }
     }
 }

@@ -15,6 +15,7 @@ namespace CusMaSy.TUI.Infrastructure.Helper
             ConsoleWriter.WirteMenuPoint("Anbieter löschen", "anlo");
             ConsoleWriter.WirteMenuPoint("Anbieter zuordnen", "anzu");
             ConsoleWriter.WirteMenuPoint("Zuordnung löschen", "zulo");
+            ConsoleWriter.WirteMenuPoint("Anwendung beenden", "ende");
             ConsoleWriter.WirteMenuPoint("Hilfe anzeigen", "hilfe");
         }
 

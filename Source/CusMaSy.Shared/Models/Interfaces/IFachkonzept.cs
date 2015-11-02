@@ -28,6 +28,6 @@ namespace CusMaSy.Shared.Models.Interfaces
         bool ExistsHostClientZuordnung(long anbieterNr, long clientNr);
         Anbieter FindAnbieterByNr(long anbieterNr);
         Anbieter FindAnbieterByName(string anbieterName);
-        string GetAnbieterNameByAnbieterNr(long anbieterNr);
+        Dictionary<long, string> GetAnbieterNameByAnbieterNr(List<long> anbieterNrs);
     }
 }
