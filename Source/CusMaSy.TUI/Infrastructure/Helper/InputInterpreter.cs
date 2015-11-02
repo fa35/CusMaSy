@@ -1,8 +1,9 @@
 ﻿using CusMaSy.Shared.Models.Interfaces;
+using CusMaSy.TUI.Infrastructure.Worker;
 using System;
 using System.Threading;
 
-namespace CusMaSy.TUI.Infrastructure
+namespace CusMaSy.TUI.Infrastructure.Helper
 {
     internal class InputInterpreter
     {

@@ -1,9 +1,10 @@
 ﻿using CusMaSy.Shared.Data;
 using CusMaSy.Shared.Infrastructure;
 using CusMaSy.Shared.Models.Interfaces;
+using CusMaSy.TUI.Infrastructure.Helper;
 using System;
 
-namespace CusMaSy.TUI.Infrastructure
+namespace CusMaSy.TUI.Infrastructure.Worker
 {
     internal class AddWorker
     {

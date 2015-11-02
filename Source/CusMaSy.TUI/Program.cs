@@ -1,7 +1,7 @@
 ﻿using System;
-using CusMaSy.TUI.Infrastructure;
 using CusMaSy.Shared.Infrastructure;
 using CusMaSy.Shared.Models.Interfaces;
+using CusMaSy.TUI.Infrastructure.Helper;
 
 namespace CusMaSy.TUI
 {

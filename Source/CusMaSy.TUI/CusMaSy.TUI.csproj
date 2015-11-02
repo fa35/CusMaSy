@@ -43,12 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Infrastructure\ConsoleWriter.cs" />
-    <Compile Include="Infrastructure\DeleteWorker.cs" />
-    <Compile Include="Infrastructure\GeneralWorker.cs" />
-    <Compile Include="Infrastructure\InputInterpreter.cs" />
-    <Compile Include="Infrastructure\Menu.cs" />
-    <Compile Include="Infrastructure\AddWorker.cs" />
+    <Compile Include="Infrastructure\Helper\ConsoleWriter.cs" />
+    <Compile Include="Infrastructure\Worker\DeleteWorker.cs" />
+    <Compile Include="Infrastructure\Worker\GeneralWorker.cs" />
+    <Compile Include="Infrastructure\Helper\InputInterpreter.cs" />
+    <Compile Include="Infrastructure\Helper\Menu.cs" />
+    <Compile Include="Infrastructure\Worker\AddWorker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

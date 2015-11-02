@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CusMaSy.TUI.Infrastructure
+namespace CusMaSy.TUI.Infrastructure.Helper
 {
     class Menu
     {

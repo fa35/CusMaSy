@@ -1,13 +1,12 @@
 ﻿using CusMaSy.Shared.Data;
 using CusMaSy.Shared.Infrastructure;
 using CusMaSy.Shared.Models.Interfaces;
+using CusMaSy.TUI.Infrastructure.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace CusMaSy.TUI.Infrastructure
+namespace CusMaSy.TUI.Infrastructure.Worker
 {
     internal class GeneralWorker
     {
