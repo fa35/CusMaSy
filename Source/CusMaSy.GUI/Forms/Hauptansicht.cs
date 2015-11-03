@@ -266,8 +266,7 @@ namespace CusMaSy.GUI.Forms
                         Strasse = row.Cells[7].Value.ToString(),
                         Hausnummer = row.Cells[8].Value.ToString(),
                         f_Ort_Nr = ortNr,                        
-                        f_AnbieterTyp_Nr = AnbieterTypConverter.ToAnbieterTypNr(row.Cells[12].Value.ToString())
-                        
+                        f_AnbieterTyp_Nr = AnbieterTypConverter.ToAnbieterTypNr(row.Cells[12].Value.ToString())                        
                     };
 
                     _fachkonzept.UpdateAnbieter(anbieter);
