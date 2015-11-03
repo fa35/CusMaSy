@@ -1,4 +1,5 @@
-﻿using CusMaSy.Shared.Models.Interfaces;
+﻿using CusMaSy.Shared.Models;
+using CusMaSy.Shared.Models.Interfaces;
 using CusMaSy.TUI.Infrastructure.Worker;
 using System;
 using System.Threading;
@@ -58,8 +59,7 @@ namespace CusMaSy.TUI.Infrastructure.Helper
                     Thread.CurrentThread.Abort(); // narg
                     break;
                 default:
-                    Console.WriteLine(Environment.NewLine + "===> Eingabe konnte nicht geleselen werden !!!" + Environment.NewLine);
-                    Menu.ShowMenu();
+                    ConsoleWriter.WriteUserFeedback("Eingabe konnte nicht geleselen werden !!!", StatusFeedback.Negativ);
                     break;
             }
         }

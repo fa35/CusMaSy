@@ -1,4 +1,5 @@
 ﻿using CusMaSy.Shared.Data;
+using CusMaSy.Shared.Models;
 using System;
 using System.Collections.Generic;
 
@@ -32,6 +33,29 @@ namespace CusMaSy.TUI.Infrastructure.Helper
                 anbieterNrAnbieterNameDic.TryGetValue(zuordnung.pf_ClientAnbieter_Nr, out name);
                 Console.WriteLine(zuordnung.pf_ClientAnbieter_Nr + " | " + name);
             }
+        }
+
+        internal static void WriteUserFeedback(string message, StatusFeedback status)
+        {
+            Console.Clear();
+
+            switch (status)
+            {
+                case StatusFeedback.Info:
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    break;
+                case StatusFeedback.Negativ:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    break;
+                case StatusFeedback.Positiv:
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    break;
+            }
+
+            Console.WriteLine(Environment.NewLine + message);
+            Console.ForegroundColor = ConsoleColor.White;
+
+            Menu.ShowMenu();
         }
     }
 }

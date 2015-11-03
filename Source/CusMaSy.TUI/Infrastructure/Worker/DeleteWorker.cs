@@ -1,4 +1,5 @@
 ﻿using CusMaSy.Shared.Infrastructure;
+using CusMaSy.Shared.Models;
 using CusMaSy.Shared.Models.Interfaces;
 using CusMaSy.TUI.Infrastructure.Helper;
 using System;
@@ -28,9 +29,7 @@ namespace CusMaSy.TUI.Infrastructure.Worker
             // theoretisch könnte es auch sein, das der anbieter nicht existiert -> sollte man noch prüfen
             _fachkonzept.RemoveAnbieter(anbieterNr);
 
-            Console.Clear();
-            Console.WriteLine("Anbieter erfolgreich gelöscht!");
-            Menu.ShowMenu();
+            ConsoleWriter.WriteUserFeedback("Anbieter erfolgreich gelöscht!", StatusFeedback.Positiv);
         }
 
         internal void DeleteZuordnung()
@@ -44,8 +43,7 @@ namespace CusMaSy.TUI.Infrastructure.Worker
 
             if (!Validator.CheckAnbieterNrExists(anbieterNr, _fachkonzept))
             {
-                Console.WriteLine("Die Anbieternummer existiert nicht.");
-                Menu.ShowMenu();
+                ConsoleWriter.WriteUserFeedback("Die Anbieternummer existiert nicht.", StatusFeedback.Info);
             }
 
             // mögliche zurodnungen
@@ -54,7 +52,7 @@ namespace CusMaSy.TUI.Infrastructure.Worker
 
             if (zuordnungen == null || !zuordnungen.Any())
             {
-                Console.WriteLine("Dieser Anbieter hat keine Zuordnungen");
+                ConsoleWriter.WriteUserFeedback("Dieser Anbieter hat keine Zuordnungen", StatusFeedback.Info);
                 Menu.ShowMenu();
                 return;
             }
@@ -74,16 +72,12 @@ namespace CusMaSy.TUI.Infrastructure.Worker
 
                 // theoretisch könnte zurodnung nicht exisiestieren --> sollte man prüfen
                 _fachkonzept.RemoveZuordnung(anbieterNr, clientNr);
-                Console.Clear();
-                ConsoleWriter.WriteHeadline("Zuordnung erfolgreich gelöschen");
+                ConsoleWriter.WriteUserFeedback("Zuordnung erfolgreich gelöschen", StatusFeedback.Positiv);
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Konnte Zuordnung nicht löschen!");
+                ConsoleWriter.WriteUserFeedback("Konnte Zuordnung nicht löschen!", StatusFeedback.Negativ);
             }
-
-            Menu.ShowMenu();
-
         }
     }
 }

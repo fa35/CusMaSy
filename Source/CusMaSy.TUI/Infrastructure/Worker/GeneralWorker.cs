@@ -1,5 +1,6 @@
 ﻿using CusMaSy.Shared.Data;
 using CusMaSy.Shared.Infrastructure;
+using CusMaSy.Shared.Models;
 using CusMaSy.Shared.Models.Interfaces;
 using CusMaSy.TUI.Infrastructure.Helper;
 using System;
@@ -35,11 +36,7 @@ namespace CusMaSy.TUI.Infrastructure.Worker
                 anbieter = _fachkonzept.FindAnbieterByName(anbieterString);
 
             if (anbieter == null)
-            {
-                Console.WriteLine("Anbieter konnte nicht gefunden werden. Leider ist keine Änderung der Details möglich");
-                Menu.ShowMenu();
-            }
-
+                ConsoleWriter.WriteUserFeedback("Anbieter konnte nicht gefunden werden. Es ist keine Änderung der Details möglich.", StatusFeedback.Negativ);
 
             ShowAnbieterDetails(anbieter);
 
@@ -123,10 +120,7 @@ namespace CusMaSy.TUI.Infrastructure.Worker
             // anbieter speichern
             _fachkonzept.UpdateAnbieter(anbieter);
 
-            Console.Clear();
-            Console.WriteLine("Anbieter erfolgreich abgeändert");
-
-            Menu.ShowMenu();
+            ConsoleWriter.WriteUserFeedback("Anbieter erfolgreich abgeändert", StatusFeedback.Positiv);
         }
 
         internal void ShowAllAnbieters()
@@ -162,15 +156,10 @@ namespace CusMaSy.TUI.Infrastructure.Worker
                 anbieter = _fachkonzept.FindAnbieterByName(anbieterString);
 
             if (anbieter == null)
-            {
-                Console.WriteLine("Anbieter konnte nicht gefunden werden.");
-            }
-            else
-            {
-                // theoretisch sollte man noch den ort laden
-                ShowAnbieterDetails(anbieter);
-            }
+                ConsoleWriter.WriteUserFeedback("Anbieter konnte nicht gefunden werden.", StatusFeedback.Info);
 
+            // theoretisch sollte man noch den ort laden
+            ShowAnbieterDetails(anbieter);
             Menu.ShowMenu();
         }
 

@@ -1,5 +1,6 @@
 ﻿using CusMaSy.Shared.Data;
 using CusMaSy.Shared.Infrastructure;
+using CusMaSy.Shared.Models;
 using CusMaSy.Shared.Models.Interfaces;
 using CusMaSy.TUI.Infrastructure.Helper;
 using System;
@@ -98,10 +99,7 @@ namespace CusMaSy.TUI.Infrastructure.Worker
             // anbieter speichern
             _fachkonzept.SaveAnbieter(a);
 
-            Console.Clear();
-            Console.WriteLine("Anbieter erfolgreich angelegt");
-            Menu.ShowMenu();
-
+            ConsoleWriter.WriteUserFeedback("Anbieter '" + a.Firma + "' erfolgreich angelegt!", StatusFeedback.Positiv);
         }
 
 
@@ -117,8 +115,7 @@ namespace CusMaSy.TUI.Infrastructure.Worker
 
             if (!Validator.CheckAnbieterNrExists(anbieterNr, _fachkonzept))
             {
-                Console.WriteLine("Die Anbieternummer existiert nicht");
-                Menu.ShowMenu();
+                ConsoleWriter.WriteUserFeedback("Anbieternummer '" + anbieterNr + "' existiert nicht!", StatusFeedback.Info);
                 return;
             }
 
@@ -131,17 +128,11 @@ namespace CusMaSy.TUI.Infrastructure.Worker
             Console.Clear();
 
             // check if zuordnung exists
-            if (!_fachkonzept.ExistsHostClientZuordnung(anbieterNr, clientNr))
-            {
-                _fachkonzept.SaveZuordnung(anbieterNr, clientNr);
-                Console.WriteLine("Zuordnung erfolgreich angelegt");
-            }
-            else
-            {
-                Console.WriteLine("Zuordnung bestand bereits");
-            }
+            if (_fachkonzept.ExistsHostClientZuordnung(anbieterNr, clientNr))
+                ConsoleWriter.WriteUserFeedback("Zuordnung bestand bereits!", StatusFeedback.Info);
 
-            Menu.ShowMenu();
+            _fachkonzept.SaveZuordnung(anbieterNr, clientNr);
+            ConsoleWriter.WriteUserFeedback("Zuordnung erfolgreich angelegt!", StatusFeedback.Positiv);
         }
     }
 }
