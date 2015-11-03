@@ -8,11 +8,11 @@ namespace CusMaSy.Project
         {
             new System.Threading.Thread(() =>
             {
-                System.Windows.Forms.Application.Run(new CusMaSy.GUI.Forms.Hauptansicht(new FachkonzeptA()));
-                // TUI.Program.Main(new[] { "FachkonzeptA" });
+                //System.Windows.Forms.Application.Run(new CusMaSy.GUI.Forms.Hauptansicht(new FachkonzeptA()));
+                TUI.Program.Main(new[] { "FachkonzeptA" });
             }).Start();
 
-            System.Windows.Forms.Application.Exit();
+             //System.Windows.Forms.Application.Exit();
         }
 
     }
