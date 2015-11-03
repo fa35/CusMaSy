@@ -246,9 +246,9 @@ namespace CusMaSy.GUI.Forms
                 {
                     var ort = new Ort
                     {
-                        PLZ = int.Parse(row.Cells[7].Value.ToString()),
-                        Ort1 = row.Cells[8].Value.ToString(),
-                        Land = row.Cells[9].Value.ToString()
+                        PLZ = int.Parse(row.Cells[9].Value.ToString()),
+                        Ort1 = row.Cells[10].Value.ToString(),
+                        Land = row.Cells[11].Value.ToString()
                     };
 
                     // nach ort suchen
@@ -258,15 +258,16 @@ namespace CusMaSy.GUI.Forms
                     {
                         p_Anbieter_Nr = long.Parse(row.Cells[0].Value.ToString()),
                         Firma = row.Cells[1].Value.ToString(),
-                        Steuernummer = row.Cells[2].Value.ToString(),
-                        f_AnbieterTyp_Nr = AnbieterTypConverter.ToAnbieterTypNr(row.Cells[3].Value.ToString()),
-                        Branche = row.Cells[4].Value.ToString(),
-                        Strasse = row.Cells[5].Value.ToString(),
-                        f_Ort_Nr = ortNr,
-                        Hausnummer = row.Cells[6].Value.ToString(),
-                        Mailadresse = row.Cells[10].Value.ToString(),
-                        Telefonnummer = row.Cells[11].Value.ToString(),
-                        Homepage = row.Cells[12].Value.ToString()
+                        Homepage = row.Cells[2].Value.ToString(),
+                        Mailadresse = row.Cells[3].Value.ToString(),                        
+                        Telefonnummer = row.Cells[4].Value.ToString(),
+                        Steuernummer = row.Cells[5].Value.ToString(),                        
+                        Branche = row.Cells[6].Value.ToString(),
+                        Strasse = row.Cells[7].Value.ToString(),
+                        Hausnummer = row.Cells[8].Value.ToString(),
+                        f_Ort_Nr = ortNr,                        
+                        f_AnbieterTyp_Nr = AnbieterTypConverter.ToAnbieterTypNr(row.Cells[12].Value.ToString())
+                        
                     };
 
                     _fachkonzept.UpdateAnbieter(anbieter);
