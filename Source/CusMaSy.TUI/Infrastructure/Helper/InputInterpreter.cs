@@ -47,10 +47,6 @@ namespace CusMaSy.TUI.Infrastructure.Helper
                 case "zulo":
                     _deleteWorker.DeleteZuordnung();
                     break;
-
-                case "hilfe":
-                    Menu.ShowHelp();
-                    break;
                 case "anme":
                     Menu.ShowMenu();
                     break;

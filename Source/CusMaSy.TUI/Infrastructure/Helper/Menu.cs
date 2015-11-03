@@ -17,13 +17,9 @@ namespace CusMaSy.TUI.Infrastructure.Helper
             ConsoleWriter.WirteMenuPoint("Zuordnung löschen", "zulo");
             ConsoleWriter.WirteMenuPoint("Anwendung beenden", "ende");
             ConsoleWriter.WirteMenuPoint("Hilfe anzeigen", "hilfe");
+
+            ConsoleWriter.WriteSpecial("Sie können jederzeit eine Aktion abbrechen indem Sie 'abbr' eintippen");
         }
 
-        internal static void ShowHelp()
-        {
-            ConsoleWriter.WriteHeadline("Hilfe");
-            ConsoleWriter.WirteMenuPoint("Anbieter-Menü anzeigen", "anme");
-            ConsoleWriter.WirteMenuPoint("Anwendung beenden", "ende");
-        }
     }
 }

@@ -33,6 +33,13 @@ namespace CusMaSy.TUI.Infrastructure.Helper
             return Console.ReadLine();
         }
 
+        internal static void WriteSpecial(string content)
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine(Environment.NewLine + content);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
         internal static void WriteZurorndungen(List<Anbieter_Zuordnung> zuordnungen, Dictionary<long, string> anbieterNrAnbieterNameDic)
         {
             Console.WriteLine(Environment.NewLine + "Zuordnungen" + Environment.NewLine);
