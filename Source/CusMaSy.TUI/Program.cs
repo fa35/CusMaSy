@@ -35,6 +35,8 @@ namespace CusMaSy.TUI
 
             var title = Helper.GetTitle("CusMaSy-TUI");
             Console.WriteLine("***\t" + title + "\t***");
+
+
             Menu.ShowMenu();
 
             var interpreter = new InputInterpreter(fachkonzept);
@@ -46,7 +48,10 @@ namespace CusMaSy.TUI
 
         private static void NoFachkonzept()
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("==> Das Fachkonzept konnte nicht ausgewählt werden!!!");
+            Console.ForegroundColor = ConsoleColor.White;
+
             Console.WriteLine("Anwendung beenden mit Enter");
             Console.ReadKey();
         }
