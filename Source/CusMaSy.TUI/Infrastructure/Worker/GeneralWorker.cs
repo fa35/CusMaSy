@@ -97,8 +97,10 @@ namespace CusMaSy.TUI.Infrastructure.Worker
                 anbieter = _fachkonzept.FindAnbieterByName(anbieterString);
 
             if (anbieter == null)
+            {
                 ConsoleWriter.WriteUserFeedback("Anbieter konnte nicht gefunden werden.", StatusFeedback.Info);
-
+                return;
+            }
             // theoretisch sollte man noch den ort laden
             ShowAnbieterDetails(anbieter);
             Menu.ShowMenu();
