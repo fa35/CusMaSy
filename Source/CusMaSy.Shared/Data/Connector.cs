@@ -70,6 +70,11 @@ namespace CusMaSy.Shared.Data
                 var anbieter = dc.Anbieters.FirstOrDefault(a => a.p_Anbieter_Nr == anbieterNr);
                 if (anbieter != null)
                     dc.Anbieters.DeleteOnSubmit(anbieter);
+
+                var relations = dc.Anbieter_Zuordnungs.Where(p => p.pf_ClientAnbieter_Nr == anbieter.p_Anbieter_Nr || p.pf_HostAnbieter_Nr == anbieter.p_Anbieter_Nr).ToList();
+                if (relations != null)
+                    dc.Anbieter_Zuordnungs.DeleteAllOnSubmit(relations);
+
                 dc.SubmitChanges();
             }
         }
