@@ -1,4 +1,6 @@
-﻿namespace CusMaSy.Shared.Infrastructure
+﻿using CusMaSy.Shared.Models.Interfaces;
+
+namespace CusMaSy.Shared.Infrastructure
 {
     public static class Validator
     {
@@ -43,6 +45,15 @@
                 return true;
 
             return false;
+        }
+
+        public static bool CheckAnbieterNrExists(long anbieterNr, IFachkonzept fachkonzept)
+        {
+            var anbieter = fachkonzept.FindAnbieterByNr(anbieterNr);
+
+            if (anbieter == null)
+                return false;
+            return true;
         }
     }
 }

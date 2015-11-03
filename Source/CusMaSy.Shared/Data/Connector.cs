@@ -43,7 +43,14 @@ namespace CusMaSy.Shared.Data
         }
 
 
-
+        internal Dictionary<long, string> GetAnbieterNamesByAnbieterNrs(List<long> anbieterNrs)
+        {
+            using (var dc = new CusMaSyDataContext(_conStr))
+            {
+                return dc.Anbieters.Where(q => anbieterNrs.Contains(q.p_Anbieter_Nr))
+                    .ToDictionary(key => key.p_Anbieter_Nr, value => value.Firma);
+            }
+        }
 
         long InsertOrt(Ort ort)
         {

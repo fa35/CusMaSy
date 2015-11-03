@@ -1,8 +1,9 @@
 ﻿using CusMaSy.Shared.Models.Interfaces;
+using CusMaSy.TUI.Infrastructure.Worker;
 using System;
 using System.Threading;
 
-namespace CusMaSy.TUI.Infrastructure
+namespace CusMaSy.TUI.Infrastructure.Helper
 {
     internal class InputInterpreter
     {
@@ -21,6 +22,8 @@ namespace CusMaSy.TUI.Infrastructure
 
         internal void Read(string input)
         {
+            Console.Clear();
+
             switch (input)
             {
                 case "anaz":
@@ -56,6 +59,7 @@ namespace CusMaSy.TUI.Infrastructure
                     break;
                 default:
                     Console.WriteLine(Environment.NewLine + "===> Eingabe konnte nicht geleselen werden !!!" + Environment.NewLine);
+                    Menu.ShowMenu();
                     break;
             }
         }

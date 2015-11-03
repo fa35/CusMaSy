@@ -1,13 +1,12 @@
 ﻿using CusMaSy.Shared.Data;
 using CusMaSy.Shared.Infrastructure;
 using CusMaSy.Shared.Models.Interfaces;
+using CusMaSy.TUI.Infrastructure.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace CusMaSy.TUI.Infrastructure
+namespace CusMaSy.TUI.Infrastructure.Worker
 {
     internal class GeneralWorker
     {
@@ -38,7 +37,7 @@ namespace CusMaSy.TUI.Infrastructure
             if (anbieter == null)
             {
                 Console.WriteLine("Anbieter konnte nicht gefunden werden. Leider ist keine Änderung der Details möglich");
-                return;
+                Menu.ShowMenu();
             }
 
 
@@ -46,55 +45,54 @@ namespace CusMaSy.TUI.Infrastructure
 
             ConsoleWriter.WriteHeadline("Veränderungen eingeben");
 
-            var a = new Anbieter();
             var ort = new Ort();
 
             var firma = ConsoleWriter.WriteInputStatement("Firma");
             while (string.IsNullOrWhiteSpace(firma))
                 firma = ConsoleWriter.WriteInputStatement("Firma");
-            a.Firma = firma;
+            anbieter.Firma = firma;
 
 
             var steuerNr = ConsoleWriter.WriteInputStatement("Steuernummer");
             while (string.IsNullOrWhiteSpace(steuerNr))
                 steuerNr = ConsoleWriter.WriteInputStatement("Steuernummer");
-            a.Steuernummer = steuerNr;
+            anbieter.Steuernummer = steuerNr;
 
 
             var branche = ConsoleWriter.WriteInputStatement("Branche");
             while (string.IsNullOrWhiteSpace(branche))
                 branche = ConsoleWriter.WriteInputStatement("Branche");
-            a.Branche = branche;
+            anbieter.Branche = branche;
 
 
             var homepage = ConsoleWriter.WriteInputStatement("Homepage");
             while (string.IsNullOrWhiteSpace(homepage) || Validator.CheckHomepage(homepage) == false)
                 homepage = ConsoleWriter.WriteInputStatement("Homepage");
-            a.Homepage = homepage;
+            anbieter.Homepage = homepage;
 
 
             var teleNr = ConsoleWriter.WriteInputStatement("Telefonnummer");
             while (string.IsNullOrWhiteSpace(teleNr))
                 teleNr = ConsoleWriter.WriteInputStatement("Telefonnummer");
-            a.Telefonnummer = teleNr;
+            anbieter.Telefonnummer = teleNr;
 
 
             var mailAdr = ConsoleWriter.WriteInputStatement("Mailadresse");
             while (string.IsNullOrWhiteSpace(mailAdr) || Validator.CheckMailadresse(mailAdr) == false)
                 mailAdr = ConsoleWriter.WriteInputStatement("Mailadresse");
-            a.Mailadresse = mailAdr;
+            anbieter.Mailadresse = mailAdr;
 
 
             var strasse = ConsoleWriter.WriteInputStatement("Strasse");
             while (string.IsNullOrWhiteSpace(strasse))
                 strasse = ConsoleWriter.WriteInputStatement("Strasse");
-            a.Strasse = strasse;
+            anbieter.Strasse = strasse;
 
 
             var hausNr = ConsoleWriter.WriteInputStatement("Hausnummer");
             while (string.IsNullOrWhiteSpace(hausNr))
                 hausNr = ConsoleWriter.WriteInputStatement("Hausnummer");
-            a.Hausnummer = hausNr;
+            anbieter.Hausnummer = hausNr;
 
 
             var plz = ConsoleWriter.WriteInputStatement("PLZ");
@@ -117,22 +115,23 @@ namespace CusMaSy.TUI.Infrastructure
 
             while (string.IsNullOrWhiteSpace(anbieterTyp) || Validator.CheckAnbieterTyp(anbieterTyp) == false)
                 anbieterTyp = ConsoleWriter.WriteInputStatement("AnbieterTyp (Kaufmann/Privatperson)");
-            a.f_AnbieterTyp_Nr = AnbieterTypConverter.ToAnbieterTypNr(anbieterTyp);
+            anbieter.f_AnbieterTyp_Nr = AnbieterTypConverter.ToAnbieterTypNr(anbieterTyp);
 
             // ort nr holen:
-            a.f_Ort_Nr = _fachkonzept.GetOrtNr(ort);
+            anbieter.f_Ort_Nr = _fachkonzept.GetOrtNr(ort);
 
             // anbieter speichern
-            _fachkonzept.UpdateAnbieter(a);
+            _fachkonzept.UpdateAnbieter(anbieter);
 
             Console.Clear();
             Console.WriteLine("Anbieter erfolgreich abgeändert");
 
+            Menu.ShowMenu();
         }
 
         internal void ShowAllAnbieters()
         {
-            var anbieters = _fachkonzept.LadeAnbieter();
+            var anbieters = _fachkonzept.GetAllAnbieter();
 
             ConsoleWriter.WriteHeadline("Alle Anbieter");
 
@@ -140,6 +139,8 @@ namespace CusMaSy.TUI.Infrastructure
             {
                 Console.WriteLine(anbieter.p_Anbieter_Nr + " | " + anbieter.Firma);
             }
+
+            Menu.ShowMenu();
         }
 
         internal void SearchAnbieter()
@@ -163,12 +164,14 @@ namespace CusMaSy.TUI.Infrastructure
             if (anbieter == null)
             {
                 Console.WriteLine("Anbieter konnte nicht gefunden werden.");
-                return;
+            }
+            else
+            {
+                // theoretisch sollte man noch den ort laden
+                ShowAnbieterDetails(anbieter);
             }
 
-            // theoretisch sollte man noch den ort laden
-
-            ShowAnbieterDetails(anbieter);
+            Menu.ShowMenu();
         }
 
 
@@ -185,7 +188,6 @@ namespace CusMaSy.TUI.Infrastructure
             Console.WriteLine("Strasse: " + anbieter.Strasse);
             Console.WriteLine("Hausnummer: " + anbieter.Hausnummer);
 
-            // ort laden
             var orte = _fachkonzept.GetOrte(new List<long> { anbieter.f_Ort_Nr });
 
             if (!orte.Any())
@@ -194,6 +196,16 @@ namespace CusMaSy.TUI.Infrastructure
             Console.WriteLine("PLZ: " + orte.First().PLZ);
             Console.WriteLine("Ort: " + orte.First().Ort1);
             Console.WriteLine("Land: " + orte.First().Land);
+
+            // zuordnungen
+
+            var relations = _fachkonzept.GetAllZuordnungenByAnbietersNrs(new List<long> { anbieter.p_Anbieter_Nr });
+
+            if (relations == null || !relations.Any())
+                return;
+
+            var anbieterNrsToAnbieterNamenDic = _fachkonzept.GetAnbieterNameByAnbieterNr(relations.Select(z => z.pf_ClientAnbieter_Nr).ToList());
+            ConsoleWriter.WriteZurorndungen(relations, anbieterNrsToAnbieterNamenDic);
         }
     }
 }

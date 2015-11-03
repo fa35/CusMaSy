@@ -15,16 +15,9 @@ namespace CusMaSy.Shared.Infrastructure
         }
 
 
-        public Anbieter[] LadeAnbieter(long? anbieterNr = null, string firma = null)
-        {
-            throw new NotImplementedException();
-        }
-
-
         public Anbieter[] LadeByOnlineShop(long anbieterNr)
         {
-            var result = new Anbieter[0];
-            return result;
+            return new Anbieter[0];
         }
 
 
@@ -47,9 +40,6 @@ namespace CusMaSy.Shared.Infrastructure
         {
             return _connector.GetAllAnbieter();
         }
-
-
-
 
         public List<string> GetAllStates()
         {
@@ -115,6 +105,11 @@ namespace CusMaSy.Shared.Infrastructure
         public Anbieter FindAnbieterByName(string anbieterName)
         {
             return _connector.GetAnbieterByName(anbieterName);
+        }
+
+        public Dictionary<long, string> GetAnbieterNameByAnbieterNr(List<long> anbieterNrs)
+        {
+            return _connector.GetAnbieterNamesByAnbieterNrs(anbieterNrs);
         }
     }
 }

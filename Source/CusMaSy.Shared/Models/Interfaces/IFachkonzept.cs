@@ -8,8 +8,6 @@ namespace CusMaSy.Shared.Models.Interfaces
         /// <summary>
         /// Lade Anbieter mit Parametern, oder bei keinen Parametern -> lade alle Anbieter
         /// </summary>
-        Anbieter[] LadeAnbieter(long? anbieterNr = null, string firma = null);
-
         List<Anbieter> GetAllAnbieter();
 
         /// <summary>
@@ -30,5 +28,6 @@ namespace CusMaSy.Shared.Models.Interfaces
         bool ExistsHostClientZuordnung(long anbieterNr, long clientNr);
         Anbieter FindAnbieterByNr(long anbieterNr);
         Anbieter FindAnbieterByName(string anbieterName);
+        Dictionary<long, string> GetAnbieterNameByAnbieterNr(List<long> anbieterNrs);
     }
 }

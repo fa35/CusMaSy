@@ -1,9 +1,10 @@
 ﻿using CusMaSy.Shared.Data;
 using CusMaSy.Shared.Infrastructure;
 using CusMaSy.Shared.Models.Interfaces;
+using CusMaSy.TUI.Infrastructure.Helper;
 using System;
 
-namespace CusMaSy.TUI.Infrastructure
+namespace CusMaSy.TUI.Infrastructure.Worker
 {
     internal class AddWorker
     {
@@ -99,6 +100,8 @@ namespace CusMaSy.TUI.Infrastructure
 
             Console.Clear();
             Console.WriteLine("Anbieter erfolgreich angelegt");
+            Menu.ShowMenu();
+
         }
 
 
@@ -111,6 +114,13 @@ namespace CusMaSy.TUI.Infrastructure
                 anbieterNrString = ConsoleWriter.WriteInputStatement("Anbieternummer");
 
             var anbieterNr = long.Parse(anbieterNrString);
+
+            if (!Validator.CheckAnbieterNrExists(anbieterNr, _fachkonzept))
+            {
+                Console.WriteLine("Die Anbieternummer existiert nicht");
+                Menu.ShowMenu();
+                return;
+            }
 
             var clientNrString = ConsoleWriter.WriteInputStatement("zuzuordnende Anbieternummer");
             while (string.IsNullOrWhiteSpace(clientNrString) && Validator.CheckStringIsLong(clientNrString) == false)
@@ -130,6 +140,8 @@ namespace CusMaSy.TUI.Infrastructure
             {
                 Console.WriteLine("Zuordnung bestand bereits");
             }
+
+            Menu.ShowMenu();
         }
     }
 }
