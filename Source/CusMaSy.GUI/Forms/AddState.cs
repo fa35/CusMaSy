@@ -27,6 +27,13 @@ namespace CusMaSy.GUI.Forms
 
             var input = txbState.Text;
 
+            if(Validator.CheckLand(input))
+            {
+                lblWarning.Text = "Keine Zahlen oder Sonderzeichen.";
+                lblWarning.Visible = true;
+                return;
+            }
+            
             // land in db checken 
 
             if (_existingStates.Contains(input))

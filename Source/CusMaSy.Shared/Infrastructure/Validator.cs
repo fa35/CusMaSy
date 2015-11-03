@@ -1,4 +1,5 @@
 ﻿using CusMaSy.Shared.Models.Interfaces;
+using System.Text.RegularExpressions;
 
 namespace CusMaSy.Shared.Infrastructure
 {
@@ -54,6 +55,14 @@ namespace CusMaSy.Shared.Infrastructure
             if (anbieter == null)
                 return false;
             return true;
+        }
+
+        public static bool CheckLand(string content)
+        {
+            if (!string.IsNullOrWhiteSpace(content) && !Regex.IsMatch(content, @"^-?\d+$"))
+                return true;
+
+            return false;
         }
     }
 }
