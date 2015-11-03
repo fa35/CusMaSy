@@ -15,7 +15,6 @@ namespace CusMaSy.TUI.Infrastructure.Helper
         internal InputInterpreter(IFachkonzept fachkonzept)
         {
             _fachkonzept = fachkonzept;
-
             _addWorker = new AddWorker(fachkonzept);
             _deleteWorker = new DeleteWorker(fachkonzept);
             _generalWorker = new GeneralWorker(fachkonzept);

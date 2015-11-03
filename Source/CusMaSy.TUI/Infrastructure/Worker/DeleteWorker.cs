@@ -20,9 +20,15 @@ namespace CusMaSy.TUI.Infrastructure.Worker
         {
             ConsoleWriter.WriteHeadline("Anbieter löschen");
 
-            var anbieterNrString = ConsoleWriter.WriteInputStatement("Anbieternummer");
+            var anbieterNrString = ConsoleWriter.WriteInputStatement("Anbieternummer", true);
             while (string.IsNullOrWhiteSpace(anbieterNrString) && Validator.CheckStringIsLong(anbieterNrString) == false)
-                anbieterNrString = ConsoleWriter.WriteInputStatement("Anbieternummer");
+                anbieterNrString = ConsoleWriter.WriteInputStatement("Anbieternummer", false);
+
+            if (anbieterNrString.ToLower().Equals("abbr"))
+            {
+                ConsoleWriter.WriteUserFeedback("Vorgang wurde abgeprochen", StatusFeedback.Info);
+                return;
+            }
 
             var anbieterNr = long.Parse(anbieterNrString);
 
@@ -35,9 +41,15 @@ namespace CusMaSy.TUI.Infrastructure.Worker
         internal void DeleteZuordnung()
         {
             ConsoleWriter.WriteHeadline("Zuordnung löschen");
-            var anbieterNrString = ConsoleWriter.WriteInputStatement("Anbieternummer");
+            var anbieterNrString = ConsoleWriter.WriteInputStatement("Anbieternummer", true);
             while (string.IsNullOrWhiteSpace(anbieterNrString) && Validator.CheckStringIsLong(anbieterNrString) == false)
-                anbieterNrString = ConsoleWriter.WriteInputStatement("Anbieternummer");
+                anbieterNrString = ConsoleWriter.WriteInputStatement("Anbieternummer", false);
+
+            if (anbieterNrString.ToLower().Equals("abbr"))
+            {
+                ConsoleWriter.WriteUserFeedback("Vorgang wurde abgeprochen", StatusFeedback.Info);
+                return;
+            }
 
             var anbieterNr = long.Parse(anbieterNrString);
 
@@ -62,9 +74,15 @@ namespace CusMaSy.TUI.Infrastructure.Worker
 
             Console.WriteLine(Environment.NewLine + "Auswahl:");
 
-            var clientNrString = ConsoleWriter.WriteInputStatement("zuzuordnende Anbieternummer");
+            var clientNrString = ConsoleWriter.WriteInputStatement("zuzuordnende Anbieternummer", true);
             while (string.IsNullOrWhiteSpace(clientNrString) && Validator.CheckStringIsLong(clientNrString) == false)
-                clientNrString = ConsoleWriter.WriteInputStatement("zuzuordnende Anbieternummer");
+                clientNrString = ConsoleWriter.WriteInputStatement("zuzuordnende Anbieternummer", false);
+
+            if (anbieterNrString.ToLower().Equals("abbr"))
+            {
+                ConsoleWriter.WriteUserFeedback("Vorgang wurde abgeprochen", StatusFeedback.Info);
+                return;
+            }
 
             try
             {

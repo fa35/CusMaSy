@@ -21,9 +21,15 @@ namespace CusMaSy.TUI.Infrastructure.Worker
         {
             ConsoleWriter.WriteHeadline("Anbieter bearbeiten");
 
-            var anbieterString = ConsoleWriter.WriteInputStatement("Name oder Nr eingeben");
+            var anbieterString = ConsoleWriter.WriteInputStatement("Name oder Nr eingeben", true);
             while (string.IsNullOrWhiteSpace(anbieterString))
-                anbieterString = ConsoleWriter.WriteInputStatement("Name oder Nr eingeben");
+                anbieterString = ConsoleWriter.WriteInputStatement("Name oder Nr eingeben", false);
+
+            if (anbieterString.ToLower().Equals("abbr"))
+            {
+                ConsoleWriter.WriteUserFeedback("Vorgang wurde abgeprochen", StatusFeedback.Info);
+                return;
+            }
 
             long anbieterNr = 0;
             long.TryParse(anbieterString, out anbieterNr);
@@ -42,80 +48,11 @@ namespace CusMaSy.TUI.Infrastructure.Worker
 
             ConsoleWriter.WriteHeadline("Veränderungen eingeben");
 
-            var ort = new Ort();
-
-            var firma = ConsoleWriter.WriteInputStatement("Firma");
-            while (string.IsNullOrWhiteSpace(firma))
-                firma = ConsoleWriter.WriteInputStatement("Firma");
-            anbieter.Firma = firma;
+            anbieter = ConsoleWriter.InputAnbieterDetails(anbieter, new Ort(), _fachkonzept);
 
 
-            var steuerNr = ConsoleWriter.WriteInputStatement("Steuernummer");
-            while (string.IsNullOrWhiteSpace(steuerNr))
-                steuerNr = ConsoleWriter.WriteInputStatement("Steuernummer");
-            anbieter.Steuernummer = steuerNr;
-
-
-            var branche = ConsoleWriter.WriteInputStatement("Branche");
-            while (string.IsNullOrWhiteSpace(branche))
-                branche = ConsoleWriter.WriteInputStatement("Branche");
-            anbieter.Branche = branche;
-
-
-            var homepage = ConsoleWriter.WriteInputStatement("Homepage");
-            while (string.IsNullOrWhiteSpace(homepage) || Validator.CheckHomepage(homepage) == false)
-                homepage = ConsoleWriter.WriteInputStatement("Homepage");
-            anbieter.Homepage = homepage;
-
-
-            var teleNr = ConsoleWriter.WriteInputStatement("Telefonnummer");
-            while (string.IsNullOrWhiteSpace(teleNr))
-                teleNr = ConsoleWriter.WriteInputStatement("Telefonnummer");
-            anbieter.Telefonnummer = teleNr;
-
-
-            var mailAdr = ConsoleWriter.WriteInputStatement("Mailadresse");
-            while (string.IsNullOrWhiteSpace(mailAdr) || Validator.CheckMailadresse(mailAdr) == false)
-                mailAdr = ConsoleWriter.WriteInputStatement("Mailadresse");
-            anbieter.Mailadresse = mailAdr;
-
-
-            var strasse = ConsoleWriter.WriteInputStatement("Strasse");
-            while (string.IsNullOrWhiteSpace(strasse))
-                strasse = ConsoleWriter.WriteInputStatement("Strasse");
-            anbieter.Strasse = strasse;
-
-
-            var hausNr = ConsoleWriter.WriteInputStatement("Hausnummer");
-            while (string.IsNullOrWhiteSpace(hausNr))
-                hausNr = ConsoleWriter.WriteInputStatement("Hausnummer");
-            anbieter.Hausnummer = hausNr;
-
-
-            var plz = ConsoleWriter.WriteInputStatement("PLZ");
-            while (string.IsNullOrWhiteSpace(plz) || Validator.CheckPLZ(plz) == false)
-                plz = ConsoleWriter.WriteInputStatement("PLZ");
-            ort.PLZ = int.Parse(plz);
-
-
-            var ortBez = ConsoleWriter.WriteInputStatement("Ort");
-            while (string.IsNullOrWhiteSpace(ortBez))
-                ortBez = ConsoleWriter.WriteInputStatement("Ort");
-            ort.Ort1 = ortBez;
-
-            var land = ConsoleWriter.WriteInputStatement("Land");
-            while (string.IsNullOrWhiteSpace(land))
-                land = ConsoleWriter.WriteInputStatement("Land");
-            ort.Land = land;
-
-            var anbieterTyp = ConsoleWriter.WriteInputStatement("AnbieterTyp (Kaufmann/Privatperson)");
-
-            while (string.IsNullOrWhiteSpace(anbieterTyp) || Validator.CheckAnbieterTyp(anbieterTyp) == false)
-                anbieterTyp = ConsoleWriter.WriteInputStatement("AnbieterTyp (Kaufmann/Privatperson)");
-            anbieter.f_AnbieterTyp_Nr = AnbieterTypConverter.ToAnbieterTypNr(anbieterTyp);
-
-            // ort nr holen:
-            anbieter.f_Ort_Nr = _fachkonzept.GetOrtNr(ort);
+            if (anbieter == null)
+                return;
 
             // anbieter speichern
             _fachkonzept.UpdateAnbieter(anbieter);
@@ -130,9 +67,7 @@ namespace CusMaSy.TUI.Infrastructure.Worker
             ConsoleWriter.WriteHeadline("Alle Anbieter");
 
             foreach (var anbieter in anbieters)
-            {
                 Console.WriteLine(anbieter.p_Anbieter_Nr + " | " + anbieter.Firma);
-            }
 
             Menu.ShowMenu();
         }
@@ -141,9 +76,15 @@ namespace CusMaSy.TUI.Infrastructure.Worker
         {
             ConsoleWriter.WriteHeadline("Anbieter suchen");
 
-            var anbieterString = ConsoleWriter.WriteInputStatement("Name oder Nr eingeben");
+            var anbieterString = ConsoleWriter.WriteInputStatement("Name oder Nr eingeben", true);
             while (string.IsNullOrWhiteSpace(anbieterString))
-                anbieterString = ConsoleWriter.WriteInputStatement("Name oder Nr eingeben");
+                anbieterString = ConsoleWriter.WriteInputStatement("Name oder Nr eingeben", false);
+
+            if (anbieterString.ToLower().Equals("abbr"))
+            {
+                ConsoleWriter.WriteUserFeedback("Vorgang wurde abgeprochen", StatusFeedback.Info);
+                return;
+            }
 
             long anbieterNr = 0;
             long.TryParse(anbieterString, out anbieterNr);
