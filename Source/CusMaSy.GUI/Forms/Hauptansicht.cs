@@ -123,7 +123,7 @@ namespace CusMaSy.GUI.Forms
 
             if (anbieter == null)
                 return;
-
+            
             // zeige in details anbieter details
             ShowAnbieterDetails(anbieter);
 
@@ -149,9 +149,9 @@ namespace CusMaSy.GUI.Forms
                 ort = new Ort { PLZ = 0, Ort1 = "Unbekannt", Land = "Unbekannt" };
 
             dgvAnbieterDetails.Rows.Add(anbieter.p_Anbieter_Nr.ToString(),
-                 anbieter.Firma, anbieter.Steuernummer, AnbieterTypConverter.ToAnbieterTyp(anbieter.f_AnbieterTyp_Nr),
-                 anbieter.Branche, anbieter.Strasse, anbieter.Hausnummer, ort.PLZ.ToString(), ort.Ort1,
-                 ort.Land, anbieter.Mailadresse, anbieter.Telefonnummer, anbieter.Homepage);
+                 anbieter.Firma, anbieter.Homepage, anbieter.Mailadresse, anbieter.Telefonnummer,
+                 anbieter.Steuernummer, anbieter.Branche, anbieter.Strasse, anbieter.Hausnummer, 
+                 ort.PLZ.ToString(), ort.Ort1, ort.Land, AnbieterTypConverter.ToAnbieterTyp(anbieter.f_AnbieterTyp_Nr));
         }
 
         private void ShowRelations(long anbieterNr)
@@ -180,8 +180,6 @@ namespace CusMaSy.GUI.Forms
             return long.Parse(anbieterNr);
         }
 
-
-
         void SetColumnHeaders(Anbieter anbieter)
         {
             if (dgvAnbieterDetails.Columns.Count > 1)
@@ -189,24 +187,23 @@ namespace CusMaSy.GUI.Forms
 
             dgvAnbieterDetails.Columns.Add(anbieter.p_Anbieter_Nr.ToString(), "AnbieterNr");
             dgvAnbieterDetails.Columns.Add(anbieter.Firma, "Firma");
-            dgvAnbieterDetails.Columns.Add(anbieter.Steuernummer, "Steuernummer");
-            dgvAnbieterDetails.Columns.Add("AnbieterTyp", "AnbieterTyp");
+            dgvAnbieterDetails.Columns.Add(anbieter.Homepage, "Homepage");
+            dgvAnbieterDetails.Columns.Add(anbieter.Mailadresse, "Mailadresse");
+            dgvAnbieterDetails.Columns.Add(anbieter.Telefonnummer, "Telefonnummer");
+            dgvAnbieterDetails.Columns.Add(anbieter.Steuernummer, "Steuernummer");            
             dgvAnbieterDetails.Columns.Add(anbieter.Branche, "Branche");
             dgvAnbieterDetails.Columns.Add(anbieter.Strasse, "Straße");
             dgvAnbieterDetails.Columns.Add(anbieter.Hausnummer, "Hausnummer");
             dgvAnbieterDetails.Columns.Add("PLZ", "PLZ");
             dgvAnbieterDetails.Columns.Add("Ort", "Ort");
             dgvAnbieterDetails.Columns.Add("Land", "Land");
-            dgvAnbieterDetails.Columns.Add(anbieter.Mailadresse, "Mailadresse");
-            dgvAnbieterDetails.Columns.Add(anbieter.Telefonnummer, "Telefonnummer");
-            dgvAnbieterDetails.Columns.Add(anbieter.Homepage, "Homepage");
+            dgvAnbieterDetails.Columns.Add("AnbieterTyp", "AnbieterTyp");           
         }
 
         void LoadOrte()
         {
             _orte = _fachkonzept.GetOrte(_anbieterList.Select(a => a.f_Ort_Nr).ToList());
         }
-
 
         private void txbSearchAnbieter_KeyDown(object sender, KeyEventArgs e)
         {
@@ -225,8 +222,11 @@ namespace CusMaSy.GUI.Forms
                 searchedAnbieter = _anbieterList.FirstOrDefault(a => a.Firma.Equals(txbSearchAnbieter.Text));
 
             if (searchedAnbieter == null)
-                return;
-
+            {
+                MessageBox.Show("Anbieter konnte nicht gefunden werden.");
+                return;             
+            }
+                
             txbSearchAnbieter.Text = string.Empty;
             dgvAnbieterDetails.Focus();
 
@@ -244,7 +244,6 @@ namespace CusMaSy.GUI.Forms
             {
                 try
                 {
-
                     var ort = new Ort
                     {
                         PLZ = int.Parse(row.Cells[7].Value.ToString()),
@@ -276,7 +275,7 @@ namespace CusMaSy.GUI.Forms
                 }
                 catch (Exception ex)
                 {
-
+                    MessageBox.Show("Anbieter konnte nicht bearbeitet werden.");
                 }
             }
         }
