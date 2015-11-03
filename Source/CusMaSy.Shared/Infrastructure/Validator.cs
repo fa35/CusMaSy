@@ -31,7 +31,7 @@ namespace CusMaSy.Shared.Infrastructure
 
         public static bool CheckAnbieterTyp(string content)
         {
-            if (content.Equals("Kaufmann") || content.Equals("Privatperson"))
+            if (content.ToLower().Equals("kaufmann") || content.ToLower().Equals("privatperson"))
                 return true;
 
             return false;
