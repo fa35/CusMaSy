@@ -10,13 +10,13 @@ namespace CusMaSy.GUI.Forms
     public partial class Anlage : Form
     {
         IFachkonzept _fachkonzept;
-        List<string> _states;        
+        List<string> _states;
 
         public Anlage(IFachkonzept fachkonzept)
         {
             InitializeComponent();
             _fachkonzept = fachkonzept;
-            this.Text = Helper.GetTitle("Anbieter-Anlage");            
+            this.Text = Helper.GetTitle("Anbieter-Anlage");
 
             LoadStates();
         }
@@ -28,10 +28,10 @@ namespace CusMaSy.GUI.Forms
             {
                 // todo: Carlo, validate the values of the input field
                 // if some values are null or wrong, the methode can't save the provider
-                var arr = new string[] {txbFirma.Text, txbBranche.Text, txbHomepage.Text, txbTelefonnr.Text, txbStrasse.Text, 
+                var arr = new string[] {txbFirma.Text, txbBranche.Text, txbHomepage.Text, txbTelefonnr.Text, txbStrasse.Text,
                     txbHausnr.Text, txbMailadresse.Text, txbSteuernr.Text};
 
-                foreach(string text in arr)
+                foreach (string text in arr)
                 {
                     if (string.IsNullOrEmpty(text))
                     {
@@ -40,7 +40,7 @@ namespace CusMaSy.GUI.Forms
                     }
                 }
 
-                if (!rdbKaufmann.Checked && !rdbPrivatperson.Checked) 
+                if (!rdbKaufmann.Checked && !rdbPrivatperson.Checked)
                 {
                     message = "Sie müssen Kaufmann oder Privatperson auswählen.";
                     throw new Exception();
@@ -82,7 +82,7 @@ namespace CusMaSy.GUI.Forms
                     Ort1 = txbOrt.Text,
                     Land = cmbLand.SelectedItem.ToString()
                 };
-                
+
                 bool isKaufmann = rdbKaufmann.Checked ? true : false;
                 // ort anlegen und ortnr anbieter zuweisen
                 var ortNr = _fachkonzept.GetOrtNr(ort);
@@ -101,7 +101,7 @@ namespace CusMaSy.GUI.Forms
             catch (Exception ex)
             {
                 // logger einbauen und loggen
-                MessageBox.Show(message);               
+                MessageBox.Show(message);
             }
         }
 
@@ -117,8 +117,7 @@ namespace CusMaSy.GUI.Forms
 
         void LoadStates()
         {
-            // variante für fachkonzeptB impl. dann jeweils casten
-            _states = (_fachkonzept as FachkonzeptA).GetAllStates();
+            _states = _fachkonzept.GetAllStates();
 
             cmbLand.Items.Clear();
 

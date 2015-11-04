@@ -64,7 +64,6 @@ namespace CusMaSy.Shared.Infrastructure
             _connector.InsertOrUpdateOrt(new Ort { Land = input, PLZ = 0, Ort1 = string.Empty });
         }
 
-
         public void UpdateAnbieter(Anbieter anbieter)
         {
             _connector.UpdateExistingAnbieter(anbieter);
@@ -72,7 +71,7 @@ namespace CusMaSy.Shared.Infrastructure
 
         public void SaveZuordnung(long hostNr, long clientNr)
         {
-            _connector.DeleteZuordnung(hostNr, clientNr);
+            _connector.InsertZuordnung(hostNr, clientNr);
         }
 
         public bool ExistsHostClientZuordnung(long anbieterNr, long clientNr)
