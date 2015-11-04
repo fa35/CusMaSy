@@ -47,40 +47,36 @@
             // lblShopUeberblick
             // 
             this.lblShopUeberblick.AutoSize = true;
-            this.lblShopUeberblick.Location = new System.Drawing.Point(33, 208);
-            this.lblShopUeberblick.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblShopUeberblick.Location = new System.Drawing.Point(25, 169);
             this.lblShopUeberblick.Name = "lblShopUeberblick";
-            this.lblShopUeberblick.Size = new System.Drawing.Size(88, 17);
+            this.lblShopUeberblick.Size = new System.Drawing.Size(66, 13);
             this.lblShopUeberblick.TabIndex = 1;
             this.lblShopUeberblick.Text = "Alle Anbieter";
             // 
             // lblRelationsText
             // 
             this.lblRelationsText.AutoSize = true;
-            this.lblRelationsText.Location = new System.Drawing.Point(448, 208);
-            this.lblRelationsText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblRelationsText.Location = new System.Drawing.Point(336, 169);
             this.lblRelationsText.Name = "lblRelationsText";
-            this.lblRelationsText.Size = new System.Drawing.Size(78, 17);
+            this.lblRelationsText.Size = new System.Drawing.Size(59, 13);
             this.lblRelationsText.TabIndex = 3;
             this.lblRelationsText.Text = "Zuordnung";
             // 
             // lstvRelations
             // 
-            this.lstvRelations.Location = new System.Drawing.Point(452, 228);
-            this.lstvRelations.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lstvRelations.Location = new System.Drawing.Point(339, 185);
             this.lstvRelations.Name = "lstvRelations";
-            this.lstvRelations.Size = new System.Drawing.Size(349, 164);
+            this.lstvRelations.Size = new System.Drawing.Size(263, 134);
             this.lstvRelations.TabIndex = 4;
             this.lstvRelations.UseCompatibleStateImageBehavior = false;
             this.lstvRelations.View = System.Windows.Forms.View.List;
             // 
             // lstvAnbieter
             // 
-            this.lstvAnbieter.Location = new System.Drawing.Point(37, 228);
-            this.lstvAnbieter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lstvAnbieter.Location = new System.Drawing.Point(28, 185);
             this.lstvAnbieter.MultiSelect = false;
             this.lstvAnbieter.Name = "lstvAnbieter";
-            this.lstvAnbieter.Size = new System.Drawing.Size(349, 164);
+            this.lstvAnbieter.Size = new System.Drawing.Size(263, 134);
             this.lstvAnbieter.TabIndex = 5;
             this.lstvAnbieter.UseCompatibleStateImageBehavior = false;
             this.lstvAnbieter.View = System.Windows.Forms.View.List;
@@ -89,10 +85,9 @@
             // 
             // btnAddRelation
             // 
-            this.btnAddRelation.Location = new System.Drawing.Point(452, 400);
-            this.btnAddRelation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddRelation.Location = new System.Drawing.Point(339, 325);
             this.btnAddRelation.Name = "btnAddRelation";
-            this.btnAddRelation.Size = new System.Drawing.Size(351, 31);
+            this.btnAddRelation.Size = new System.Drawing.Size(263, 25);
             this.btnAddRelation.TabIndex = 8;
             this.btnAddRelation.Text = "Zuordnung /-en hinzufügen";
             this.btnAddRelation.UseVisualStyleBackColor = true;
@@ -100,10 +95,9 @@
             // 
             // btnDeleteRelation
             // 
-            this.btnDeleteRelation.Location = new System.Drawing.Point(452, 438);
-            this.btnDeleteRelation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDeleteRelation.Location = new System.Drawing.Point(339, 356);
             this.btnDeleteRelation.Name = "btnDeleteRelation";
-            this.btnDeleteRelation.Size = new System.Drawing.Size(351, 31);
+            this.btnDeleteRelation.Size = new System.Drawing.Size(263, 25);
             this.btnDeleteRelation.TabIndex = 9;
             this.btnDeleteRelation.Text = "Zuordnung /-en entfernen";
             this.btnDeleteRelation.UseVisualStyleBackColor = true;
@@ -112,19 +106,17 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 64);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(25, 52);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 17);
+            this.label1.Size = new System.Drawing.Size(159, 13);
             this.label1.TabIndex = 10;
-            this.label1.Text = "Anbieter - Details";
+            this.label1.Text = "Bearbeitung der Anbieter-Details";
             // 
             // btnDeleteAnbieter
             // 
-            this.btnDeleteAnbieter.Location = new System.Drawing.Point(37, 438);
-            this.btnDeleteAnbieter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDeleteAnbieter.Location = new System.Drawing.Point(28, 356);
             this.btnDeleteAnbieter.Name = "btnDeleteAnbieter";
-            this.btnDeleteAnbieter.Size = new System.Drawing.Size(351, 31);
+            this.btnDeleteAnbieter.Size = new System.Drawing.Size(263, 25);
             this.btnDeleteAnbieter.TabIndex = 11;
             this.btnDeleteAnbieter.Text = "Anbieter entfernen";
             this.btnDeleteAnbieter.UseVisualStyleBackColor = true;
@@ -132,10 +124,9 @@
             // 
             // btnAddAnbieter
             // 
-            this.btnAddAnbieter.Location = new System.Drawing.Point(37, 400);
-            this.btnAddAnbieter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddAnbieter.Location = new System.Drawing.Point(28, 325);
             this.btnAddAnbieter.Name = "btnAddAnbieter";
-            this.btnAddAnbieter.Size = new System.Drawing.Size(351, 31);
+            this.btnAddAnbieter.Size = new System.Drawing.Size(263, 25);
             this.btnAddAnbieter.TabIndex = 12;
             this.btnAddAnbieter.Text = "Anbieter hinzufügen";
             this.btnAddAnbieter.UseVisualStyleBackColor = true;
@@ -146,37 +137,34 @@
             this.dgvAnbieterDetails.AllowUserToAddRows = false;
             this.dgvAnbieterDetails.AllowUserToDeleteRows = false;
             this.dgvAnbieterDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAnbieterDetails.Location = new System.Drawing.Point(37, 84);
-            this.dgvAnbieterDetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvAnbieterDetails.Location = new System.Drawing.Point(28, 68);
             this.dgvAnbieterDetails.Name = "dgvAnbieterDetails";
-            this.dgvAnbieterDetails.Size = new System.Drawing.Size(765, 105);
+            this.dgvAnbieterDetails.Size = new System.Drawing.Size(574, 85);
             this.dgvAnbieterDetails.TabIndex = 13;
             this.dgvAnbieterDetails.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAnbieterDetails_CellEndEdit);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 23);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(25, 19);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(355, 17);
+            this.label2.Size = new System.Drawing.Size(266, 13);
             this.label2.TabIndex = 15;
             this.label2.Text = "Nach Anbieter suchen - Name oder Nummer eingeben:";
             // 
             // txbSearchAnbieter
             // 
-            this.txbSearchAnbieter.Location = new System.Drawing.Point(452, 20);
-            this.txbSearchAnbieter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txbSearchAnbieter.Location = new System.Drawing.Point(339, 16);
             this.txbSearchAnbieter.Name = "txbSearchAnbieter";
-            this.txbSearchAnbieter.Size = new System.Drawing.Size(349, 22);
+            this.txbSearchAnbieter.Size = new System.Drawing.Size(263, 20);
             this.txbSearchAnbieter.TabIndex = 16;
             this.txbSearchAnbieter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txbSearchAnbieter_KeyDown);
             // 
             // Hauptansicht
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(837, 498);
+            this.ClientSize = new System.Drawing.Size(628, 405);
             this.Controls.Add(this.txbSearchAnbieter);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvAnbieterDetails);
@@ -190,7 +178,6 @@
             this.Controls.Add(this.lblRelationsText);
             this.Controls.Add(this.lblShopUeberblick);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Hauptansicht";
             this.Text = "Hauptansicht";
             ((System.ComponentModel.ISupportInitialize)(this.dgvAnbieterDetails)).EndInit();

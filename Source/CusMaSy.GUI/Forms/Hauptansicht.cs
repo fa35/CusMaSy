@@ -63,6 +63,8 @@ namespace CusMaSy.GUI.Forms
                 _fachkonzept.RemoveAnbieter(anbieterNr);
                 LoadAnbieters();
                 dgvAnbieterDetails.Rows.Clear();
+                lstvRelations.Items.Clear();
+                lblRelationsText.Text = "Zuordnungen:";
             }
             catch (Exception ex)
             {

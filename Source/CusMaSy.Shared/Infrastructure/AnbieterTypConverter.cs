@@ -17,9 +17,9 @@
 
         public static int ToAnbieterTypNr(string anbieterTyp)
         {
-            if (anbieterTyp.Equals("Kaufmann"))
+            if (anbieterTyp.ToLower().Equals("kaufmann"))
                 return 1;
-            if (anbieterTyp.Equals("Privatperson"))
+            if (anbieterTyp.ToLower().Equals("privatperson"))
                 return 2;
 
             return 0;
