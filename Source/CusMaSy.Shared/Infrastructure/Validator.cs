@@ -59,7 +59,9 @@ namespace CusMaSy.Shared.Infrastructure
 
         public static bool CheckLand(string content)
         {
-            if (!string.IsNullOrWhiteSpace(content) && !Regex.IsMatch(content, @"^-?\d+$"))
+            var regex = new Regex(@"^-?\d+$");
+
+            if (!string.IsNullOrWhiteSpace(content) && regex.IsMatch(content))
                 return true;
 
             return false;

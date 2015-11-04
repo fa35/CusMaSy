@@ -36,7 +36,8 @@
             // 
             // btnAddState
             // 
-            this.btnAddState.Location = new System.Drawing.Point(172, 37);
+            this.btnAddState.Enabled = false;
+            this.btnAddState.Location = new System.Drawing.Point(160, 38);
             this.btnAddState.Name = "btnAddState";
             this.btnAddState.Size = new System.Drawing.Size(100, 25);
             this.btnAddState.TabIndex = 0;
@@ -48,24 +49,24 @@
             // 
             this.txbState.Location = new System.Drawing.Point(12, 12);
             this.txbState.Name = "txbState";
-            this.txbState.Size = new System.Drawing.Size(260, 20);
+            this.txbState.Size = new System.Drawing.Size(248, 20);
             this.txbState.TabIndex = 1;
+            this.txbState.TextChanged += new System.EventHandler(this.txbState_TextChanged);
             // 
             // lblWarning
             // 
             this.lblWarning.AutoSize = true;
             this.lblWarning.Location = new System.Drawing.Point(12, 43);
             this.lblWarning.Name = "lblWarning";
-            this.lblWarning.Size = new System.Drawing.Size(132, 13);
+            this.lblWarning.Size = new System.Drawing.Size(0, 13);
             this.lblWarning.TabIndex = 2;
-            this.lblWarning.Text = "Land bereits in Datenbank";
             this.lblWarning.Visible = false;
             // 
             // AddState
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 70);
+            this.ClientSize = new System.Drawing.Size(270, 70);
             this.Controls.Add(this.lblWarning);
             this.Controls.Add(this.txbState);
             this.Controls.Add(this.btnAddState);

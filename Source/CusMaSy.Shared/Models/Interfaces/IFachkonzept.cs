@@ -22,6 +22,7 @@ namespace CusMaSy.Shared.Models.Interfaces
         List<Anbieter_Zuordnung> GetAllZuordnungenByAnbietersNrs(List<long> anbietersNrs);
 
         void UpdateAnbieter(Anbieter anbieter);
+        List<string> GetAllStates();
 
         void SaveZuordnung(long hostNr, long clientNr);
         void RemoveZuordnung(long hostNr, long clientNr);

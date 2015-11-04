@@ -19,6 +19,10 @@ namespace CusMaSy.Shared.Infrastructure
         {
             _connector.DeleteZuordnung(hostNr, clientNr);
         }
+        public List<string> GetAllStates()
+        {
+            return _connector.LoadStates();
+        }
 
         public List<Anbieter> GetAllAnbieter()
         {
