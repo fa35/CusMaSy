@@ -36,40 +36,56 @@ namespace CusMaSy.TUI.Infrastructure.Worker
 
             var anbieter = new Anbieter();
 
-            if (anbieterNr > 0)
-                anbieter = _fachkonzept.FindAnbieterByNr(anbieterNr);
-            else
-                anbieter = _fachkonzept.FindAnbieterByName(anbieterString);
+            try
+            {
+                if (anbieterNr > 0)
+                    anbieter = _fachkonzept.FindAnbieterByNr(anbieterNr);
+                else
+                    anbieter = _fachkonzept.FindAnbieterByName(anbieterString);
 
-            if (anbieter == null)
-                ConsoleWriter.WriteUserFeedback("Anbieter konnte nicht gefunden werden. Es ist keine Änderung der Details möglich.", StatusFeedback.Negativ);
+                if (anbieter == null)
+                    ConsoleWriter.WriteUserFeedback("Anbieter konnte nicht gefunden werden. Es ist keine Änderung der Details möglich.", StatusFeedback.Negativ);
 
-            ShowAnbieterDetails(anbieter);
-
-            ConsoleWriter.WriteHeadline("Veränderungen eingeben");
+                ShowAnbieterDetails(anbieter);
+                ConsoleWriter.WriteHeadline("Veränderungen eingeben");
+            }
+            catch (Exception ex)
+            {
+                ConsoleWriter.WriteUserFeedback("Anbieter konnte nicht geladen werden", StatusFeedback.Negativ);
+            }
 
             anbieter = ConsoleWriter.InputAnbieterDetails(anbieter, new Ort(), _fachkonzept);
-
-
-            if (anbieter == null)
+            if (anbieter == null || anbieter.p_Anbieter_Nr < 1)
                 return;
 
-            // anbieter speichern
-            _fachkonzept.UpdateAnbieter(anbieter);
-
-            ConsoleWriter.WriteUserFeedback("Anbieter erfolgreich abgeändert", StatusFeedback.Positiv);
+            try
+            {
+                _fachkonzept.UpdateAnbieter(anbieter);
+                ConsoleWriter.WriteUserFeedback("Anbieter erfolgreich abgeändert", StatusFeedback.Positiv);
+            }
+            catch (Exception ex)
+            {
+                ConsoleWriter.WriteUserFeedback("Änderungen konnte nicht gespeichert werden", StatusFeedback.Negativ);
+            }
         }
 
         internal void ShowAllAnbieters()
         {
-            var anbieters = _fachkonzept.GetAllAnbieter();
+            var anbieters = new List<Anbieter>();
+            try
+            {
+                anbieters = _fachkonzept.GetAllAnbieter();
+                ConsoleWriter.WriteHeadline("Alle Anbieter");
 
-            ConsoleWriter.WriteHeadline("Alle Anbieter");
+                foreach (var anbieter in anbieters)
+                    Console.WriteLine(anbieter.p_Anbieter_Nr + " | " + anbieter.Firma);
 
-            foreach (var anbieter in anbieters)
-                Console.WriteLine(anbieter.p_Anbieter_Nr + " | " + anbieter.Firma);
-
-            Menu.ShowMenu();
+                Menu.ShowMenu();
+            }
+            catch (Exception ex)
+            {
+                ConsoleWriter.WriteUserFeedback("Es ist ein Fehler beim laden der Anbieter aufgetreten", StatusFeedback.Negativ);
+            }
         }
 
         internal void SearchAnbieter()
@@ -91,12 +107,20 @@ namespace CusMaSy.TUI.Infrastructure.Worker
 
             var anbieter = new Anbieter();
 
-            if (anbieterNr > 0)
-                anbieter = _fachkonzept.FindAnbieterByNr(anbieterNr);
-            else
-                anbieter = _fachkonzept.FindAnbieterByName(anbieterString);
+            try
+            {
+                if (anbieterNr > 0)
+                    anbieter = _fachkonzept.FindAnbieterByNr(anbieterNr);
+                else
+                    anbieter = _fachkonzept.FindAnbieterByName(anbieterString);
+            }
+            catch (Exception ex)
+            {
+                ConsoleWriter.WriteUserFeedback("Es ist ein Fehler beim Finden des Anbieters aufgetreten", StatusFeedback.Negativ);
+                return;
+            }
 
-            if (anbieter == null)
+            if (anbieter == null || string.IsNullOrWhiteSpace(anbieter.p_Anbieter_Nr.ToString()))
             {
                 ConsoleWriter.WriteUserFeedback("Anbieter konnte nicht gefunden werden.", StatusFeedback.Info);
                 return;
@@ -120,7 +144,15 @@ namespace CusMaSy.TUI.Infrastructure.Worker
             Console.WriteLine("Strasse: " + anbieter.Strasse);
             Console.WriteLine("Hausnummer: " + anbieter.Hausnummer);
 
-            var orte = _fachkonzept.GetOrte(new List<long> { anbieter.f_Ort_Nr });
+            var orte = new List<Ort>();
+            try
+            {
+                orte = _fachkonzept.GetOrte(new List<long> { anbieter.f_Ort_Nr });
+            }
+            catch (Exception ex)
+            {
+                ConsoleWriter.WriteUserFeedback("Es ist ein Fehler beim Laden des Ortes aufgetreten", StatusFeedback.Negativ);
+            }
 
             if (!orte.Any())
                 return;
@@ -130,14 +162,20 @@ namespace CusMaSy.TUI.Infrastructure.Worker
             Console.WriteLine("Land: " + orte.First().Land);
 
             // zuordnungen
+            try
+            {
+                var relations = _fachkonzept.GetAllZuordnungenByAnbietersNrs(new List<long> { anbieter.p_Anbieter_Nr });
 
-            var relations = _fachkonzept.GetAllZuordnungenByAnbietersNrs(new List<long> { anbieter.p_Anbieter_Nr });
+                if (relations == null || !relations.Any())
+                    return;
 
-            if (relations == null || !relations.Any())
-                return;
-
-            var anbieterNrsToAnbieterNamenDic = _fachkonzept.GetAnbieterNameByAnbieterNr(relations.Select(z => z.pf_ClientAnbieter_Nr).ToList());
-            ConsoleWriter.WriteZurorndungen(relations, anbieterNrsToAnbieterNamenDic);
+                var anbieterNrsToAnbieterNamenDic = _fachkonzept.GetAnbieterNameByAnbieterNr(relations.Select(z => z.pf_ClientAnbieter_Nr).ToList());
+                ConsoleWriter.WriteZurorndungen(relations, anbieterNrsToAnbieterNamenDic);
+            }
+            catch (Exception ex)
+            {
+                ConsoleWriter.WriteUserFeedback("Es ist ein Fehler beim Laden der Zuordnungen aufgetreten aufgetreten", StatusFeedback.Negativ);
+            }
         }
     }
 }

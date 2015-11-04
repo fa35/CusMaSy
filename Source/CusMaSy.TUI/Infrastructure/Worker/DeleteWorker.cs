@@ -32,10 +32,16 @@ namespace CusMaSy.TUI.Infrastructure.Worker
 
             var anbieterNr = long.Parse(anbieterNrString);
 
-            // theoretisch könnte es auch sein, das der anbieter nicht existiert -> sollte man noch prüfen
-            _fachkonzept.RemoveAnbieter(anbieterNr);
-
-            ConsoleWriter.WriteUserFeedback("Anbieter erfolgreich gelöscht!", StatusFeedback.Positiv);
+            try
+            {
+                // theoretisch könnte es auch sein, das der anbieter nicht existiert -> sollte man noch prüfen
+                _fachkonzept.RemoveAnbieter(anbieterNr);
+                ConsoleWriter.WriteUserFeedback("Anbieter erfolgreich gelöscht!", StatusFeedback.Positiv);
+            }
+            catch (Exception ex)
+            {
+                ConsoleWriter.WriteUserFeedback("Es ist ein Fehler beim Entfernen des Anbieters aufgetreten", StatusFeedback.Negativ);
+            }
         }
 
         internal void DeleteZuordnung()
@@ -53,48 +59,43 @@ namespace CusMaSy.TUI.Infrastructure.Worker
 
             var anbieterNr = long.Parse(anbieterNrString);
 
-            if (!Validator.CheckAnbieterNrExists(anbieterNr, _fachkonzept))
-            {
-                ConsoleWriter.WriteUserFeedback("Die Anbieternummer existiert nicht.", StatusFeedback.Info);
-            }
-
-            // mögliche zurodnungen
-
-            var zuordnungen = _fachkonzept.GetAllZuordnungenByAnbietersNrs(new List<long> { anbieterNr });
-
-            if (zuordnungen == null || !zuordnungen.Any())
-            {
-                ConsoleWriter.WriteUserFeedback("Dieser Anbieter hat keine Zuordnungen", StatusFeedback.Info);
-                Menu.ShowMenu();
-                return;
-            }
-
-            var anbieterNrsToAnbieterNamenDic = _fachkonzept.GetAnbieterNameByAnbieterNr(zuordnungen.Select(z => z.pf_ClientAnbieter_Nr).ToList());
-            ConsoleWriter.WriteZurorndungen(zuordnungen, anbieterNrsToAnbieterNamenDic);
-
-            Console.WriteLine(Environment.NewLine + "Auswahl:");
-
-            var clientNrString = ConsoleWriter.WriteInputStatement("zuzuordnende Anbieternummer", true);
-            while (string.IsNullOrWhiteSpace(clientNrString) && Validator.CheckStringIsLong(clientNrString) == false)
-                clientNrString = ConsoleWriter.WriteInputStatement("zuzuordnende Anbieternummer", false);
-
-            if (anbieterNrString.ToLower().Equals("abbr"))
-            {
-                ConsoleWriter.WriteUserFeedback("Vorgang wurde abgeprochen", StatusFeedback.Info);
-                return;
-            }
-
             try
             {
-                var clientNr = long.Parse(clientNrString);
+                if (!Validator.CheckAnbieterNrExists(anbieterNr, _fachkonzept))
+                    ConsoleWriter.WriteUserFeedback("Die Anbieternummer existiert nicht.", StatusFeedback.Info);
 
+                // mögliche zurodnungen
+                var zuordnungen = _fachkonzept.GetAllZuordnungenByAnbietersNrs(new List<long> { anbieterNr });
+                if (zuordnungen == null || !zuordnungen.Any())
+                {
+                    ConsoleWriter.WriteUserFeedback("Dieser Anbieter hat keine Zuordnungen", StatusFeedback.Info);
+                    Menu.ShowMenu();
+                    return;
+                }
+
+                var anbieterNrsToAnbieterNamenDic = _fachkonzept.GetAnbieterNameByAnbieterNr(zuordnungen.Select(z => z.pf_ClientAnbieter_Nr).ToList());
+                ConsoleWriter.WriteZurorndungen(zuordnungen, anbieterNrsToAnbieterNamenDic);
+
+                Console.WriteLine(Environment.NewLine + "Auswahl:");
+
+                var clientNrString = ConsoleWriter.WriteInputStatement("zuzuordnende Anbieternummer", true);
+                while (string.IsNullOrWhiteSpace(clientNrString) && Validator.CheckStringIsLong(clientNrString) == false)
+                    clientNrString = ConsoleWriter.WriteInputStatement("zuzuordnende Anbieternummer", false);
+
+                if (anbieterNrString.ToLower().Equals("abbr"))
+                {
+                    ConsoleWriter.WriteUserFeedback("Vorgang wurde abgeprochen", StatusFeedback.Info);
+                    return;
+                }
+
+                var clientNr = long.Parse(clientNrString);
                 // theoretisch könnte zurodnung nicht exisiestieren --> sollte man prüfen
                 _fachkonzept.RemoveZuordnung(anbieterNr, clientNr);
                 ConsoleWriter.WriteUserFeedback("Zuordnung erfolgreich gelöschen", StatusFeedback.Positiv);
             }
             catch (Exception ex)
             {
-                ConsoleWriter.WriteUserFeedback("Konnte Zuordnung nicht löschen!", StatusFeedback.Negativ);
+                ConsoleWriter.WriteUserFeedback("Es ist ein Fehler beim Entfernen der Zuordnung aufgetreten!", StatusFeedback.Negativ);
             }
         }
     }
